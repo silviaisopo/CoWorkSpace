@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<head>
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+  <link
+          rel="stylesheet"
+          as="style"
+          onload="this.rel='stylesheet'"
+          href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Spline+Sans%3Awght%40400%3B500%3B700"
+  />
+
+  <title>Stitch Design</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body>
+<div class="relative flex size-full min-h-screen flex-col bg-[#122118] dark group/design-root overflow-x-hidden" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
+  <div class="layout-container flex h-full grow flex-col">
+    <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#264532] px-10 py-3">
+      <div class="flex items-center gap-8">
+        <div class="flex items-center gap-4 text-white">
+          <div class="size-4">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path></svg>
+          </div>
+          <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Workspaces</h2>
+        </div>
+        <div class="flex items-center gap-9">
+          <a class="text-white text-sm font-medium leading-normal" href="#">Explore</a>
+          <a class="text-white text-sm font-medium leading-normal" href="#">Create</a>
+          <a class="text-white text-sm font-medium leading-normal" href="#">Messages</a>
+        </div>
+      </div>
+      <div class="flex flex-1 justify-end gap-8">
+        <label class="flex flex-col min-w-40 !h-10 max-w-64">
+          <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+            <div
+                    class="text-[#96c5a9] flex border-none bg-[#264532] items-center justify-center pl-4 rounded-l-lg border-r-0"
+                    data-icon="MagnifyingGlass"
+                    data-size="24px"
+                    data-weight="regular"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                        d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+                ></path>
+              </svg>
+            </div>
+            <input
+                    placeholder="Search"
+                    class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border-none bg-[#264532] focus:border-none h-full placeholder:text-[#96c5a9] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
+                    value=""
+            />
+          </div>
+        </label>
+        <button
+                class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#264532] text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5"
+        >
+          <div class="text-white" data-icon="Bell" data-size="20px" data-weight="regular">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+              <path
+                      d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z"
+              ></path>
+            </svg>
+          </div>
+        </button>
+        <div
+                class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDp7sMaYg1RtPU0KT9vgEuN6d0MJ3fmEX_5de55opcgssSIWj6ZR8yi3AJbvzEEnD_ogFkDJlCV4g-PkMx7r6uZ1T5QRCO9g9BEW-fmWuM1WD9bmuSuQL_whvu5GeBJKlKWZY3lFT91ztR1uo9nBbamy3cIZqDap57K1tw5XCtvUmIzCktwsPZq_bndlww6MZ2KYjfNaIiIVBs72UkAFxcV_JRhg_YJPxnrrr5AKqyCvf1GabcKK6-voClNuPwcolOQ8pVrvzXiAGM1");'
+        ></div>
+      </div>
+    </header>
+    <div class="px-40 flex flex-1 justify-center py-5">
+      <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+        <div class="@container">
+          <div class="@[480px]:px-4 @[480px]:py-3">
+            <div
+                    class="bg-cover bg-center flex flex-col justify-end overflow-hidden bg-[#122118] @[480px]:rounded-lg min-h-80"
+                    style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 25%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDT1qNHbZA656sVGRLlWHTs6lt37i0YmDRg82YbtrkYEgB29-ic1yBilG0XyqSCqzpaW5jZJOCiEv6Ye_WS45jhEw_X6plSm2GZChU51k9brNd6Va8d_MAd2diMLQ9LU6vcfFPkDI21DR0P5ouUcygzOFk591fr0MUqKHOhl9EcM8YIUM9lT4GhkB3W4G8xWr2dSkK8GRpsiPwhrLXhs-94O_2Azuc3yfP2E-euwc4YYp0UKBDIx6GOJy3lqx11zxIyNKP68CmwqAGL");'
+            >
+              <div class="flex p-4"><p class="text-white tracking-light text-[28px] font-bold leading-tight">The Loft</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="pb-3">
+          <div class="flex border-b border-[#366348] px-4 gap-8">
+            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-[#38e07b] text-white pb-[13px] pt-4" href="#">
+              <p class="text-white text-sm font-bold leading-normal tracking-[0.015em]">About</p>
+            </a>
+            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#96c5a9] pb-[13px] pt-4" href="#">
+              <p class="text-[#96c5a9] text-sm font-bold leading-normal tracking-[0.015em]">Reviews</p>
+            </a>
+            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#96c5a9] pb-[13px] pt-4" href="#">
+              <p class="text-[#96c5a9] text-sm font-bold leading-normal tracking-[0.015em]">Amenities</p>
+            </a>
+          </div>
+        </div>
+        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">About this space</h2>
+        <p class="text-white text-base font-normal leading-normal pb-3 pt-1 px-4">
+          Welcome to The Loft, a vibrant coworking space designed for productivity and collaboration. Our modern facility offers a range of flexible workspaces, from private
+          offices to open desks, catering to individuals and teams of all sizes. Enjoy high-speed internet, ergonomic furniture, and a supportive community atmosphere. Book
+          your spot today and elevate your work experience.
+        </p>
+        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Where you'll be</h2>
+        <div class="flex px-4 py-3">
+          <div
+                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg object-cover"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCAMnAyQJmWHhe8k7xBa9qPrbNkOIScmHIIrpIE6DVfmvcqljUbn3luoJxtbx7-lWV0wFUkoZL4DQ1M7B8i0EkA1TyZrvtARR9l4j7QHyfGRG59_YGQZfCw6httM25Y-iaWSVLaN1jKGOQQGFkGm6AAjFUC0TeeMlDlFqF3wEcmwz9_gT2Nj9ImZPTN_4AW0HdQBh_sRYkYcFPRrbg84UEiIT4tmsdMwXwTM8Z4Yc7USBQlJPdZFzJxdw5mdM-sRQ15Hg3h7ee5D0ao");'
+          ></div>
+        </div>
+        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Hosted by Amelia</h2>
+        <div class="flex p-4 @container">
+          <div class="flex w-full flex-col gap-4 @[520px]:flex-row @[520px]:justify-between @[520px]:items-center">
+            <div class="flex gap-4">
+              <div
+                      class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-32 w-32"
+                      style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDiu_EDrVOLBol-qij7bDbWNTqpwKERyX96Mn76LtMhdzdhUpkdvgLzXcVnirBOuWob66C1ciHAIgaSin5fFXd6pTG-C3slJDngJ3-po40r7Sm4jfShptpuOEBtL7If0W7OXG6L8W2QQccTgPXuL2JjmuOLfykZgmIvCtReMttbfZUBOiOzwq5LMePrpvAN9Xlt_2ZI9qhh6Sd7Z90WU7BdTXZSS_dvHwR62KDXSJpA4_l6BCHFf3onIWa1GvfA458Vw7bvsYrX-yKV");'
+              ></div>
+              <div class="flex flex-col justify-center">
+                <p class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em]">Amelia</p>
+                <p class="text-[#96c5a9] text-base font-normal leading-normal">Joined in 2018</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex px-4 py-3 justify-start">
+          <button
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#264532] text-white text-sm font-bold leading-normal tracking-[0.015em]"
+          >
+            <span class="truncate">Contact host</span>
+          </button>
+        </div>
+        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">What this place offers</h2>
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+          <div class="flex flex-1 gap-3 rounded-lg border border-[#366348] bg-[#1b3124] p-4 items-center">
+            <div class="text-white" data-icon="WifiHigh" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                        d="M140,204a12,12,0,1,1-12-12A12,12,0,0,1,140,204ZM237.08,87A172,172,0,0,0,18.92,87,8,8,0,0,0,29.08,99.37a156,156,0,0,1,197.84,0A8,8,0,0,0,237.08,87ZM205,122.77a124,124,0,0,0-153.94,0A8,8,0,0,0,61,135.31a108,108,0,0,1,134.06,0,8,8,0,0,0,11.24-1.3A8,8,0,0,0,205,122.77Zm-32.26,35.76a76.05,76.05,0,0,0-89.42,0,8,8,0,0,0,9.42,12.94,60,60,0,0,1,70.58,0,8,8,0,1,0,9.42-12.94Z"
+                ></path>
+              </svg>
+            </div>
+            <h2 class="text-white text-base font-bold leading-tight">Wifi</h2>
+          </div>
+          <div class="flex flex-1 gap-3 rounded-lg border border-[#366348] bg-[#1b3124] p-4 items-center">
+            <div class="text-white" data-icon="Coffee" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                        d="M80,56V24a8,8,0,0,1,16,0V56a8,8,0,0,1-16,0Zm40,8a8,8,0,0,0,8-8V24a8,8,0,0,0-16,0V56A8,8,0,0,0,120,64Zm32,0a8,8,0,0,0,8-8V24a8,8,0,0,0-16,0V56A8,8,0,0,0,152,64Zm96,56v8a40,40,0,0,1-37.51,39.91,96.59,96.59,0,0,1-27,40.09H208a8,8,0,0,1,0,16H32a8,8,0,0,1,0-16H56.54A96.3,96.3,0,0,1,24,136V88a8,8,0,0,1,8-8H208A40,40,0,0,1,248,120ZM200,96H40v40a80.27,80.27,0,0,0,45.12,72h69.76A80.27,80.27,0,0,0,200,136Zm32,24a24,24,0,0,0-16-22.62V136a95.78,95.78,0,0,1-1.2,15A24,24,0,0,0,232,128Z"
+                ></path>
+              </svg>
+            </div>
+            <h2 class="text-white text-base font-bold leading-tight">Coffee</h2>
+          </div>
+          <div class="flex flex-1 gap-3 rounded-lg border border-[#366348] bg-[#1b3124] p-4 items-center">
+            <div class="text-white" data-icon="Printer" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                        d="M214.67,72H200V40a8,8,0,0,0-8-8H64a8,8,0,0,0-8,8V72H41.33C27.36,72,16,82.77,16,96v80a8,8,0,0,0,8,8H56v32a8,8,0,0,0,8,8H192a8,8,0,0,0,8-8V184h32a8,8,0,0,0,8-8V96C240,82.77,228.64,72,214.67,72ZM72,48H184V72H72ZM184,208H72V160H184Zm40-40H200V152a8,8,0,0,0-8-8H64a8,8,0,0,0-8,8v16H32V96c0-4.41,4.19-8,9.33-8H214.67c5.14,0,9.33,3.59,9.33,8Zm-24-52a12,12,0,1,1-12-12A12,12,0,0,1,200,116Z"
+                ></path>
+              </svg>
+            </div>
+            <h2 class="text-white text-base font-bold leading-tight">Printer</h2>
+          </div>
+          <div class="flex flex-1 gap-3 rounded-lg border border-[#366348] bg-[#1b3124] p-4 items-center">
+            <div class="text-white" data-icon="Users" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                        d="M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z"
+                ></path>
+              </svg>
+            </div>
+            <h2 class="text-white text-base font-bold leading-tight">Meeting room</h2>
+          </div>
+          <div class="flex flex-1 gap-3 rounded-lg border border-[#366348] bg-[#1b3124] p-4 items-center">
+            <div class="text-white" data-icon="Lock" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                        d="M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Zm-68-56a12,12,0,1,1-12-12A12,12,0,0,1,140,152Z"
+                ></path>
+              </svg>
+            </div>
+            <h2 class="text-white text-base font-bold leading-tight">Private entrance</h2>
+          </div>
+          <div class="flex flex-1 gap-3 rounded-lg border border-[#366348] bg-[#1b3124] p-4 items-center">
+            <div class="text-white" data-icon="Television" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                        d="M216,64H147.31l34.35-34.34a8,8,0,1,0-11.32-11.32L128,60.69,85.66,18.34A8,8,0,0,0,74.34,29.66L108.69,64H40A16,16,0,0,0,24,80V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V80A16,16,0,0,0,216,64ZM40,80H144V200H40ZM216,200H160V80h56V200Zm-16-84a12,12,0,1,1-12-12A12,12,0,0,1,200,116Zm0,48a12,12,0,1,1-12-12A12,12,0,0,1,200,164Z"
+                ></path>
+              </svg>
+            </div>
+            <h2 class="text-white text-base font-bold leading-tight">Projector</h2>
+          </div>
+        </div>
+        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">House rules</h2>
+        <p class="text-white text-base font-normal leading-normal pb-3 pt-1 px-4">
+          Please respect the shared workspace and maintain a professional environment. Keep noise levels to a minimum, clean up after yourself, and be mindful of others'
+          personal space. Smoking is not allowed inside the building. Report any issues to the front desk immediately. Thank you for your cooperation.
+        </p>
+        <div class="flex px-4 py-3">
+          <button
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 flex-1 bg-[#38e07b] text-[#122118] text-base font-bold leading-normal tracking-[0.015em]"
+          >
+            <span class="truncate">Book</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

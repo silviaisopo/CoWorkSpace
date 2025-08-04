@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<head>
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+  <link
+          rel="stylesheet"
+          as="style"
+          onload="this.rel='stylesheet'"
+          href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Spline+Sans%3Awght%40400%3B500%3B700"
+  />
+
+  <title>Stitch Design</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body>
+<div class="relative flex size-full min-h-screen flex-col bg-[#122118] dark group/design-root overflow-x-hidden" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
+  <div class="layout-container flex h-full grow flex-col">
+    <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#264532] px-10 py-3">
+      <div class="flex items-center gap-8">
+        <div class="flex items-center gap-4 text-white">
+          <div class="size-4">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path></svg>
+          </div>
+          <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Workspaces</h2>
+        </div>
+        <div class="flex items-center gap-9">
+          <a class="text-white text-sm font-medium leading-normal" href="#">Explore</a>
+          <a class="text-white text-sm font-medium leading-normal" href="#">Create</a>
+          <a class="text-white text-sm font-medium leading-normal" href="#">About</a>
+        </div>
+      </div>
+      <div class="flex flex-1 justify-end gap-8">
+        <label class="flex flex-col min-w-40 !h-10 max-w-64">
+          <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+            <div
+                    class="text-[#96c5a9] flex border-none bg-[#264532] items-center justify-center pl-4 rounded-l-lg border-r-0"
+                    data-icon="MagnifyingGlass"
+                    data-size="24px"
+                    data-weight="regular"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                        d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+                ></path>
+              </svg>
+            </div>
+            <input
+                    placeholder="Search"
+                    class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border-none bg-[#264532] focus:border-none h-full placeholder:text-[#96c5a9] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
+                    value=""
+            />
+          </div>
+        </label>
+        <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#38e07b] text-[#122118] text-sm font-bold leading-normal tracking-[0.015em]"
+        >
+          <span class="truncate">Log in</span>
+        </button>
+        <div
+                class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_MVb8XzjwZkF6O5ivyZadhiZ0XFu3eD3FcdLA4Ixll10kk5401IzquwYtZFDU62_BZe5t4MMH_vsl_n-OlC8DmE3TAuYL59BpGsjAUiiYKmyXt19iHlvSxRwnHOXcrL0tZZkBwMt6JXJAihCyIfWS5ZYZOvlrXleOJbjxL4_dwtH5z3dIiicVgsdefagncm7OtGLysfvqF9hePY98itO4GtP3sLCMwziLNNYudYkqwO0-nVMuTdxyLMBx0MOlp5OG4_wDawpRjBtW");'
+        ></div>
+      </div>
+    </header>
+    <div class="px-40 flex flex-1 justify-center py-5">
+      <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+        <div class="@container">
+          <div class="@[480px]:p-4">
+            <div
+                    class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-lg items-start justify-end px-4 pb-10 @[480px]:px-10"
+                    style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCQg31GyPyJlRlICSJ-uRzuZn6R0dopuQT77vHrDXmxvPQKjDnramJjF6rQ8NqFI0049-nmK4ct-8HNib7xfqtotrd53EFouS286CiXnYIka_628CQrIAxYWpPJ27gkYgToBQlL5dZKOPjnq4dx5RwdNaiQ3TPv6HjIEMOOenQ2_ejUi9_P_sfTI-sL_STqUHOL8UmN8GCVRlyUCmFHZESVB9g-2YgUW1TaEdABOxiBgFyjqt9iWPWuGOzSfmFCDq3BBNqYzgd_rgxN");'
+            >
+              <div class="flex flex-col gap-2 text-left">
+                <h1
+                        class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
+                >
+                  Find your perfect workspace
+                </h1>
+                <h2 class="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
+                  Discover a variety of workspaces, from private offices to collaborative hubs, tailored to your needs.
+                </h2>
+              </div>
+              <label class="flex flex-col min-w-40 h-14 w-full max-w-[480px] @[480px]:h-16">
+                <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+                  <div
+                          class="text-[#96c5a9] flex border border-[#366348] bg-[#1b3124] items-center justify-center pl-[15px] rounded-l-lg border-r-0"
+                          data-icon="MagnifyingGlass"
+                          data-size="20px"
+                          data-weight="regular"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                      <path
+                              d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <input
+                          placeholder="Search for a city"
+                          class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border border-[#366348] bg-[#1b3124] focus:border-[#366348] h-full placeholder:text-[#96c5a9] px-[15px] rounded-r-none border-r-0 pr-2 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal"
+                          value=""
+                  />
+                  <div class="flex items-center justify-center rounded-r-lg border-l-0 border border-[#366348] bg-[#1b3124] pr-[7px]">
+                    <button
+                            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#38e07b] text-[#122118] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
+                    >
+                      <span class="truncate">Search</span>
+                    </button>
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Featured workspaces</h2>
+        <div class="flex overflow-y-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
+          <div class="flex items-stretch p-4 gap-3">
+            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-60">
+              <div
+                      class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex flex-col"
+                      style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBSFVJXKFMKPF4Y9Ap8zeXXfQN86oVaVzABorVtbp9Mzc8qQfNPCSd2wdq3pweCPJgcwHZ0OOcA7KB0wf85kJ5yc_o0qU4dIn14MgmvD387necQBeVpHwpdb2HF82GyIrl6hUPfnqzGb44q8jDIDctgWWsCwt9rZXzbG8IWev4J__luX__ENLVomEFymxp4k5PkgYXlVGhb-cw5YcdRcl1VRPTLqACdRsjEVGgt07miicPnyTXTzAUIII9978eyEaPZLrpscovMPAbR");'
+              ></div>
+              <div>
+                <p class="text-white text-base font-medium leading-normal">Creative Hub</p>
+                <p class="text-[#96c5a9] text-sm font-normal leading-normal">A vibrant space for creative professionals.</p>
+              </div>
+            </div>
+            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-60">
+              <div
+                      class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex flex-col"
+                      style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDeRomP7UqpNgJ9xztmzJWn8Px-dGIkDG_A_i4QBFv3lt_AZFPwgC7dlE11A-gwS6tOV88SRq188mitNLzRg3m2st0Hy5MVuKY-nO-nDaqNOts-JAuvXEPsaB36e4iJX_Yn1a35DdRPGl9aos2iTgam-Te0YEcQOGy7-UNha6sDmVBi2HPKaYMJWZhAmZ-WWkpGiAz3vv72tHTHtotNfAXEZMAcOLVCFpex7-kUvaiCG89KXktaySDY7DWfmFej6WM-zX9gFPEAxU-j");'
+              ></div>
+              <div>
+                <p class="text-white text-base font-medium leading-normal">Tech Innovators</p>
+                <p class="text-[#96c5a9] text-sm font-normal leading-normal">A hub for tech startups and innovators.</p>
+              </div>
+            </div>
+            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-60">
+              <div
+                      class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex flex-col"
+                      style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA7q968rq9czVRileVT-3JZak4iUvkMQKh-0rWaA-G0H3f3NTIduudV9krQJBWIiLx65Biqw-Q2u83zrLqq1cuenPEB_QPkcvDybz0CF2vWDrwlbEpXjXtbW0_xaDy4FZA-3rR7rtCXRznTccmUc1UbLSMTw0b_r3fNbpIeAybOqUBMBozirMVQNRlKyvBaj2p9bl_5BElV_q3A-qsnwgsbOPJj2FErrzr5dHzQeSykpn_8JSrF6Uym_pX_HPOy0ahGLMXm9Yvu1RH0");'
+              ></div>
+              <div>
+                <p class="text-white text-base font-medium leading-normal">Design Studio</p>
+                <p class="text-[#96c5a9] text-sm font-normal leading-normal">A stylish studio for design teams.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Popular cities</h2>
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+          <div class="flex flex-col gap-3 pb-3">
+            <div
+                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
+                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA3XZN6FFSND2JCJRCzHQpIp_8fnf-Dyl63T5GKJPTjlsCd7Ozd6aohMo_J4eLuoVP4XHpHRPhXwUPUGINN7D_4Tr87au6JWLBV5GiDcyY4fBTIn6hIAGCiMPCguEbIae0pnBeP5f3BFZry8yuGnGA5vETSHD-dsq1Renh3iayfm9NVydTGmTCtMMIZSpVkcHftvP1E2la08ZMId6zmtehnh71T1klcsu8AKZklBpMY6mhP3Ral5LZRdrs5y8q6kQep48oEk0_qDcyb");'
+            ></div>
+            <p class="text-white text-base font-medium leading-normal">San Francisco</p>
+          </div>
+          <div class="flex flex-col gap-3 pb-3">
+            <div
+                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
+                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBjdkOsKctKDtvHk3lY0ilIrxEYvG6zPPCF-MGMOM_L9U0itlCaMIK8zH_ItytFmHjmvHptp2yF8TKZ_Q7KulN_xmJVGj7KBQPGQHJohJrG4ysE9WVdjHDtDrpSvRIet1kqlxEYu5uM0aZqqPBFV8aK9cKiTy9jcKL5IuDULXm9heH0pJuaraclPsRR21wCCQtOZVnvWl0_yMgEzrN07Z-qnAt9MWUqgzPsWSSgU7-BPts5VcL9MQnOeKA3GHMW6ECI3ge1dXmKIVO-");'
+            ></div>
+            <p class="text-white text-base font-medium leading-normal">New York</p>
+          </div>
+          <div class="flex flex-col gap-3 pb-3">
+            <div
+                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
+                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBa0uUmJAiMuY3CdRm250ptdCnLoRoMTR0nqyXXV_Q4ngwJFmJATBd_kL60Wu0ArMy5eeCBxm5hlmjMJIl9hrWuvFoBrH9l3KKl9NZGfvbLpcRm4lYm6Dhi12ReQYExdgPxztSO0r0YTUumIMP6o7OcIj0f6QokyUg9EBo9AwS3iv4efbcvHtaDOU-wRFwHi2iqbJN44_ttZ3HQiX-EWf3ejW3LdvIBzMlFIoXMXwdRn9icsDFFgjyK6TBuLmNb4RMVmLlr_-Vx50uF");'
+            ></div>
+            <p class="text-white text-base font-medium leading-normal">Los Angeles</p>
+          </div>
+          <div class="flex flex-col gap-3 pb-3">
+            <div
+                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
+                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBy6f9IzgNIWkwBBjB6ylOCA_ylTlWd5MI8EJDPoP-Qgik-xQ9xADfUsrnOUCOyPP_eAEu6uMxQ28Psk3AIskkLILLGklGaB9nsratuo8b_XTG1eymFwvh-utpKqYrV_icJf7jkq2ml_ZQRvOi2-4TvUUHvxMUMKVEjtfgInMNJObmMU2uhPWRPMUkVxSE_p031Qfek7-n4PcvsH5Cnx82VxQ4sKKdLSom7H7m5cnS4I8Owctbj2nJYx6bZHWHj80Fvm0ZokRt6P97p");'
+            ></div>
+            <p class="text-white text-base font-medium leading-normal">Chicago</p>
+          </div>
+          <div class="flex flex-col gap-3 pb-3">
+            <div
+                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
+                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCn1VmyhnL86EWZZW9MUn_KS2oz1ePithxx0K_GDQ2E79duyii7XxENOy5X5iC2NPYGx3VDLiPSDhL42zWUJ8k7V17MJyYCtmwJk9lZAmJLUbZWD32k3gyaxWGC7mwCOfwfU56Uvm-luIQA_-Ba64fmPlKJPQPbJqzk9RHltmJAmvd2ZtjyaTDuKOZtXSl38v4i-4CPQ0CwI36ryU-zYM_ovKD7T2JP3bMCprX4idhEcqQtLe0wfna0xQwJzVzyQIVLYlVornWQeofX");'
+            ></div>
+            <p class="text-white text-base font-medium leading-normal">Austin</p>
+          </div>
+          <div class="flex flex-col gap-3 pb-3">
+            <div
+                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
+                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBGI7MLfVVTG7I7VeF-6P22n4_lDLEk2x1ipSWWlvp8q22oZPPpylbhxphYeImIcKYsYq32XZ7eWFR69F6VhcVNdVx7OSff-zB6CRe3alcV4toA8kq24nKeGfaJjM0v8m3_3UF3NRKfkTbLMZi21md8wIKV6n1TAW_jSWNEat15Al8ORgI6lTD7zBuJ-yIjZd5uivYcqRnL9t6ActXqCeNwNeCYyw4O42v_oqJMSV0BulFp600EC_Tndw-s3Ro1THOTVnZ8Dkj0TwUH");'
+            ></div>
+            <p class="text-white text-base font-medium leading-normal">Seattle</p>
+          </div>
+        </div>
+        <div class="@container">
+          <div class="flex flex-col justify-end gap-6 px-4 py-10 @[480px]:gap-8 @[480px]:px-10 @[480px]:py-20">
+            <div class="flex flex-col gap-2 text-center">
+              <h1
+                      class="text-white tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]"
+              >
+                Ready to find your workspace?
+              </h1>
+              <p class="text-white text-base font-normal leading-normal max-w-[720px">Join our community and discover the perfect workspace for your needs.</p>
+            </div>
+            <div class="flex flex-1 justify-center">
+              <div class="flex justify-center">
+                <button
+                        class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#38e07b] text-[#122118] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] grow"
+                >
+                  <span class="truncate">Get started</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="flex justify-center">
+      <div class="flex max-w-[960px] flex-1 flex-col">
+        <footer class="flex flex-col gap-6 px-5 py-10 text-center @container">
+          <div class="flex flex-wrap items-center justify-center gap-6 @[480px]:flex-row @[480px]:justify-around">
+            <a class="text-[#96c5a9] text-base font-normal leading-normal min-w-40" href="#">About</a>
+            <a class="text-[#96c5a9] text-base font-normal leading-normal min-w-40" href="#">Contact</a>
+            <a class="text-[#96c5a9] text-base font-normal leading-normal min-w-40" href="#">Terms of Service</a>
+            <a class="text-[#96c5a9] text-base font-normal leading-normal min-w-40" href="#">Privacy Policy</a>
+          </div>
+          <p class="text-[#96c5a9] text-base font-normal leading-normal">© 2023 Workspaces. All rights reserved.</p>
+        </footer>
+      </div>
+    </footer>
+  </div>
+</div>
+</body>
+</html>
