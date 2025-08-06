@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ricerca Spazi | CoWorkSpace</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Spline+Sans:wght@400;500;700"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body class="bg-[#122118] text-white" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
+
+<!-- NAVBAR -->
+<header class="flex items-center justify-between border-b border-[#264532] px-10 py-3">
+    <div class="flex items-center gap-8 text-white">
+        <div class="flex items-center gap-4">
+            <svg class="w-4 h-4" viewBox="0 0 48 48" fill="currentColor"><path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z"/></svg>
+            <h2 class="text-lg font-bold">Workspaces</h2>
+        </div>
+        <nav class="flex gap-6 text-sm font-medium">
+            <a href="catalogo.html">Esplora</a>
+            <a href="about-us.html">Chi Siamo</a>
+            <a href="contatti.html">Contatti</a>
+            <a href="#">Prenota</a>
+        </nav>
+    </div>
+    <div class="flex items-center gap-4">
+        <a href="login.html">
+            <button
+                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#38e07b] text-[#122118] text-sm font-bold leading-normal tracking-[0.015em]"
+            >
+                <span class="truncate">Accedi</span>
+            </button>
+        </a>
+        <a href="area_riservata.html">
+            <div
+                    class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_MVb8XzjwZkF6O5ivyZadhiZ0XFu3eD3FcdLA4Ixll10kk5401IzquwYtZFDU62_BZe5t4MMH_vsl_n-OlC8DmE3TAuYL59BpGsjAUiiYKmyXt19iHlvSxRwnHOXcrL0tZZkBwMt6JXJAihCyIfWS5ZYZOvlrXleOJbjxL4_dwtH5z3dIiicVgsdefagncm7OtGLysfvqF9hePY98itO4GtP3sLCMwziLNNYudYkqwO0-nVMuTdxyLMBx0MOlp5OG4_wDawpRjBtW");'
+            ></div>
+        </a>
+</header>
+
+<!-- FILTRI ORIZZONTALI -->
+<main class="px-6 md:px-20 py-10">
+    <h1 class="text-3xl font-bold mb-8">Trova lo spazio ideale</h1>
+    <form id="filterForm" class="bg-[#1b3124] border border-[#366348] p-6 rounded-lg flex flex-wrap gap-6 items-end justify-between max-w-full">
+
+        <!-- Tipo -->
+        <div class="flex flex-col w-[200px]">
+            <label class="text-[#96c5a9] mb-1">Tipo di spazio</label>
+            <select id="tipo" class="bg-[#264532] text-white rounded-lg border-none">
+                <option value="">Tutti</option>
+                <option>Ufficio</option>
+                <option>Coworking</option>
+                <option>Studio</option>
+            </select>
+        </div>
+
+        <!-- Città -->
+        <div class="flex flex-col w-[200px]">
+            <label class="text-[#96c5a9] mb-1">Città</label>
+            <input id="citta" type="text" placeholder="Inserisci città" class="bg-[#264532] text-white rounded-lg border-none" />
+        </div>
+
+        <!-- Prezzo Min -->
+        <div class="flex flex-col w-[120px]">
+            <label class="text-[#96c5a9] mb-1">Prezzo Min</label>
+            <input id="prezzoMin" type="number" min="0" class="bg-[#264532] text-white rounded-lg border-none" />
+        </div>
+
+        <!-- Prezzo Max -->
+        <div class="flex flex-col w-[120px]">
+            <label class="text-[#96c5a9] mb-1">Prezzo Max</label>
+            <input id="prezzoMax" type="number" min="0" class="bg-[#264532] text-white rounded-lg border-none" />
+        </div>
+
+        <!-- Strumenti -->
+        <div class="flex flex-col w-[240px]">
+            <label class="text-[#96c5a9] mb-1">Strumenti extra</label>
+            <select id="strumento" class="bg-[#264532] text-white rounded-lg border-none">
+                <option value="">Qualsiasi</option>
+                <option>Wi-Fi</option>
+                <option>Sala riunioni</option>
+                <option>Stampante</option>
+                <option>Cucina</option>
+            </select>
+        </div>
+
+        <!-- Pulsante -->
+        <button type="submit" class="bg-[#38e07b] text-[#122118] font-bold px-6 py-2 rounded-lg h-12">Cerca</button>
+    </form>
+
+    <!-- RISULTATI -->
+    <section id="risultati" class="mt-10 grid md:grid-cols-3 gap-6"></section>
+</main>
+
+<!-- FOOTER -->
+<footer class="flex justify-center px-4 mt-20">
+    <div class="max-w-[960px] w-full flex flex-col items-center text-[#96c5a9] text-sm py-10">
+        <div class="flex flex-wrap justify-center gap-6 mb-4">
+            <a href="about-us.html">Chi siamo</a>
+            <a href="contatti.html">Contatti</a>
+            <a href="#">Termini</a>
+            <a href="#">Privacy</a>
+        </div>
+        <p>© 2025 Workspaces. Tutti i diritti riservati.</p>
+    </div>
+</footer>
+
+<!-- SCRIPT JS -->
+<script>
+    const spazi = [
+        {
+            nome: "Hub Creativo",
+            tipo: "Coworking",
+            citta: "Milano",
+            prezzo: 30,
+            strumenti: ["Wi-Fi", "Sala riunioni"],
+            immagine: "https://source.unsplash.com/featured/?workspace"
+        },
+        {
+            nome: "Ufficio Smart",
+            tipo: "Ufficio",
+            citta: "Roma",
+            prezzo: 50,
+            strumenti: ["Wi-Fi", "Stampante", "Cucina"],
+            immagine: "https://source.unsplash.com/featured/?office"
+        },
+        {
+            nome: "Studio Design",
+            tipo: "Studio",
+            citta: "Torino",
+            prezzo: 40,
+            strumenti: ["Sala riunioni"],
+            immagine: "https://source.unsplash.com/featured/?studio"
+        }
+    ];
+
+    const risultatiDiv = document.getElementById("risultati");
+
+    function mostraRisultati(lista) {
+        risultatiDiv.innerHTML = "";
+        if (lista.length === 0) {
+            risultatiDiv.innerHTML = `<p class="text-[#96c5a9] col-span-3">Nessun risultato trovato.</p>`;
+            return;
+        }
+
+        lista.forEach(spazio => {
+            const div = document.createElement("div");
+            div.className = "bg-[#1b3124] rounded-lg overflow-hidden border border-[#264532]";
+            div.innerHTML = `
+          <div class="h-40 bg-cover bg-center" style="background-image: url('${spazio.immagine}')"></div>
+          <div class="p-4">
+            <h3 class="font-bold text-lg">${spazio.nome}</h3>
+            <p class="text-sm text-[#96c5a9]">${spazio.tipo} - ${spazio.citta}</p>
+            <p class="text-sm mt-1">€${spazio.prezzo} al giorno</p>
+            <p class="text-xs text-[#96c5a9] mt-2">Strumenti: ${spazio.strumenti.join(", ")}</p>
+          </div>
+        `;
+            risultatiDiv.appendChild(div);
+        });
+    }
+
+    document.getElementById("filterForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        const tipo = document.getElementById("tipo").value.toLowerCase();
+        const citta = document.getElementById("citta").value.toLowerCase();
+        const prezzoMin = parseInt(document.getElementById("prezzoMin").value) || 0;
+        const prezzoMax = parseInt(document.getElementById("prezzoMax").value) || Infinity;
+        const strumento = document.getElementById("strumento").value.toLowerCase();
+
+        const filtrati = spazi.filter(spazio => {
+            const matchTipo = tipo === "" || spazio.tipo.toLowerCase() === tipo;
+            const matchCitta = citta === "" || spazio.citta.toLowerCase().includes(citta);
+            const matchPrezzo = spazio.prezzo >= prezzoMin && spazio.prezzo <= prezzoMax;
+            const matchStrumento = strumento === "" || spazio.strumenti.map(s => s.toLowerCase()).includes(strumento);
+            return matchTipo && matchCitta && matchPrezzo && matchStrumento;
+        });
+
+        mostraRisultati(filtrati);
+    });
+
+    mostraRisultati(spazi); // mostra iniziali
+</script>
+
+</body>
+</html>
+

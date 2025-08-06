@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<meta charset="UTF-8">
 <head>
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
   <link
@@ -8,7 +9,7 @@
           href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Spline+Sans%3Awght%40400%3B500%3B700"
   />
 
-  <title>Stitch Design</title>
+  <title>CoWorkSpace</title>
   <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
 
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -25,12 +26,14 @@
           <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Workspaces</h2>
         </div>
         <div class="flex items-center gap-9">
-          <a class="text-white text-sm font-medium leading-normal" href="#">Explore</a>
-          <a class="text-white text-sm font-medium leading-normal" href="#">Create</a>
-          <a class="text-white text-sm font-medium leading-normal" href="#">About</a>
+          <a class="text-white text-sm font-medium leading-normal" href="catalogo.html">Esplora</a>
+          <a class="text-white text-sm font-medium leading-normal" href="about-us.html">Chi Siamo</a>
+          <a class="text-white text-sm font-medium leading-normal" href="contatti.html">Contatti</a>
+          <a class="text-white text-sm font-medium leading-normal" href="#">Prenota</a>
         </div>
       </div>
       <div class="flex flex-1 justify-end gap-8">
+        <!--
         <label class="flex flex-col min-w-40 !h-10 max-w-64">
           <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
             <div
@@ -52,15 +55,20 @@
             />
           </div>
         </label>
-        <button
-                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#38e07b] text-[#122118] text-sm font-bold leading-normal tracking-[0.015em]"
-        >
-          <span class="truncate">Log in</span>
-        </button>
-        <div
-                class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_MVb8XzjwZkF6O5ivyZadhiZ0XFu3eD3FcdLA4Ixll10kk5401IzquwYtZFDU62_BZe5t4MMH_vsl_n-OlC8DmE3TAuYL59BpGsjAUiiYKmyXt19iHlvSxRwnHOXcrL0tZZkBwMt6JXJAihCyIfWS5ZYZOvlrXleOJbjxL4_dwtH5z3dIiicVgsdefagncm7OtGLysfvqF9hePY98itO4GtP3sLCMwziLNNYudYkqwO0-nVMuTdxyLMBx0MOlp5OG4_wDawpRjBtW");'
-        ></div>
+        -->
+        <a href="login.html">
+          <button
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#38e07b] text-[#122118] text-sm font-bold leading-normal tracking-[0.015em]"
+          >
+            <span class="truncate">Accedi</span>
+          </button>
+        </a>
+        <a href="area_riservata.html">
+          <div
+                  class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_MVb8XzjwZkF6O5ivyZadhiZ0XFu3eD3FcdLA4Ixll10kk5401IzquwYtZFDU62_BZe5t4MMH_vsl_n-OlC8DmE3TAuYL59BpGsjAUiiYKmyXt19iHlvSxRwnHOXcrL0tZZkBwMt6JXJAihCyIfWS5ZYZOvlrXleOJbjxL4_dwtH5z3dIiicVgsdefagncm7OtGLysfvqF9hePY98itO4GtP3sLCMwziLNNYudYkqwO0-nVMuTdxyLMBx0MOlp5OG4_wDawpRjBtW");'
+          ></div>
+      </a>
       </div>
     </header>
     <div class="px-40 flex flex-1 justify-center py-5">
@@ -75,10 +83,10 @@
                 <h1
                         class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
                 >
-                  Find your perfect workspace
+                  Trova il tuo spazio di lavoro ideale
                 </h1>
                 <h2 class="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
-                  Discover a variety of workspaces, from private offices to collaborative hubs, tailored to your needs.
+                  Scopri una varietà di spazi di lavoro, da uffici privati a hub collaborativi, pensati per le tue esigenze.
                 </h2>
               </div>
               <label class="flex flex-col min-w-40 h-14 w-full max-w-[480px] @[480px]:h-16">
@@ -96,7 +104,7 @@
                     </svg>
                   </div>
                   <input
-                          placeholder="Search for a city"
+                          placeholder="Cerca spazi di lavoro, città o servizi..."
                           class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border border-[#366348] bg-[#1b3124] focus:border-[#366348] h-full placeholder:text-[#96c5a9] px-[15px] rounded-r-none border-r-0 pr-2 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal"
                           value=""
                   />
@@ -104,7 +112,7 @@
                     <button
                             class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#38e07b] text-[#122118] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
                     >
-                      <span class="truncate">Search</span>
+                      <span class="truncate">Cerca</span>
                     </button>
                   </div>
                 </div>
@@ -112,7 +120,7 @@
             </div>
           </div>
         </div>
-        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Featured workspaces</h2>
+        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Spazi in evidenza</h2>
         <div class="flex overflow-y-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
           <div class="flex items-stretch p-4 gap-3">
             <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-60">
@@ -121,8 +129,8 @@
                       style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBSFVJXKFMKPF4Y9Ap8zeXXfQN86oVaVzABorVtbp9Mzc8qQfNPCSd2wdq3pweCPJgcwHZ0OOcA7KB0wf85kJ5yc_o0qU4dIn14MgmvD387necQBeVpHwpdb2HF82GyIrl6hUPfnqzGb44q8jDIDctgWWsCwt9rZXzbG8IWev4J__luX__ENLVomEFymxp4k5PkgYXlVGhb-cw5YcdRcl1VRPTLqACdRsjEVGgt07miicPnyTXTzAUIII9978eyEaPZLrpscovMPAbR");'
               ></div>
               <div>
-                <p class="text-white text-base font-medium leading-normal">Creative Hub</p>
-                <p class="text-[#96c5a9] text-sm font-normal leading-normal">A vibrant space for creative professionals.</p>
+                <p class="text-white text-base font-medium leading-normal">Hub Creativo</p>
+                <p class="text-[#96c5a9] text-sm font-normal leading-normal">Uno spazio vivace per professionisti creativi.</p>
               </div>
             </div>
             <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-60">
@@ -131,8 +139,8 @@
                       style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDeRomP7UqpNgJ9xztmzJWn8Px-dGIkDG_A_i4QBFv3lt_AZFPwgC7dlE11A-gwS6tOV88SRq188mitNLzRg3m2st0Hy5MVuKY-nO-nDaqNOts-JAuvXEPsaB36e4iJX_Yn1a35DdRPGl9aos2iTgam-Te0YEcQOGy7-UNha6sDmVBi2HPKaYMJWZhAmZ-WWkpGiAz3vv72tHTHtotNfAXEZMAcOLVCFpex7-kUvaiCG89KXktaySDY7DWfmFej6WM-zX9gFPEAxU-j");'
               ></div>
               <div>
-                <p class="text-white text-base font-medium leading-normal">Tech Innovators</p>
-                <p class="text-[#96c5a9] text-sm font-normal leading-normal">A hub for tech startups and innovators.</p>
+                <p class="text-white text-base font-medium leading-normal">Tech Innovativo</p>
+                <p class="text-[#96c5a9] text-sm font-normal leading-normal">Un hub per startup tecnologiche e innovatori.</p>
               </div>
             </div>
             <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-60">
@@ -141,13 +149,13 @@
                       style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA7q968rq9czVRileVT-3JZak4iUvkMQKh-0rWaA-G0H3f3NTIduudV9krQJBWIiLx65Biqw-Q2u83zrLqq1cuenPEB_QPkcvDybz0CF2vWDrwlbEpXjXtbW0_xaDy4FZA-3rR7rtCXRznTccmUc1UbLSMTw0b_r3fNbpIeAybOqUBMBozirMVQNRlKyvBaj2p9bl_5BElV_q3A-qsnwgsbOPJj2FErrzr5dHzQeSykpn_8JSrF6Uym_pX_HPOy0ahGLMXm9Yvu1RH0");'
               ></div>
               <div>
-                <p class="text-white text-base font-medium leading-normal">Design Studio</p>
-                <p class="text-[#96c5a9] text-sm font-normal leading-normal">A stylish studio for design teams.</p>
+                <p class="text-white text-base font-medium leading-normal">Studio di Design</p>
+                <p class="text-[#96c5a9] text-sm font-normal leading-normal">Uno studio elegante per team di design.</p>
               </div>
             </div>
           </div>
         </div>
-        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Popular cities</h2>
+        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Città in evidenza</h2>
         <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
           <div class="flex flex-col gap-3 pb-3">
             <div
@@ -184,13 +192,6 @@
             ></div>
             <p class="text-white text-base font-medium leading-normal">Austin</p>
           </div>
-          <div class="flex flex-col gap-3 pb-3">
-            <div
-                    class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
-                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBGI7MLfVVTG7I7VeF-6P22n4_lDLEk2x1ipSWWlvp8q22oZPPpylbhxphYeImIcKYsYq32XZ7eWFR69F6VhcVNdVx7OSff-zB6CRe3alcV4toA8kq24nKeGfaJjM0v8m3_3UF3NRKfkTbLMZi21md8wIKV6n1TAW_jSWNEat15Al8ORgI6lTD7zBuJ-yIjZd5uivYcqRnL9t6ActXqCeNwNeCYyw4O42v_oqJMSV0BulFp600EC_Tndw-s3Ro1THOTVnZ8Dkj0TwUH");'
-            ></div>
-            <p class="text-white text-base font-medium leading-normal">Seattle</p>
-          </div>
         </div>
         <div class="@container">
           <div class="flex flex-col justify-end gap-6 px-4 py-10 @[480px]:gap-8 @[480px]:px-10 @[480px]:py-20">
@@ -198,16 +199,16 @@
               <h1
                       class="text-white tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]"
               >
-                Ready to find your workspace?
+                Scopri l’ambiente perfetto per te.
               </h1>
-              <p class="text-white text-base font-normal leading-normal max-w-[720px">Join our community and discover the perfect workspace for your needs.</p>
+              <p class="text-white text-base font-normal leading-normal max-w-[720px">Unisciti alla nostra community.</p>
             </div>
             <div class="flex flex-1 justify-center">
               <div class="flex justify-center">
                 <button
                         class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#38e07b] text-[#122118] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] grow"
                 >
-                  <span class="truncate">Get started</span>
+                  <span class="truncate">Iscriviti</span>
                 </button>
               </div>
             </div>
@@ -219,12 +220,12 @@
       <div class="flex max-w-[960px] flex-1 flex-col">
         <footer class="flex flex-col gap-6 px-5 py-10 text-center @container">
           <div class="flex flex-wrap items-center justify-center gap-6 @[480px]:flex-row @[480px]:justify-around">
-            <a class="text-[#96c5a9] text-base font-normal leading-normal min-w-40" href="#">About</a>
-            <a class="text-[#96c5a9] text-base font-normal leading-normal min-w-40" href="#">Contact</a>
-            <a class="text-[#96c5a9] text-base font-normal leading-normal min-w-40" href="#">Terms of Service</a>
-            <a class="text-[#96c5a9] text-base font-normal leading-normal min-w-40" href="#">Privacy Policy</a>
+            <a class="text-[#96c5a9] text-base font-normal leading-normal min-w-40" href="about-us.html">Chi siamo</a>
+            <a class="text-[#96c5a9] text-base font-normal leading-normal min-w-40" href="contatti.html">Contatti</a>
+            <a class="text-[#96c5a9] text-base font-normal leading-normal min-w-40" href="#">Termini e Servizi</a>
+            <a class="text-[#96c5a9] text-base font-normal leading-normal min-w-40" href="#">Politica di Privacy</a>
           </div>
-          <p class="text-[#96c5a9] text-base font-normal leading-normal">© 2023 Workspaces. All rights reserved.</p>
+          <p class="text-[#96c5a9] text-base font-normal leading-normal"> 2023 Workspaces. All rights reserved.</p>
         </footer>
       </div>
     </footer>

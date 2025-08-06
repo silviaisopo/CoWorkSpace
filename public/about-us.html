@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<meta charset="UTF-8">
+
 <head>
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
   <link
@@ -8,7 +10,7 @@
           href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Spline+Sans%3Awght%40400%3B500%3B700"
   />
 
-  <title>Stitch Design</title>
+  <title>CoWorkSpace</title>
   <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
 
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -17,37 +19,34 @@
 <div class="relative flex size-full min-h-screen flex-col bg-[#122118] dark group/design-root overflow-x-hidden" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
   <div class="layout-container flex h-full grow flex-col">
     <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#264532] px-10 py-3">
-      <div class="flex items-center gap-4 text-white">
-        <div class="size-4">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-                    d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z"
-                    fill="currentColor"
-            ></path>
-          </svg>
+      <div class="flex items-center gap-8">
+        <div class="flex items-center gap-4 text-white">
+          <div class="size-4">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path></svg>
+          </div>
+          <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Workspaces</h2>
         </div>
-        <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">WorkSpace</h2>
+        <div class="flex items-center gap-9">
+            <a class="text-white text-sm font-medium leading-normal" href="index.html">Home</a>
+          <a class="text-white text-sm font-medium leading-normal" href="catalogo.html">Esplora</a>
+          <a class="text-white text-sm font-medium leading-normal" href="contatti.html">Contatti</a>
+          <a class="text-white text-sm font-medium leading-normal" href="#">Prenota</a>
+        </div>
       </div>
       <div class="flex flex-1 justify-end gap-8">
-        <div class="flex items-center gap-9">
-          <a class="text-white text-sm font-medium leading-normal" href="#">Home</a>
-          <a class="text-white text-sm font-medium leading-normal" href="#">Spaces</a>
-          <a class="text-white text-sm font-medium leading-normal" href="#">Membership</a>
-          <a class="text-white text-sm font-medium leading-normal" href="#">Community</a>
-          <a class="text-white text-sm font-medium leading-normal" href="#">Resources</a>
-        </div>
-        <div class="flex gap-2">
+        <a href="login.html">
           <button
-                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#38e07b] text-[#122118] text-sm font-bold leading-normal tracking-[0.015em]"
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#38e07b] text-[#122118] text-sm font-bold leading-normal tracking-[0.015em]"
           >
-            <span class="truncate">Book a tour</span>
+            <span class="truncate">Accedi</span>
           </button>
-          <button
-                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#264532] text-white text-sm font-bold leading-normal tracking-[0.015em]"
-          >
-            <span class="truncate">Sign in</span>
-          </button>
-        </div>
+        </a>
+        <a href="area_riservata.html">
+          <div
+                  class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_MVb8XzjwZkF6O5ivyZadhiZ0XFu3eD3FcdLA4Ixll10kk5401IzquwYtZFDU62_BZe5t4MMH_vsl_n-OlC8DmE3TAuYL59BpGsjAUiiYKmyXt19iHlvSxRwnHOXcrL0tZZkBwMt6JXJAihCyIfWS5ZYZOvlrXleOJbjxL4_dwtH5z3dIiicVgsdefagncm7OtGLysfvqF9hePY98itO4GtP3sLCMwziLNNYudYkqwO0-nVMuTdxyLMBx0MOlp5OG4_wDawpRjBtW");'
+          ></div>
+        </a>
       </div>
     </header>
     <div class="px-40 flex flex-1 justify-center py-5">
@@ -58,16 +57,15 @@
                     class="bg-cover bg-center flex flex-col justify-end overflow-hidden bg-[#122118] @[480px]:rounded-xl min-h-80"
                     style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 25%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBoYI3DfId-h66ggBXeh_WzZIA3OZM8spGDJV5QuGnd1YcIUucaBYBVvp8Z-CDwBLxg9dXxhp7Fjp4OcpI2YoBBGH8a5jAzrmtMGRAElqETgoF8PQebAaZsEBXekjC027FaoaqzKzLWL09T-jHKEZsS6Cclja0CzYVgVnDQySb-EtfUxkBckP8k2YrF7posDZ2EXqPCcUwf48HvDoiCY5_sacxixJdVMmU_OGmOYlaJODQZBFF3SG0I1QW2KRzzVa_WK0Tlnbh7ksvf");'
             >
-              <div class="flex p-4"><p class="text-white tracking-light text-[28px] font-bold leading-tight">About WorkSpace</p></div>
+              <div class="flex p-4"><p class="text-white tracking-light text-[28px] font-bold leading-tight">Chi Siamo</p></div>
             </div>
           </div>
         </div>
-        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Our mission</h2>
+        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Il Nostro Obiettivo</h2>
         <p class="text-white text-base font-normal leading-normal pb-3 pt-1 px-4">
-          At WorkSpace, our mission is to empower individuals and teams to thrive in dynamic, collaborative environments. We believe that the right workspace can unlock
-          creativity, productivity, and innovation. We are committed to providing flexible, inspiring spaces that foster community and support the diverse needs of our members.
+          In WorkSpace, la nostra missione è quella di aiutare individui e team a prosperare in ambienti dinamici e collaborativi. Crediamo che lo spazio di lavoro giusto possa liberare creatività, produttività e innovazione. Siamo impegnati a offrire spazi flessibili e ispiratori che favoriscano la comunità e supportino le diverse esigenze dei nostri membri.
         </p>
-        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Our values</h2>
+        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">I Nostri Valori</h2>
         <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
           <div class="flex flex-1 gap-3 rounded-lg border border-[#366348] bg-[#1b3124] p-4 flex-col">
             <div class="text-white" data-icon="Users" data-size="24px" data-weight="regular">
@@ -79,7 +77,7 @@
             </div>
             <div class="flex flex-col gap-1">
               <h2 class="text-white text-base font-bold leading-tight">Community</h2>
-              <p class="text-[#96c5a9] text-sm font-normal leading-normal">We foster a vibrant community of professionals, encouraging networking and collaboration.</p>
+              <p class="text-[#96c5a9] text-sm font-normal leading-normal">Favoriamo una comunità vivace di professionisti, incoraggiando il networking e la collaborazione.</p>
             </div>
           </div>
           <div class="flex flex-1 gap-3 rounded-lg border border-[#366348] bg-[#1b3124] p-4 flex-col">
@@ -91,8 +89,8 @@
               </svg>
             </div>
             <div class="flex flex-col gap-1">
-              <h2 class="text-white text-base font-bold leading-tight">Collaboration</h2>
-              <p class="text-[#96c5a9] text-sm font-normal leading-normal">Our spaces are designed to facilitate teamwork and knowledge sharing.</p>
+              <h2 class="text-white text-base font-bold leading-tight">Collaborazione</h2>
+              <p class="text-[#96c5a9] text-sm font-normal leading-normal">I nostri spazi sono progettati per facilitare il lavoro di squadra e la condivisione delle conoscenze.</p>
             </div>
           </div>
           <div class="flex flex-1 gap-3 rounded-lg border border-[#366348] bg-[#1b3124] p-4 flex-col">
@@ -104,12 +102,12 @@
               </svg>
             </div>
             <div class="flex flex-col gap-1">
-              <h2 class="text-white text-base font-bold leading-tight">Flexibility</h2>
-              <p class="text-[#96c5a9] text-sm font-normal leading-normal">We offer flexible membership options to suit the evolving needs of our members.</p>
+              <h2 class="text-white text-base font-bold leading-tight">Flessibilità</h2>
+              <p class="text-[#96c5a9] text-sm font-normal leading-normal">Offriamo opzioni di abbonamento flessibili per adattarci alle esigenze in continua evoluzione dei nostri membri.</p>
             </div>
           </div>
         </div>
-        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Our team</h2>
+        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Team</h2>
         <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
           <div class="flex flex-col gap-3 text-center pb-3">
             <div class="px-4">
@@ -148,7 +146,7 @@
             </div>
           </div>
         </div>
-        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Our story</h2>
+        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Come nasce CoWorkSpace?</h2>
         <div class="grid grid-cols-[40px_1fr] gap-x-2 px-4">
           <div class="flex flex-col items-center gap-1 pt-3">
             <div class="text-white" data-icon="TextHThree" data-size="24px" data-weight="regular">
@@ -161,7 +159,7 @@
             <div class="w-[1.5px] bg-[#366348] h-2 grow"></div>
           </div>
           <div class="flex flex-1 flex-col py-3">
-            <p class="text-white text-base font-medium leading-normal">Founded</p>
+            <p class="text-white text-base font-medium leading-normal">Fondato</p>
             <p class="text-[#96c5a9] text-base font-normal leading-normal">2018</p>
           </div>
           <div class="flex flex-col items-center gap-1">
@@ -176,7 +174,7 @@
             <div class="w-[1.5px] bg-[#366348] h-2 grow"></div>
           </div>
           <div class="flex flex-1 flex-col py-3">
-            <p class="text-white text-base font-medium leading-normal">Expanded</p>
+            <p class="text-white text-base font-medium leading-normal">Ampliato</p>
             <p class="text-[#96c5a9] text-base font-normal leading-normal">2020</p>
           </div>
           <div class="flex flex-col items-center gap-1 pb-3">
@@ -188,31 +186,31 @@
             </div>
           </div>
           <div class="flex flex-1 flex-col py-3">
-            <p class="text-white text-base font-medium leading-normal">Community Growth</p>
+            <p class="text-white text-base font-medium leading-normal">Crescita Della Community</p>
             <p class="text-[#96c5a9] text-base font-normal leading-normal">2022</p>
           </div>
         </div>
-        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Our spaces</h2>
+        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">I Nostri Spazi</h2>
         <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
           <div class="flex flex-col gap-3 pb-3">
             <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"></div>
             <div>
               <p class="text-white text-base font-medium leading-normal">Downtown</p>
-              <p class="text-[#96c5a9] text-sm font-normal leading-normal">Modern, urban space</p>
+              <p class="text-[#96c5a9] text-sm font-normal leading-normal">Moderno, spazio urbano</p>
             </div>
           </div>
           <div class="flex flex-col gap-3 pb-3">
             <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"></div>
             <div>
               <p class="text-white text-base font-medium leading-normal">Uptown</p>
-              <p class="text-[#96c5a9] text-sm font-normal leading-normal">Creative, vibrant space</p>
+              <p class="text-[#96c5a9] text-sm font-normal leading-normal">Creativo</p>
             </div>
           </div>
           <div class="flex flex-col gap-3 pb-3">
             <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"></div>
             <div>
               <p class="text-white text-base font-medium leading-normal">Midtown</p>
-              <p class="text-[#96c5a9] text-sm font-normal leading-normal">Professional, central space</p>
+              <p class="text-[#96c5a9] text-sm font-normal leading-normal">Professionale</p>
             </div>
           </div>
         </div>
@@ -222,10 +220,10 @@
               <h1
                       class="text-white tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]"
               >
-                Visit our spaces
+                Vieni a Scoprire il Nostro Spazio di Lavoro
               </h1>
               <p class="text-white text-base font-normal leading-normal max-w-[720px">
-                Experience the WorkSpace difference firsthand. Book a tour today and discover the perfect workspace for you.
+                Scopri come CoWorkSpace può trasformare il tuo modo di lavorare. I nostri spazi sono progettati per ispirare, connettere e supportare la tua crescita professionale.
               </p>
             </div>
             <div class="flex flex-1 justify-center">
@@ -233,7 +231,7 @@
                 <button
                         class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#38e07b] text-[#122118] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] grow"
                 >
-                  <span class="truncate">Book a tour</span>
+                  <span class="truncate">Prenota il tuo spazio</span>
                 </button>
               </div>
             </div>
@@ -245,10 +243,10 @@
       <div class="flex max-w-[960px] flex-1 flex-col">
         <footer class="flex flex-col gap-6 px-5 py-10 text-center @container">
           <div class="flex flex-wrap items-center justify-center gap-6 @[480px]:flex-row @[480px]:justify-around">
-            <a class="text-[#96c5a9] text-base font-normal leading-normal min-w-40" href="#">About</a>
-            <a class="text-[#96c5a9] text-base font-normal leading-normal min-w-40" href="#">Contact</a>
-            <a class="text-[#96c5a9] text-base font-normal leading-normal min-w-40" href="#">Privacy Policy</a>
-            <a class="text-[#96c5a9] text-base font-normal leading-normal min-w-40" href="#">Terms of Service</a>
+            <a class="text-[#96c5a9] text-base font-normal leading-normal min-w-40" href="about-us.html">Chi siamo</a>
+            <a class="text-[#96c5a9] text-base font-normal leading-normal min-w-40" href="contatti.html">Contatti</a>
+            <a class="text-[#96c5a9] text-base font-normal leading-normal min-w-40" href="#">Politica di Privacy</a>
+            <a class="text-[#96c5a9] text-base font-normal leading-normal min-w-40" href="#">Termini e Servizi</a>
           </div>
           <div class="flex flex-wrap justify-center gap-4">
             <a href="#">
@@ -279,7 +277,7 @@
               </div>
             </a>
           </div>
-          <p class="text-[#96c5a9] text-base font-normal leading-normal">@2024 WorkSpace. All rights reserved.</p>
+          <p class="text-[#96c5a9] text-base font-normal leading-normal">2024 WorkSpace. All rights reserved.</p>
         </footer>
       </div>
     </footer>
