@@ -1,28 +1,45 @@
-const pool = require('../config/db');
+const Booking = require('../models/booking');
+const User = require('../models/user');
+const Workspace = require('../models/workspace');
+const Location = require('../models/location');
 
-// @desc    Get all bookings for all locations managed by the logged-in manager
-// @route   GET /api/manager/bookings
-// @access  Private, Manager only
-exports.getManagerBookings = async (req, res) => {
+const getManagerData = async (req, res) => {
   const manager_id = req.user.id;
 
   try {
-    // We need to find all bookings for workspaces in locations managed by this manager.
-    const query = `
-      SELECT b.*, u.name as user_name, u.email as user_email, w.type as workspace_type, l.name as location_name
-      FROM bookings b
-      JOIN users u ON b.user_id = u.id
-      JOIN workspaces w ON b.workspace_id = w.id
-      JOIN locations l ON w.location_id = l.id
-      WHERE l.manager_id = $1
-      ORDER BY b.start_time DESC
-    `;
+    const bookings = await Booking.findAll({
+      include: [
+        {
+          model: Workspace,
+          include: [
+            {
+              model: Location,
+              where: { manager_id }
+            }
+          ]
+        },
+        {
+          model: User,
+          attributes: ['id', 'name', 'email'] // Specifica gli attributi per sicurezza
+        }
+      ],
+      order: [['start_time', 'DESC']]
+    });
 
-    const bookings = await pool.query(query, [manager_id]);
-
-    res.json(bookings.rows);
+    res.json({
+      success: true,
+      count: bookings.length,
+      data: bookings
+    });
   } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server error');
+    console.error('Errore getManagerData:', err);
+    res.status(500).json({
+      success: false,
+      error: 'Errore del server'
+    });
   }
+};
+
+module.exports = {
+  getManagerData
 };

@@ -1,16 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const { createBooking, getMyBookings } = require('../controllers/bookingController');
-const authMiddleware = require('../middleware/authMiddleware');
+const bookingController = require('../controllers/bookingController');
+const { authenticate } = require('../middleware/authMiddleware');
 
-// @route   POST api/bookings
-// @desc    Create a booking
-// @access  Private
-router.post('/', authMiddleware, createBooking);
+// Debug: verifica gli import
+console.log('Tipo di createBooking:', typeof bookingController.createBooking);
+console.log('Tipo di authenticate:', typeof authenticate);
 
-// @route   GET api/bookings/mybookings
-// @desc    Get user's bookings
-// @access  Private
-router.get('/mybookings', authMiddleware, getMyBookings);
+router.post('/',
+    authenticate,
+    bookingController.createBooking
+);
+
+router.get('/mybookings',
+    authenticate,
+    bookingController.getMyBookings
+);
 
 module.exports = router;

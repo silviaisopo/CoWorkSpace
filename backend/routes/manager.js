@@ -1,12 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const { getManagerBookings } = require('../controllers/managerController');
-const authMiddleware = require('../middleware/authMiddleware');
-const managerMiddleware = require('../middleware/managerMiddleware');
+const { getManagerData } = require('../controllers/managerController');
+const { authenticate, isManager } = require('../middleware/authMiddleware');
 
-// @route   GET api/manager/bookings
-// @desc    Get all bookings for a manager's locations
-// @access  Private, Manager
-router.get('/bookings', [authMiddleware, managerMiddleware], getManagerBookings);
+// Debug degli import
+console.log('Tipo di getManagerData:', typeof getManagerData); // dovrebbe restituire "function"
+console.log('Tipo di authenticate:', typeof authenticate); // dovrebbe restituire "function"
+console.log('Tipo di isManager:', typeof isManager); // dovrebbe restituire "function"
+
+// Route per i dati del manager
+router.get('/bookings',
+    authenticate,
+    isManager,
+    getManagerData
+);
+
+// Aggiungi altre route del manager qui...
 
 module.exports = router;

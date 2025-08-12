@@ -1,4 +1,5 @@
-const jwt = require('jsonwebtoken');
+//controllo già fatto in authMiddleware.js
+/*const jwt = require('jsonwebtoken');
 
 // This middleware assumes the general auth middleware has already run
 const managerMiddleware = (req, res, next) => {
@@ -9,4 +10,4 @@ const managerMiddleware = (req, res, next) => {
     }
 };
 
-module.exports = managerMiddleware;
+module.exports = managerMiddleware;*/
