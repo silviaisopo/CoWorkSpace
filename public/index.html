@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
+<html lang="it">
 <head>
+  <meta charset="UTF-8">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
-  <link
-          rel="stylesheet"
-          as="style"
-          onload="this.rel='stylesheet'"
-          href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Spline+Sans%3Awght%40400%3B500%3B700"
-  />
-
+  <link rel="stylesheet" as="style" onload="this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Spline+Sans%3Awght%40400%3B500%3B700" />
   <title>CoWorkSpace</title>
   <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
-
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    function handleSearch() {
+      const searchTerm = document.getElementById('search-input').value;
+      window.location.href = `catalogo.html?search=${encodeURIComponent(searchTerm)}`;
+    }
+  </script>
 </head>
 <body>
 <div class="relative flex size-full min-h-screen flex-col bg-[#122118] dark group/design-root overflow-x-hidden" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
@@ -23,13 +23,15 @@
           <div class="size-4">
             <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path></svg>
           </div>
-          <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Workspaces</h2>
+          <a href="index.html">
+            <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">CoWorkSpace</h2>
+          </a>
         </div>
         <div class="flex items-center gap-9">
           <a class="text-white text-sm font-medium leading-normal" href="catalogo.html">Esplora</a>
           <a class="text-white text-sm font-medium leading-normal" href="about-us.html">Chi Siamo</a>
           <a class="text-white text-sm font-medium leading-normal" href="contatti.html">Contatti</a>
-          <a class="text-white text-sm font-medium leading-normal" href="#">Prenota</a>
+          <a class="text-white text-sm font-medium leading-normal" href="offerte.html">Prenota</a>
         </div>
       </div>
       <div class="flex flex-1 justify-end gap-8">
@@ -45,7 +47,7 @@
                   class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
                   style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_MVb8XzjwZkF6O5ivyZadhiZ0XFu3eD3FcdLA4Ixll10kk5401IzquwYtZFDU62_BZe5t4MMH_vsl_n-OlC8DmE3TAuYL59BpGsjAUiiYKmyXt19iHlvSxRwnHOXcrL0tZZkBwMt6JXJAihCyIfWS5ZYZOvlrXleOJbjxL4_dwtH5z3dIiicVgsdefagncm7OtGLysfvqF9hePY98itO4GtP3sLCMwziLNNYudYkqwO0-nVMuTdxyLMBx0MOlp5OG4_wDawpRjBtW");'
           ></div>
-      </a>
+        </a>
       </div>
     </header>
     <div class="px-40 flex flex-1 justify-center py-5">
@@ -66,7 +68,7 @@
                   Scopri una varietà di spazi di lavoro, da uffici privati a hub collaborativi, pensati per le tue esigenze.
                 </h2>
               </div>
-              <label class="flex flex-col min-w-40 h-14 w-full max-w-[480px] @[480px]:h-16">
+              <form onsubmit="handleSearch(); return false;" class="flex flex-col min-w-40 h-14 w-full max-w-[480px] @[480px]:h-16">
                 <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
                   <div
                           class="text-[#96c5a9] flex border border-[#366348] bg-[#1b3124] items-center justify-center pl-[15px] rounded-l-lg border-r-0"
@@ -81,93 +83,95 @@
                     </svg>
                   </div>
                   <input
+                          id="search-input"
                           placeholder="Cerca spazi di lavoro, città o servizi..."
                           class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border border-[#366348] bg-[#1b3124] focus:border-[#366348] h-full placeholder:text-[#96c5a9] px-[15px] rounded-r-none border-r-0 pr-2 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal"
                           value=""
                   />
                   <div class="flex items-center justify-center rounded-r-lg border-l-0 border border-[#366348] bg-[#1b3124] pr-[7px]">
                     <button
+                            type="submit"
                             class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#38e07b] text-[#122118] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
                     >
                       <span class="truncate">Cerca</span>
                     </button>
                   </div>
                 </div>
-              </label>
+              </form>
             </div>
           </div>
         </div>
         <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Spazi in evidenza</h2>
         <div class="flex overflow-y-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
           <div class="flex items-stretch p-4 gap-3">
-            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-60">
+            <a href="ufficio-privato.html" class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-60">
               <div
                       class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex flex-col"
                       style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBSFVJXKFMKPF4Y9Ap8zeXXfQN86oVaVzABorVtbp9Mzc8qQfNPCSd2wdq3pweCPJgcwHZ0OOcA7KB0wf85kJ5yc_o0qU4dIn14MgmvD387necQBeVpHwpdb2HF82GyIrl6hUPfnqzGb44q8jDIDctgWWsCwt9rZXzbG8IWev4J__luX__ENLVomEFymxp4k5PkgYXlVGhb-cw5YcdRcl1VRPTLqACdRsjEVGgt07miicPnyTXTzAUIII9978eyEaPZLrpscovMPAbR");'
               ></div>
               <div>
-                <p class="text-white text-base font-medium leading-normal">Hub Creativo</p>
-                <p class="text-[#96c5a9] text-sm font-normal leading-normal">Uno spazio vivace per professionisti creativi.</p>
+                <p class="text-white text-base font-medium leading-normal">Ufficio Privato</p>
+                <p class="text-[#96c5a9] text-sm font-normal leading-normal">Uno spazio riservato per la tua privacy e concentrazione.</p>
               </div>
-            </div>
-            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-60">
+            </a>
+            <a href="sala-riunioni.html" class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-60">
               <div
                       class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex flex-col"
                       style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDeRomP7UqpNgJ9xztmzJWn8Px-dGIkDG_A_i4QBFv3lt_AZFPwgC7dlE11A-gwS6tOV88SRq188mitNLzRg3m2st0Hy5MVuKY-nO-nDaqNOts-JAuvXEPsaB36e4iJX_Yn1a35DdRPGl9aos2iTgam-Te0YEcQOGy7-UNha6sDmVBi2HPKaYMJWZhAmZ-WWkpGiAz3vv72tHTHtotNfAXEZMAcOLVCFpex7-kUvaiCG89KXktaySDY7DWfmFej6WM-zX9gFPEAxU-j");'
               ></div>
               <div>
-                <p class="text-white text-base font-medium leading-normal">Tech Innovativo</p>
-                <p class="text-[#96c5a9] text-sm font-normal leading-normal">Un hub per startup tecnologiche e innovatori.</p>
+                <p class="text-white text-base font-medium leading-normal">Sala Riunioni</p>
+                <p class="text-[#96c5a9] text-sm font-normal leading-normal">Spazi professionali per incontri e presentazioni.</p>
               </div>
-            </div>
-            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-60">
+            </a>
+            <a href="postazione-condivisa.html" class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-60">
               <div
                       class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex flex-col"
                       style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA7q968rq9czVRileVT-3JZak4iUvkMQKh-0rWaA-G0H3f3NTIduudV9krQJBWIiLx65Biqw-Q2u83zrLqq1cuenPEB_QPkcvDybz0CF2vWDrwlbEpXjXtbW0_xaDy4FZA-3rR7rtCXRznTccmUc1UbLSMTw0b_r3fNbpIeAybOqUBMBozirMVQNRlKyvBaj2p9bl_5BElV_q3A-qsnwgsbOPJj2FErrzr5dHzQeSykpn_8JSrF6Uym_pX_HPOy0ahGLMXm9Yvu1RH0");'
               ></div>
               <div>
-                <p class="text-white text-base font-medium leading-normal">Studio di Design</p>
-                <p class="text-[#96c5a9] text-sm font-normal leading-normal">Uno studio elegante per team di design.</p>
+                <p class="text-white text-base font-medium leading-normal">Postazione Condivisa</p>
+                <p class="text-[#96c5a9] text-sm font-normal leading-normal">Desk fissi in ambienti collaborativi e stimolanti.</p>
               </div>
-            </div>
+            </a>
           </div>
         </div>
-        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Città in evidenza</h2>
+        <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Dove trovarci?</h2>
         <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
           <div class="flex flex-col gap-3 pb-3">
             <div
                     class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
                     style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA3XZN6FFSND2JCJRCzHQpIp_8fnf-Dyl63T5GKJPTjlsCd7Ozd6aohMo_J4eLuoVP4XHpHRPhXwUPUGINN7D_4Tr87au6JWLBV5GiDcyY4fBTIn6hIAGCiMPCguEbIae0pnBeP5f3BFZry8yuGnGA5vETSHD-dsq1Renh3iayfm9NVydTGmTCtMMIZSpVkcHftvP1E2la08ZMId6zmtehnh71T1klcsu8AKZklBpMY6mhP3Ral5LZRdrs5y8q6kQep48oEk0_qDcyb");'
             ></div>
-            <p class="text-white text-base font-medium leading-normal">San Francisco</p>
+            <p class="text-white text-base font-medium leading-normal">Milano</p>
           </div>
           <div class="flex flex-col gap-3 pb-3">
             <div
                     class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
                     style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBjdkOsKctKDtvHk3lY0ilIrxEYvG6zPPCF-MGMOM_L9U0itlCaMIK8zH_ItytFmHjmvHptp2yF8TKZ_Q7KulN_xmJVGj7KBQPGQHJohJrG4ysE9WVdjHDtDrpSvRIet1kqlxEYu5uM0aZqqPBFV8aK9cKiTy9jcKL5IuDULXm9heH0pJuaraclPsRR21wCCQtOZVnvWl0_yMgEzrN07Z-qnAt9MWUqgzPsWSSgU7-BPts5VcL9MQnOeKA3GHMW6ECI3ge1dXmKIVO-");'
             ></div>
-            <p class="text-white text-base font-medium leading-normal">New York</p>
+            <p class="text-white text-base font-medium leading-normal">Roma</p>
           </div>
           <div class="flex flex-col gap-3 pb-3">
             <div
                     class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
                     style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBa0uUmJAiMuY3CdRm250ptdCnLoRoMTR0nqyXXV_Q4ngwJFmJATBd_kL60Wu0ArMy5eeCBxm5hlmjMJIl9hrWuvFoBrH9l3KKl9NZGfvbLpcRm4lYm6Dhi12ReQYExdgPxztSO0r0YTUumIMP6o7OcIj0f6QokyUg9EBo9AwS3iv4efbcvHtaDOU-wRFwHi2iqbJN44_ttZ3HQiX-EWf3ejW3LdvIBzMlFIoXMXwdRn9icsDFFgjyK6TBuLmNb4RMVmLlr_-Vx50uF");'
             ></div>
-            <p class="text-white text-base font-medium leading-normal">Los Angeles</p>
+            <p class="text-white text-base font-medium leading-normal">Firenze</p>
           </div>
           <div class="flex flex-col gap-3 pb-3">
             <div
                     class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
                     style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBy6f9IzgNIWkwBBjB6ylOCA_ylTlWd5MI8EJDPoP-Qgik-xQ9xADfUsrnOUCOyPP_eAEu6uMxQ28Psk3AIskkLILLGklGaB9nsratuo8b_XTG1eymFwvh-utpKqYrV_icJf7jkq2ml_ZQRvOi2-4TvUUHvxMUMKVEjtfgInMNJObmMU2uhPWRPMUkVxSE_p031Qfek7-n4PcvsH5Cnx82VxQ4sKKdLSom7H7m5cnS4I8Owctbj2nJYx6bZHWHj80Fvm0ZokRt6P97p");'
             ></div>
-            <p class="text-white text-base font-medium leading-normal">Chicago</p>
+            <p class="text-white text-base font-medium leading-normal">Napoli</p>
           </div>
           <div class="flex flex-col gap-3 pb-3">
             <div
                     class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
                     style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCn1VmyhnL86EWZZW9MUn_KS2oz1ePithxx0K_GDQ2E79duyii7XxENOy5X5iC2NPYGx3VDLiPSDhL42zWUJ8k7V17MJyYCtmwJk9lZAmJLUbZWD32k3gyaxWGC7mwCOfwfU56Uvm-luIQA_-Ba64fmPlKJPQPbJqzk9RHltmJAmvd2ZtjyaTDuKOZtXSl38v4i-4CPQ0CwI36ryU-zYM_ovKD7T2JP3bMCprX4idhEcqQtLe0wfna0xQwJzVzyQIVLYlVornWQeofX");'
             ></div>
-            <p class="text-white text-base font-medium leading-normal">Austin</p>
+            <p class="text-white text-base font-medium leading-normal">Venezia</p>
           </div>
         </div>
         <div class="@container">
@@ -176,34 +180,34 @@
               <h1
                       class="text-white tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]"
               >
-                Scopri l’ambiente perfetto per te.
+                Scopri l'ambiente perfetto per te.
               </h1>
               <p class="text-white text-base font-normal leading-normal max-w-[720px">Unisciti alla nostra community.</p>
             </div>
             <div class="flex flex-1 justify-center">
               <div class="flex justify-center">
+                <a href="registrazione.html">
                 <button
                         class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#38e07b] text-[#122118] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] grow"
                 >
                   <span class="truncate">Iscriviti</span>
                 </button>
+                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <footer class="flex justify-center">
-      <div class="flex max-w-[960px] flex-1 flex-col">
-        <footer class="flex flex-col gap-6 px-5 py-10 text-center @container">
-          <div class="flex flex-wrap items-center justify-center gap-6 @[480px]:flex-row @[480px]:justify-around">
-            <a class="text-[#96c5a9] text-base font-normal leading-normal min-w-40" href="about-us.html">Chi siamo</a>
-            <a class="text-[#96c5a9] text-base font-normal leading-normal min-w-40" href="contatti.html">Contatti</a>
-            <a class="text-[#96c5a9] text-base font-normal leading-normal min-w-40" href="#">Termini e Servizi</a>
-            <a class="text-[#96c5a9] text-base font-normal leading-normal min-w-40" href="#">Politica di Privacy</a>
-          </div>
-          <p class="text-[#96c5a9] text-base font-normal leading-normal"> 2023 Workspaces. All rights reserved.</p>
-        </footer>
+    <footer class="flex justify-center px-4 mt-20">
+      <div class="max-w-[960px] w-full flex flex-col items-center text-[#96c5a9] text-sm py-10">
+        <div class="flex flex-wrap justify-center gap-6 mb-4">
+          <a href="about-us.html">Chi siamo</a>
+          <a href="contatti.html">Contatti</a>
+          <a href="#">Termini</a>
+          <a href="#">Privacy</a>
+        </div>
+        <p>© 2025 Workspaces. Tutti i diritti riservati.</p>
       </div>
     </footer>
   </div>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+  <link rel="stylesheet" as="style" onload="this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Spline+Sans%3Awght%40400%3B500%3B700" />
+  <title>CoWorkSpace</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body class="bg-[#122118]" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
+<div class="flex flex-col min-h-screen">
+  <!-- HEADER -->
+  <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#264532] px-10 py-3">
+    <div class="flex items-center gap-8">
+      <div class="flex items-center gap-4 text-white">
+        <div class="size-4">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path></svg>
+        </div>
+        <a href="index.html">
+          <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">CoWorkSpace</h2>
+        </a>
+      </div>
+      <div class="flex items-center gap-9">
+        <a class="text-white text-sm font-medium leading-normal" href="catalogo.html">Esplora</a>
+        <a class="text-white text-sm font-medium leading-normal" href="about-us.html">Chi Siamo</a>
+        <a class="text-white text-sm font-medium leading-normal" href="contatti.html">Contatti</a>
+        <a class="text-white text-sm font-medium leading-normal" href="offerte.html">Prenota</a>
+      </div>
+    </div>
+    <div class="flex flex-1 justify-end gap-8">
+      <button onclick="logout()" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#38e07b] text-[#122118] text-sm font-bold leading-normal tracking-[0.015em]">
+        <span class="truncate">Logout</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- CONTENUTO PRINCIPALE -->
+  <div class="flex flex-1">
+    <!-- SIDEBAR -->
+    <div class="w-64 bg-[#1b3124] border-r border-[#264532] flex flex-col">
+      <div class="p-4">
+        <div class="flex items-center gap-3 mb-8">
+          <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDFKjw25kx-CWVhvIZfBaBRYk0uPNb0p0WuP_cb0VfACRXiVCp-Z71ompgqnSySKXQW39r2-bNrcE3wL3GWmnwtibjIjT_k0kMqiFyMKAMo62K4j5To1XFkUnOHUZ1idWH9MaLBsCXU_rpIdt3mIwPGmPZTdF_1tI9edsYbtjo9Uq4Enla9GRkrm343m4HSD_UHctO15j3WPQwtC8ocfgGv7lM7uKPNtiR0Q-OrLuV3Mv_K-fm-ir2mEPSB6-EA13nrqH67B8bj0pXQ");'></div>
+          <div>
+            <h1 class="text-white font-medium">Mario Rossi</h1>
+            <p class="text-[#96c5a9] text-sm">Premium Member</p>
+          </div>
+        </div>
+
+        <nav class="space-y-1">
+          <a href="area_riservata.html" class="flex items-center gap-3 px-3 py-2 text-white hover:bg-[#264532] rounded-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M218.83,103.77l-80-75.48a1.14,1.14,0,0,1-.11-.11,16,16,0,0,0-21.53,0l-.11.11L37.17,103.77A16,16,0,0,0,32,115.55V208a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V160h32v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V115.55A16,16,0,0,0,218.83,103.77ZM208,208H160V160a16,16,0,0,0-16-16H112a16,16,0,0,0-16,16v48H48V115.55l.11-.1L128,40l79.9,75.43.11.1Z"></path></svg>
+            <span>Dashboard</span>
+          </a>
+          <a href="prenotazioni.html" class="flex items-center gap-3 px-3 py-2 bg-[#264532] text-white rounded-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm0,16V152h-28.7A15.86,15.86,0,0,0,168,156.69L148.69,176H107.31L88,156.69A15.86,15.86,0,0,0,76.69,152H48V48Zm0,160H48V168H76.69L96,187.31A15.86,15.86,0,0,0,107.31,192h41.38A15.86,15.86,0,0,0,160,187.31L179.31,168H208v40Z"></path></svg>
+            <span>Prenotazioni</span>
+          </a>
+          <a href="profilo.html" class="flex items-center gap-3 px-3 py-2 text-white hover:bg-[#264532] rounded-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M172,120a44,44,0,1,1-44-44A44.05,44.05,0,0,1,172,120Zm60,8A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88.09,88.09,0,0,0-91.47-87.93C77.43,41.89,39.87,81.12,40,128.25a87.65,87.65,0,0,0,22.24,58.16A79.71,79.71,0,0,1,84,165.1a4,4,0,0,1,4.83.32,59.83,59.83,0,0,0,78.28,0,4,4,0,0,1,4.83-.32,79.71,79.71,0,0,1,21.79,21.31A87.62,87.62,0,0,0,216,128Z"></path></svg>
+            <span>Profilo</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- CONTENUTO -->
+    <div class="flex-1 p-8 bg-[#122118]">
+      <div class="flex justify-between items-center mb-8">
+        <h1 class="text-white text-2xl font-bold">Le tue prenotazioni</h1>
+        <a href="catalogo.html" class="flex items-center gap-2 bg-[#38e07b] text-[#122118] font-bold py-2 px-4 rounded-lg">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path></svg>
+          Nuova Prenotazione
+        </a>
+      </div>
+
+      <!-- TABS -->
+      <div class="flex border-b border-[#264532] mb-6">
+        <button id="tab-active" class="px-4 py-2 text-white font-medium border-b-2 border-[#38e07b]">Attive</button>
+        <button id="tab-past" class="px-4 py-2 text-[#96c5a9] font-medium">Passate</button>
+      </div>
+
+      <!-- PRENOTAZIONI ATTIVE -->
+      <div id="active-bookings" class="space-y-4">
+        <div class="bg-[#1b3124] rounded-lg p-6 border border-[#366348]">
+          <div class="flex justify-between items-center mb-4">
+            <h2 class="text-white text-xl font-bold">Prenotazioni Attive</h2>
+            <p class="text-[#96c5a9] text-sm">2 prenotazioni</p>
+          </div>
+
+          <div class="space-y-4">
+            <div class="bg-[#264532] rounded-lg p-4 border border-[#366348]">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="text-white font-bold">Hub Creativo</h3>
+                  <p class="text-[#96c5a9] text-sm">Postazione singola • Piano 2</p>
+                </div>
+                <span class="bg-[#38e07b] text-[#122118] text-xs font-bold px-2 py-1 rounded">Attiva</span>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                <div>
+                  <p class="text-[#96c5a9] text-sm mb-1">Data</p>
+                  <p class="text-white font-medium">15 Ott 2023 - 20 Ott 2023</p>
+                </div>
+                <div>
+                  <p class="text-[#96c5a9] text-sm mb-1">Orario</p>
+                  <p class="text-white font-medium">09:00 - 18:00</p>
+                </div>
+                <div>
+                  <p class="text-[#96c5a9] text-sm mb-1">Totale</p>
+                  <p class="text-white font-medium">€ 250,00</p>
+                </div>
+              </div>
+
+              <div class="flex justify-end mt-4 space-x-3">
+                <button class="text-white border border-[#366348] rounded-lg px-4 py-2 text-sm font-medium">
+                  Modifica
+                </button>
+                <button onclick="cancelBooking('booking1')" class="bg-[#e03838] text-white rounded-lg px-4 py-2 text-sm font-medium">
+                  Cancella
+                </button>
+              </div>
+            </div>
+
+            <div class="bg-[#264532] rounded-lg p-4 border border-[#366348]">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="text-white font-bold">Sala Riunioni</h3>
+                  <p class="text-[#96c5a9] text-sm">Sala A • Piano 1</p>
+                </div>
+                <span class="bg-[#38e07b] text-[#122118] text-xs font-bold px-2 py-1 rounded">Attiva</span>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                <div>
+                  <p class="text-[#96c5a9] text-sm mb-1">Data</p>
+                  <p class="text-white font-medium">22 Ott 2023</p>
+                </div>
+                <div>
+                  <p class="text-[#96c5a9] text-sm mb-1">Orario</p>
+                  <p class="text-white font-medium">14:00 - 16:00</p>
+                </div>
+                <div>
+                  <p class="text-[#96c5a9] text-sm mb-1">Totale</p>
+                  <p class="text-white font-medium">€ 120,00</p>
+                </div>
+              </div>
+
+              <div class="flex justify-end mt-4 space-x-3">
+                <button class="text-white border border-[#366348] rounded-lg px-4 py-2 text-sm font-medium">
+                  Modifica
+                </button>
+                <button onclick="cancelBooking('booking2')" class="bg-[#e03838] text-white rounded-lg px-4 py-2 text-sm font-medium">
+                  Cancella
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRENOTAZIONI PASSATE -->
+      <div id="past-bookings" class="space-y-4 hidden">
+        <div class="bg-[#1b3124] rounded-lg p-6 border border-[#366348]">
+          <div class="flex justify-between items-center mb-4">
+            <h2 class="text-white text-xl font-bold">Prenotazioni Passate</h2>
+            <p class="text-[#96c5a9] text-sm">5 prenotazioni</p>
+          </div>
+
+          <div class="space-y-4">
+            <div class="bg-[#264532] rounded-lg p-4 border border-[#366348] opacity-80">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="text-white font-bold">Tech Innovativo</h3>
+                  <p class="text-[#96c5a9] text-sm">Postazione open space</p>
+                </div>
+                <span class="bg-[#7f8c8d] text-white text-xs font-bold px-2 py-1 rounded">Completata</span>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                <div>
+                  <p class="text-[#96c5a9] text-sm mb-1">Data</p>
+                  <p class="text-white font-medium">10 Set 2023 - 12 Set 2023</p>
+                </div>
+                <div>
+                  <p class="text-[#96c5a9] text-sm mb-1">Orario</p>
+                  <p class="text-white font-medium">09:00 - 18:00</p>
+                </div>
+                <div>
+                  <p class="text-[#96c5a9] text-sm mb-1">Totale</p>
+                  <p class="text-white font-medium">€ 180,00</p>
+                </div>
+              </div>
+
+              <div class="flex justify-end mt-4">
+                <button onclick="rebook('tech-innovativo')" class="text-[#38e07b] text-sm font-medium">
+                  Prenota di nuovo
+                </button>
+              </div>
+            </div>
+
+            <div class="bg-[#264532] rounded-lg p-4 border border-[#366348] opacity-80">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="text-white font-bold">Studio di Design</h3>
+                  <p class="text-[#96c5a9] text-sm">Postazione singola</p>
+                </div>
+                <span class="bg-[#e03838] text-white text-xs font-bold px-2 py-1 rounded">Cancellata</span>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                <div>
+                  <p class="text-[#96c5a9] text-sm mb-1">Data</p>
+                  <p class="text-white font-medium">5 Ago 2023 - 8 Ago 2023</p>
+                </div>
+                <div>
+                  <p class="text-[#96c5a9] text-sm mb-1">Orario</p>
+                  <p class="text-white font-medium">10:00 - 19:00</p>
+                </div>
+                <div>
+                  <p class="text-[#96c5a9] text-sm mb-1">Totale</p>
+                  <p class="text-white font-medium">€ 210,00</p>
+                </div>
+              </div>
+
+              <div class="flex justify-end mt-4">
+                <button onclick="rebook('studio-design')" class="text-[#38e07b] text-sm font-medium">
+                  Prenota di nuovo
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#122118] border-t border-[#264532] py-10 px-4">
+    <div class="max-w-[960px] w-full mx-auto flex flex-col items-center text-[#96c5a9] text-sm">
+      <div class="flex flex-wrap justify-center gap-6 mb-4">
+        <a href="about-us.html">Chi siamo</a>
+        <a href="contatti.html">Contatti</a>
+        <a href="#">Termini</a>
+        <a href="#">Privacy</a>
+      </div>
+      <p>© 2025 Workspaces. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+</div>
+<script src="js/prenotazioni.js"></script>
+</body>
+</html>
