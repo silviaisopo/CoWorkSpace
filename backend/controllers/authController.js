@@ -21,7 +21,8 @@ exports.register = async (req, res) => {
     const newUser = await User.create({
       name,
       email,
-      password: hashedPassword
+      password: hashedPassword,
+      role: role || 'user'
     });
 
     // Genera JWT
@@ -44,7 +45,7 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
   const { email, password } = req.body;
-
+  console.log('Dati ricevuti:', { name, email, password });
   try {
     // Trova utente
     const user = await User.findOne({ where: { email } });
@@ -75,5 +76,6 @@ exports.login = async (req, res) => {
     res.status(500).json({ message: 'Errore server' });
   }
 };
+
 
 

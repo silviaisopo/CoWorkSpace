@@ -5,12 +5,13 @@
     <title>Offerte - CoWorkSpace</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-    <link
+    <link rel="stylesheet" href="/css/style.css">
+    <!--<link
             rel="stylesheet"
             as="style"
             onload="this.rel='stylesheet'"
             href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Spline+Sans:wght@400;500;700"
-    />
+    />-->
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style>
@@ -20,21 +21,6 @@
         .offer-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        .discount-badge {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background: #e03838;
-            color: white;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 14px;
         }
     </style>
 </head>
@@ -98,7 +84,6 @@
                 <section class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                     <!-- OFFERTA GIORNALIERA -->
                     <div class="offer-card relative bg-[#1b3124] rounded-lg p-6 border border-[#366348]">
-                        <div class="discount-badge">-17%</div>
                         <h3 class="text-white text-xl font-bold mb-4">Giornaliero</h3>
                         <p class="text-[#96c5a9] mb-6">Una postazione in una scrivania condivisa per uno o più giorni</p>
 
@@ -136,7 +121,6 @@
 
                     <!-- OFFERTA SETTIMANALE -->
                     <div class="offer-card relative bg-[#1b3124] rounded-lg p-6 border border-[#366348]">
-                        <div class="discount-badge">-15%</div>
                         <h3 class="text-white text-xl font-bold mb-4">Settimanale</h3>
                         <p class="text-[#96c5a9] mb-6">Una comoda scrivania condivisa per un'intera settimana (o 7 giorni)</p>
 
@@ -174,7 +158,6 @@
 
                     <!-- OFFERTA MENSILE -->
                     <div class="offer-card relative bg-[#1b3124] rounded-lg p-6 border border-[#366348]">
-                        <div class="discount-badge">-17%</div>
                         <h3 class="text-white text-xl font-bold mb-4">Mensile</h3>
                         <p class="text-[#96c5a9] mb-6">Una scrivania dedicata esclusivamente a te per un intero mese (o 30 giorni)</p>
 

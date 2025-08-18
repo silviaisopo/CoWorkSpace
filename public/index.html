@@ -1,18 +1,20 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+  <link
+          rel="stylesheet"
+          as="style"
+          onload="this.rel='stylesheet'"
+          href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
+  />
+ <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" as="style" onload="this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Spline+Sans%3Awght%40400%3B500%3B700" />
   <title>CoWorkSpace</title>
   <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <script>
-    function handleSearch() {
-      const searchTerm = document.getElementById('search-input').value;
-      window.location.href = `catalogo.html?search=${encodeURIComponent(searchTerm)}`;
-    }
-  </script>
+  <script src="js/index.js"></script>
 </head>
 <body>
 <div class="relative flex size-full min-h-screen flex-col bg-[#122118] dark group/design-root overflow-x-hidden" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
@@ -213,5 +215,150 @@
   </div>
 </div>
 <script src="/js/app.js"></script>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoWorkspace </title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="main-header">
+  <div class="header-container">
+    <div class="logo">
+      <svg width="28" height="28" fill="#2a9d8f" viewBox="0 0 48 48"><path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z"/></svg>
+      <a href="index.html" class="logo">CoWorkspace</a>
+    </div>
+
+    <nav class="main-nav">
+      <a href="catalogo.html" class="nav-link active">Esplora</a>
+      <a href="about-us.html" class="nav-link">Chi Siamo</a>
+      <a href="contatti.html" class="nav-link">Contatti</a>
+      <a href="offerte.html" class="nav-link">Prenota</a>
+    </nav>
+
+    <div class="header-right">
+      <a href="login.html" class="btn-login">Accedi</a>
+      <a href="area_riservata.html" class="profile-link">
+        <div class="profile-pic"></div>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Trova il tuo spazio di lavoro ideale</h1>
+        <p class="subtitle">Scopri una varietà di spazi di lavoro, da uffici privati a hub collaborativi, pensati per le tue esigenze.</p>
+
+        <form class="search-form">
+          <input type="text" placeholder="Cerca spazi di lavoro, città o servizi...">
+          <button type="submit" class="btn btn-primary">Cerca</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="featured-section">
+    <div class="container">
+      <h2 class="section-title">Spazi in evidenza</h2>
+      <div class="spaces-grid">
+        <article class="space-card">
+          <div class="card-image" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuBSFVJXKFMKPF4Y9Ap8zeXXfQN86oVaVzABorVtbp9Mzc8qQfNPCSd2wdq3pweCPJgcwHZ0OOcA7KB0wf85kJ5yc_o0qU4dIn14MgmvD387necQBeVpHwpdb2HF82GyIrl6hUPfnqzGb44q8jDIDctgWWsCwt9rZXzbG8IWev4J__luX__ENLVomEFymxp4k5PkgYXlVGhb-cw5YcdRcl1VRPTLqACdRsjEVGgt07miicPnyTXTzAUIII9978eyEaPZLrpscovMPAbR')"></div>
+          <div class="card-content">
+            <h3>Ufficio Privato</h3>
+            <p>Uno spazio riservato per la tua privacy e concentrazione.</p>
+            <a href="ufficio-privato.html" class="btn btn-outline">Scopri</a>
+          </div>
+        </article>
+
+        <article class="space-card">
+          <div class="card-image" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuDeRomP7UqpNgJ9xztmzJWn8Px-dGIkDG_A_i4QBFv3lt_AZFPwgC7dlE11A-gwS6tOV88SRq188mitNLzRg3m2st0Hy5MVuKY-nO-nDaqNOts-JAuvXEPsaB36e4iJX_Yn1a35DdRPGl9aos2iTgam-Te0YEcQOGy7-UNha6sDmVBi2HPKaYMJWZhAmZ-WWkpGiAz3vv72tHTHtotNfAXEZMAcOLVCFpex7-kUvaiCG89KXktaySDY7DWfmFej6WM-zX9gFPEAxU-j')"></div>
+          <div class="card-content">
+            <h3>Sala Riunioni</h3>
+            <p>Spazi professionali per incontri e presentazioni.</p>
+            <a href="sala-riunioni.html" class="btn btn-outline">Scopri</a>
+          </div>
+        </article>
+
+        <article class="space-card">
+          <div class="card-image" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuA7q968rq9czVRileVT-3JZak4iUvkMQKh-0rWaA-G0H3f3NTIduudV9krQJBWIiLx65Biqw-Q2u83zrLqq1cuenPEB_QPkcvDybz0CF2vWDrwlbEpXjXtbW0_xaDy4FZA-3rR7rtCXRznTccmUc1UbLSMTw0b_r3fNbpIeAybOqUBMBozirMVQNRlKyvBaj2p9bl_5BElV_q3A-qsnwgsbOPJj2FErrzr5dHzQeSykpn_8JSrF6Uym_pX_HPOy0ahGLMXm9Yvu1RH0')"></div>
+          <div class="card-content">
+            <h3>Postazione Condivisa</h3>
+            <p>Desk fissi in ambienti collaborativi e stimolanti.</p>
+            <a href="postazione-condivisa.html" class="btn btn-outline">Scopri</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="locations-section">
+    <div class="container">
+      <h2 class="section-title">Dove trovarci?</h2>
+      <div class="locations-grid">
+        <div class="location-card">
+          <div class="location-image" style="background-image:url('https://media.istockphoto.com/id/493223692/it/foto/duomo-di-milano-italia.jpg?s=612x612&w=0&k=20&c=X8QrI64NuylVeasXYRnKoj2LEHJNgI5OcVwoQwzd0bo=')"></div>
+          <h3>Milano</h3>
+        </div>
+
+        <div class="location-card">
+          <div class="location-image" style="background-image:url('https://img.freepik.com/foto-gratuito/bello-scatto-del-famoso-anfiteatro-del-colosseo-romano-sotto-il-cielo-mozzafiato-all-alba_181624-6998.jpg?semt=ais_hybrid&w=740&q=80')"></div>
+          <h3>Roma</h3>
+        </div>
+
+        <div class="location-card">
+          <div class="location-image" style="background-image:url('https://www.10cose.it/wp-content/uploads/2015/12/duomo-firenze.jpg')"></div>
+          <h3>Firenze</h3>
+        </div>
+
+        <div class="location-card">
+          <div class="location-image" style="background-image:url('https://images.winalist.com/blog/wp-content/uploads/2024/07/23143736/AdobeStock_167806246-1500x1000.jpeg')"></div>
+          <h3>Napoli</h3>
+        </div>
+
+        <div class="location-card">
+          <div class="location-image" style="background-image:url('https://img.hostelworldblog.com/blog/wp-content/uploads/2024/01/dreamstime_s_39798077-1.jpg')"></div>
+          <h3>Venezia</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2 class="cta-title">Scopri l'ambiente perfetto per te.</h2>
+        <p class="cta-text">Unisciti alla nostra community.</p>
+        <div class="cta-button-wrapper">
+          <a href="registrazione.html" class="btn btn-primary btn-large">Iscriviti</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div>
+    <a href="about-us.html">Chi siamo</a>
+    <a href="contatti.html">Contatti</a>
+    <a href="#">Termini</a>
+    <a href="#">Privacy</a>
+  </div>
+  <p>© 2025 CoWorkspace. Tutti i diritti riservati.</p>
+</footer>
+
+<script src="js/index.js"></script>
 </body>
 </html>

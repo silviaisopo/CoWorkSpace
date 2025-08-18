@@ -1,13 +1,15 @@
 <!DOCTYPE html>
+<html lang="it">
 <meta charset="UTF-8" xmlns="http://www.w3.org/1999/html">
 <head>
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
-  <link
+  <link rel="stylesheet" href="/css/style.css">
+ <!-- <link
           rel="stylesheet"
           as="style"
           onload="this.rel='stylesheet'"
           href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Spline+Sans%3Awght%40400%3B500%3B700"
-  />
+  />-->
 
   <title>CoWorkSpace</title>
   <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
@@ -72,6 +74,19 @@
           </div>
           <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
             <label class="flex flex-col min-w-40 flex-1">
+              <select
+                      id="role"
+                      class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border-none bg-[#264532] focus:border-none h-14 placeholder:text-[#96c5a9] p-4 text-base font-normal leading-normal"
+                      required
+              >
+                <option value="" disabled selected>Seleziona il tuo ruolo</option>
+                <option value="user">Utente</option>
+                <option value="manager">Manager</option>
+              </select>
+            </label>
+          </div>
+          <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+            <label class="flex flex-col min-w-40 flex-1">
               <input
                       id="password"
                       type="password"
@@ -103,13 +118,13 @@
           </div>
         </form>
         <p class="text-[#96c5a9] text-sm font-normal leading-normal pb-3 pt-1 px-4 text-center">
-         Hai già un'account? <a href="/public/login.html" class="underline">Accedi</a>
+         Hai già un'account? <a href="login.html" class="underline">Accedi</a>
         </p>
       </div>
     </div>
   </div>
 </div>
-<script src="/public/js/app.js"></script>
-<script src="/public/js/registrazione.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/registrazione.js"></script>
 </body>
 </html>

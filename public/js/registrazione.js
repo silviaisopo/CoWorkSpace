@@ -1,52 +1,38 @@
-// public/js/registrazione.js
 document.getElementById('registration-form').addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirm-password').value;
-    const errorMessage = document.getElementById('error-message');
-
-    // Pulisce eventuali messaggi precedenti
-    errorMessage.textContent = '';
-
-    // Controllo password
-    if (password !== confirmPassword) {
-        errorMessage.textContent = 'Le password non coincidono';
-        return;
-    }
-
-    // Controllo campi vuoti
-    if (!name || !email || !password) {
-        errorMessage.textContent = 'Tutti i campi sono obbligatori';
-        return;
-    }
+    const formData = {
+        name: document.getElementById('name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        password: document.getElementById('password').value,
+        role: document.getElementById('role').value
+    };
 
     try {
-        const res = await fetch('/api/auth/register', {
+        const response = await fetch('http://localhost:3000/api/v1/auth/register', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email, password })
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(formData)
         });
 
-        const data = await res.json();
-
-        if (!res.ok) {
-            throw new Error(data.message || 'Errore durante la registrazione');
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => ({}));
+            throw new Error(errorData.message || 'Errore durante la registrazione');
         }
 
-        // Salva token nel localStorage
+        const data = await response.json();
         localStorage.setItem('token', data.token);
+        window.location.href = data.user.role === 'manager'
+            ? '/area_manager.html'
+            : '/area_riservata.html';
 
-        // Reset form
-        document.getElementById('registration-form').reset();
-
-        // Reindirizza alla pagina profilo utente
-        window.location.href = '/user-profile.html';
-    } catch (err) {
-        errorMessage.textContent = err.message;
-        console.error('Errore registrazione:', err);
+    } catch (error) {
+        console.error('Errore registrazione:', error);
+        document.getElementById('error-message').textContent =
+            error.message || 'Errore del server';
     }
 });
 

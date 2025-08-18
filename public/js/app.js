@@ -7,6 +7,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const loader = document.getElementById('loader') || null;
     const content = document.getElementById('content') || null;
     const errorBox = document.getElementById('error-message') || null;
+    const cors = require('cors');
+    app.use(cors()); // Sopra app.use(express.json())
+    const express = require('express');
+    const path = require('path');
+
+    const app = express();
+    const publicPath = path.join(__dirname, 'public'); // Percorso assoluto
+
+    app.use(express.static(publicPath)); // Serve file statici da /public
 
     // --- FUNZIONI UI ---
     const showLoader = () => {

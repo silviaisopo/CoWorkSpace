@@ -1,145 +1,109 @@
-// Database degli spazi disponibili (in un'app reale questi dati verrebbero da un'API)
-const spaziDisponibili = [
-    {
-        id: 1,
-        titolo: "Ufficio Privato Centro",
-        tipo: "Ufficio",
-        citta: "Milano",
-        prezzo: 450,
-        strumenti: ["Wi-Fi", "Stampante", "Cucina"],
-        descrizione: "Ufficio privato nel cuore di Milano, ideale per professionisti che cercano tranquillità.",
-        immagine: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-    },
-    {
-        id: 2,
-        titolo: "Postazione Coworking",
-        tipo: "Coworking",
-        citta: "Roma",
-        prezzo: 200,
-        strumenti: ["Wi-Fi", "Sala riunioni"],
-        descrizione: "Postazione in spazio coworking vivace e stimolante, perfetta per networking.",
-        immagine: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-    },
-    {
-        id: 3,
-        titolo: "Studio Creativo",
-        tipo: "Studio",
-        citta: "Firenze",
-        prezzo: 350,
-        strumenti: ["Wi-Fi", "Stampante"],
-        descrizione: "Studio luminoso e spazioso, adatto a creativi e designer.",
-        immagine: "https://images.unsplash.com/photo-1505330622279-bf7d7fc918f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-    },
-    {
-        id: 4,
-        titolo: "Ufficio Executive",
-        tipo: "Ufficio",
-        citta: "Milano",
-        prezzo: 600,
-        strumenti: ["Wi-Fi", "Sala riunioni", "Cucina"],
-        descrizione: "Ufficio di prestigio con arredi di alta qualità e servizi premium.",
-        immagine: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-    },
-    {
-        id: 5,
-        titolo: "Spazio Coworking Verde",
-        tipo: "Coworking",
-        citta: "Torino",
-        prezzo: 180,
-        strumenti: ["Wi-Fi", "Cucina"],
-        descrizione: "Coworking eco-friendly con aree verdi e atmosfera rilassata.",
-        immagine: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-    },
-    {
-        id: 6,
-        titolo: "Mini Studio",
-        tipo: "Studio",
-        citta: "Bologna",
-        prezzo: 280,
-        strumenti: ["Wi-Fi"],
-        descrizione: "Studio compatto ma funzionale, perfetto per lavoratori autonomi.",
-        immagine: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+// js/catalogo.js
+document.addEventListener('DOMContentLoaded', function() {
+    // Gestione del form di filtraggio locale
+    const filterForm = document.getElementById('filterForm');
+    if (filterForm) {
+        filterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            applyFilters();
+        });
     }
-];
 
-// Funzione per filtrare gli spazi in base ai criteri di ricerca
-function filtraSpazi() {
-    // Recupera i valori dai campi di ricerca
-    const tipo = document.getElementById('tipo').value.toLowerCase();
-    const citta = document.getElementById('citta').value.toLowerCase();
-    const prezzoMin = parseFloat(document.getElementById('prezzoMin').value) || 0;
-    const prezzoMax = parseFloat(document.getElementById('prezzoMax').value) || Infinity;
+    // Controlla se c'è un parametro di ricerca nell'URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchTerm = urlParams.get('search');
+
+    if (searchTerm) {
+        // Se c'è un termine di ricerca, impostalo nel campo città e applica il filtro
+        const cittaInput = document.getElementById('citta');
+        if (cittaInput) {
+            cittaInput.value = decodeURIComponent(searchTerm);
+        }
+        applyFilters();
+    } else {
+        // Altrimenti mostra tutti i risultati
+        applyFilters();
+    }
+});
+
+function applyFilters() {
+    // Prendi i valori dai filtri
+    const tipo = document.getElementById('tipo').value;
+    const citta = document.getElementById('citta').value;
+    const prezzoMin = document.getElementById('prezzoMin').value;
+    const prezzoMax = document.getElementById('prezzoMax').value;
     const strumento = document.getElementById('strumento').value;
 
-    // Filtra gli spazi
-    const spaziFiltrati = spaziDisponibili.filter(spazio => {
-        // Filtro per tipo
-        if (tipo && spazio.tipo.toLowerCase() !== tipo) return false;
+    // Qui dovresti fare una chiamata API o filtrare i dati locali
+    // Per questo esempio mostreremo dei risultati mock
+    const mockResults = [
+        {
+            id: 1,
+            title: "Ufficio Privato Milano",
+            description: "Ufficio privato nel centro di Milano con tutti i comfort",
+            image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBSFVJXKFMKPF4Y9Ap8zeXXfQN86oVaVzABorVtbp9Mzc8qQfNPCSd2wdq3pweCPJgcwHZ0OOcA7KB0wf85kJ5yc_o0qU4dIn14MgmvD387necQBeVpHwpdb2HF82GyIrl6hUPfnqzGb44q8jDIDctgWWsCwt9rZXzbG8IWev4J__luX__ENLVomEFymxp4k5PkgYXlVGhb-cw5YcdRcl1VRPTLqACdRsjEVGgt07miicPnyTXTzAUIII9978eyEaPZLrpscovMPAbR",
+            type: "Ufficio",
+            city: "Milano",
+            price: 120,
+            tools: ["Wi-Fi", "Sala riunioni", "Stampante"]
+        },
+        {
+            id: 2,
+            title: "Sala Riunioni Roma",
+            description: "Spazio professionale per meeting a Roma centro",
+            image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDeRomP7UqpNgJ9xztmzJWn8Px-dGIkDG_A_i4QBFv3lt_AZFPwgC7dlE11A-gwS6tOV88SRq188mitNLzRg3m2st0Hy5MVuKY-nO-nDaqNOts-JAuvXEPsaB36e4iJX_Yn1a35DdRPGl9aos2iTgam-Te0YEcQOGy7-UNha6sDmVBi2HPKaYMJWZhAmZ-WWkpGiAz3vv72tHTHtotNfAXEZMAcOLVCFpex7-kUvaiCG89KXktaySDY7DWfmFej6WM-zX9gFPEAxU-j",
+            type: "Sala riunioni",
+            city: "Roma",
+            price: 90,
+            tools: ["Wi-Fi", "Sala riunioni", "Cucina"]
+        },
+        {
+            id: 3,
+            title: "Coworking Firenze",
+            description: "Spazio condiviso in centro a Firenze con postazioni flessibili",
+            image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA7q968rq9czVRileVT-3JZak4iUvkMQKh-0rWaA-G0H3f3NTIduudV9krQJBWIiLx65Biqw-Q2u83zrLqq1cuenPEB_QPkcvDybz0CF2vWDrwlbEpXjXtbW0_xaDy4FZA-3rR7rtCXRznTccmUc1UbLSMTw0b_r3fNbpIeAybOqUBMBozirMVQNRlKyvBaj2p9bl_5BElV_q3A-qsnwgsbOPJj2FErrzr5dHzQeSykpn_8JSrF6Uym_pX_HPOy0ahGLMXm9Yvu1RH0",
+            type: "Coworking",
+            city: "Firenze",
+            price: 60,
+            tools: ["Wi-Fi", "Cucina"]
+        }
+    ];
 
-        // Filtro per città
-        if (citta && !spazio.citta.toLowerCase().includes(citta)) return false;
-
-        // Filtro per prezzo
-        if (spazio.prezzo < prezzoMin || spazio.prezzo > prezzoMax) return false;
-
-        // Filtro per strumenti
-        if (strumento && !spazio.strumenti.includes(strumento)) return false;
-
-        return true;
+    // Filtra i risultati
+    const filteredResults = mockResults.filter(item => {
+        return (
+            (tipo === '' || item.type === tipo) &&
+            (citta === '' || item.city.toLowerCase().includes(citta.toLowerCase())) &&
+            (prezzoMin === '' || item.price >= parseInt(prezzoMin)) &&
+            (prezzoMax === '' || item.price <= parseInt(prezzoMax)) &&
+            (strumento === '' || item.tools.includes(strumento))
+        );
     });
 
     // Mostra i risultati
-    mostraRisultati(spaziFiltrati);
+    displayResults(filteredResults);
 }
 
-// Funzione per mostrare i risultati nella pagina
-function mostraRisultati(spazi) {
-    const risultatiContainer = document.getElementById('risultati');
+function displayResults(results) {
+    const resultsContainer = document.getElementById('risultati');
+    if (!resultsContainer) return;
 
-    if (spazi.length === 0) {
-        risultatiContainer.innerHTML = '<p class="text-center col-span-3 py-10">Nessun risultato trovato. Prova a modificare i filtri di ricerca.</p>';
+    if (results.length === 0) {
+        resultsContainer.innerHTML = '<p class="text-white col-span-3 text-center">Nessun risultato trovato</p>';
         return;
     }
 
-    risultatiContainer.innerHTML = spazi.map(spazio => `
-        <div class="bg-[#1b3124] border border-[#366348] rounded-lg overflow-hidden">
-            <div class="h-48 bg-cover bg-center" style="background-image: url('${spazio.immagine}')"></div>
-            <div class="p-6">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-lg font-bold">${spazio.titolo}</h3>
-                    <span class="bg-[#366348] text-[#96c5a9] text-xs px-2 py-1 rounded">${spazio.tipo}</span>
-                </div>
-                <p class="text-[#96c5a9] text-sm mb-4">${spazio.citta}</p>
-                <p class="text-sm mb-4">${spazio.descrizione}</p>
+    resultsContainer.innerHTML = results.map(item => `
+        <div class="bg-[#1b3124] border border-[#366348] rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="h-48 bg-cover bg-center" style="background-image: url('${item.image}')"></div>
+            <div class="p-4">
+                <h3 class="text-xl font-bold mb-2">${item.title}</h3>
+                <p class="text-[#96c5a9] mb-3">${item.description}</p>
                 <div class="flex justify-between items-center">
-                    <div>
-                        <span class="text-2xl font-bold">€${spazio.prezzo}</span>
-                        <span class="text-[#96c5a9] text-sm">/mese</span>
-                    </div>
-                    <button class="bg-[#38e07b] text-[#122118] font-bold px-4 py-1 rounded text-sm">
-                        Prenota
-                    </button>
-                </div>
-                <div class="mt-4 pt-4 border-t border-[#366348]">
-                    <p class="text-[#96c5a9] text-xs mb-2">Servizi inclusi:</p>
-                    <div class="flex flex-wrap gap-2">
-                        ${spazio.strumenti.map(strumento =>
-        `<span class="bg-[#264532] text-white text-xs px-2 py-1 rounded">${strumento}</span>`
-    ).join('')}
-                    </div>
+                    <span class="font-bold">€${item.price}/giorno</span>
+                    <a href="dettaglio.html?id=${item.id}" class="bg-[#38e07b] text-[#122118] font-bold px-4 py-1 rounded-lg">Dettagli</a>
                 </div>
             </div>
         </div>
     `).join('');
 }
-
-// Gestione dell'evento di submit del form
-document.getElementById('filterForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    filtraSpazi();
-});
-
-// Mostra tutti gli spazi al caricamento della pagina
-document.addEventListener('DOMContentLoaded', function() {
-    mostraRisultati(spaziDisponibili);
-});
