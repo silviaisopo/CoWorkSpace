@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/db');
+const { sequelize } = require('../config/db');
 
 const WorkspaceService = sequelize.define('WorkspaceService', {
     workspace_id: { type: DataTypes.INTEGER, primaryKey: true },

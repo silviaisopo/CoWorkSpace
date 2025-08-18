@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/db');
+const { sequelize } = require('../config/db');
 
 const Workspace = sequelize.define('Workspace', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
@@ -12,3 +12,5 @@ const Workspace = sequelize.define('Workspace', {
 });
 
 module.exports = Workspace;
+
+

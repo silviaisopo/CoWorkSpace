@@ -19,11 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (content) content.style.display = 'block';
     };
 
+    let errorTimeout;
     const showError = (message) => {
         if (!errorBox) return;
         errorBox.textContent = message;
         errorBox.style.display = 'block';
-        setTimeout(() => {
+        clearTimeout(errorTimeout);
+        errorTimeout = setTimeout(() => {
             errorBox.style.display = 'none';
         }, 5000);
     };
@@ -33,15 +35,16 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             showLoader();
             const response = await fetch(`/api/${endpoint}`, {
+                ...options,
                 headers: {
                     'Content-Type': 'application/json',
-                    ...options.headers
-                },
-                ...options
+                    ...(options.headers || {})
+                }
             });
 
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                const errorText = await response.text();
+                throw new Error(`Errore API ${response.status}: ${errorText}`);
             }
 
             return await response.json();
@@ -59,9 +62,9 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const data = await fetchData('bookings');
             console.log('Prenotazioni caricate:', data);
-            // Aggiorna la UI qui
+            // TODO: aggiorna la UI con i dati ricevuti
         } catch (error) {
-            // Errore già gestito da fetchData
+            // L’errore è già gestito da fetchData
         }
     };
 
@@ -73,12 +76,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (document.getElementById('home-section')) {
         console.log('[app.js] Avvio logica pagina home...');
-        // Qui codice per la home
+        // TODO: logica per la home
     }
 
     if (document.getElementById('contact-section')) {
         console.log('[app.js] Avvio logica pagina contatti...');
-        // Qui codice per la pagina contatti
+        // TODO: logica per i contatti
     }
 
     // --- GESTIONE ERRORI GLOBALI ---
@@ -86,4 +89,10 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('[Errore Globale]', e.message);
         showError(`Errore: ${e.message}`);
     });
+
+    window.addEventListener('unhandledrejection', (e) => {
+        console.error('[Promise Rejection]', e.reason);
+        showError(`Errore: ${e.reason?.message || e.reason}`);
+    });
 });
+

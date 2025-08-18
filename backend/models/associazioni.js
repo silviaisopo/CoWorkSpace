@@ -16,8 +16,8 @@ module.exports = () => {
     Location.hasMany(Workspace, { foreignKey: 'location_id' });
 
     // Many-to-Many: Workspace ↔ Service
-    Workspace.belongsToMany(Service, { through: WorkspaceService, foreignKey: 'workspace_id' });
-    Service.belongsToMany(Workspace, { through: WorkspaceService, foreignKey: 'service_id' });
+    Workspace.belongsToMany(Service, { through: WorkspaceService, foreignKey: 'workspace_id', otherKey: 'service_id' });
+    Service.belongsToMany(Workspace, { through: WorkspaceService, foreignKey: 'service_id', otherKey: 'workspace_id' });
 
     // Booking → User & Workspace
     Booking.belongsTo(User, { foreignKey: 'user_id' });
