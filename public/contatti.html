@@ -1,4 +1,4 @@
-<!--<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8" />
@@ -17,30 +17,29 @@
 </head>
 
 <body>
-<div class="relative flex flex-col min-h-screen bg-[#122118] dark group/design-root" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
+<div class="relative flex flex-col min-h-screen bg-[#f3f6f4] dark group/design-root" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
     <div class="layout-container flex flex-col grow">
-        HEADER
-        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#264532] px-10 py-3">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#B8E0C2] px-10 py-3">
             <div class="flex items-center gap-8">
-                <div class="flex items-center gap-4 text-white">
+                <div class="flex items-center gap-4 text-[#212121]">
                     <div class="size-4">
                         <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path></svg>
                     </div>
                     <a href="index.html">
-                        <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">CoWorkSpace</h2>
+                        <h2 class="text-[#212121] text-lg font-bold leading-tight tracking-[-0.015em]">CoWorkSpace</h2>
                     </a>
                 </div>
                 <div class="flex items-center gap-9">
-                    <a class="text-white text-sm font-medium leading-normal" href="catalogo.html">Esplora</a>
-                    <a class="text-white text-sm font-medium leading-normal" href="about-us.html">Chi Siamo</a>
-                    <a class="text-white text-sm font-medium leading-normal" href="contatti.html">Contatti</a>
-                    <a class="text-white text-sm font-medium leading-normal" href="offerte.html">Prenota</a>
+                    <a class="text-[#212121] text-sm font-bold  leading-normal" href="catalogo.html">Esplora</a>
+                    <a class="text-[#212121] text-sm font-bold  leading-normal" href="about-us.html">Chi Siamo</a>
+                    <a class="text-[#212121] text-sm font-bold  leading-normal" href="contatti.html">Contatti</a>
+                    <a class="text-[#212121] text-sm font-bold  leading-normal" href="offerte.html">Prenota</a>
                 </div>
             </div>
             <div class="flex flex-1 justify-end gap-8">
                 <a href="login.html">
                     <button
-                            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#38e07b] text-[#122118] text-sm font-bold leading-normal tracking-[0.015em]"
+                            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold leading-normal tracking-[0.015em]"
                     >
                         <span class="truncate">Accedi</span>
                     </button>
@@ -54,22 +53,20 @@
             </div>
         </header>
 
-
         <main class="px-10 py-8 flex flex-col items-center flex-grow">
             <div class="w-full max-w-[960px]">
-
                 <div
                         class="bg-cover bg-center min-h-80 rounded-xl mb-6 flex items-end"
                         style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0) 25%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBoYI3DfId-h66ggBXeh_WzZIA3OZM8spGDJV5QuGnd1YcIUucaBYBVvp8Z-CDwBLxg9dXxhp7Fjp4OcpI2YoBBGH8a5jAzrmtMGRAElqETgoF8PQebAaZsEBXekjC027FaoaqzKzLWL09T-jHKEZsS6Cclja0CzYVgVnDQySb-EtfUxkBckP8k2YrF7posDZ2EXqPCcUwf48HvDoiCY5_sacxixJdVMmU_OGmOYlaJODQZBFF3SG0I1QW2KRzzVa_WK0Tlnbh7ksvf");'
                 >
-                    <h1 class="text-white text-[28px] font-bold p-4">Contatti</h1>
+                    <h1 class="text-[#f3f6f4] text-[28px] font-bold p-4">Contatti</h1>
                 </div>
 
 
                 <section class="mb-10 text-white">
-                    <h2 class="text-xl font-semibold mb-2">Informazioni di contatto</h2>
+                    <h2 class="text-[#2b2926]  font-semibold mb-2">Informazioni di contatto</h2>
                     <p class="mb-4">Puoi contattarci in uno dei modi seguenti:</p>
-                    <ul class="space-y-1 pl-4 list-disc">
+                    <ul class="text-[#2b2926] space-y-1 pl-4 list-disc">
                         <li><strong>Indirizzo:</strong> Via dell'Artigianato 12, 00100 Roma</li>
                         <li><strong>Telefono:</strong> +39 06 1234567</li>
                         <li><strong>Email:</strong> info@CoWorkSpace.it</li>
@@ -78,23 +75,23 @@
                 </section>
 
 
-                <section class="text-white">
+                <section class="text-[#2b2926] ">
                     <h2 class="text-xl font-semibold mb-4">Modulo di assistenza clienti</h2>
                     <form id="assistenzaForm" action="/invia-assistenza" method="POST" class="space-y-4 max-w-xl">
                         <div>
                             <label for="nome" class="block mb-1 font-medium">Nome</label>
-                            <input type="text" id="nome" name="nome" required class="w-full rounded-md border border-[#264532] bg-[#1b3124] text-white px-3 py-2" />
+                            <input type="text" id="nome" name="nome" required class="w-full rounded-md border border-[#text-[#d0c6be] ] bg-[#d0c6be] text-[#f3f6f4] px-3 py-2" />
                         </div>
                         <div>
                             <label for="email" class="block mb-1 font-medium">Email</label>
-                            <input type="email" id="email" name="email" required class="w-full rounded-md border border-[#264532] bg-[#1b3124] text-white px-3 py-2" />
+                            <input type="email" id="email" name="email" required class="w-full rounded-md border border-[#text-[#d0c6be] ] bg-[#d0c6be] text-[#f3f6f4] px-3 py-2" />
                         </div>
                         <div>
                             <label for="messaggio" class="block mb-1 font-medium">Messaggio</label>
-                            <textarea id="messaggio" name="messaggio" rows="5" required class="w-full rounded-md border border-[#264532] bg-[#1b3124] text-white px-3 py-2"></textarea>
+                            <textarea id="messaggio" name="messaggio" rows="5" required class="w-full rounded-md border border-[#text-[#d0c6be] ] bg-[#d0c6be] text-[#f3f6f4] px-3 py-2"></textarea>
                         </div>
                         <div>
-                            <input type="submit" value="Invia" class="cursor-pointer bg-[#264532] hover:bg-[#366348] text-white font-bold py-2 px-6 rounded-md" />
+                            <input type="submit" value="Invia" class="cursor-pointer bg-[#4a3729] hover:bg-[#f3f6f4] text-[#f3f6f4] text font-bold py-2 px-6 rounded-md" />
                         </div>
                     </form>
                 </section>
@@ -102,8 +99,8 @@
         </main>
 
 
-        <footer class="mt-auto py-10 px-4 bg-[#122118]">
-            <div class="max-w-[960px] w-full mx-auto flex flex-col items-center text-[#96c5a9] text-sm">
+        <footer class="flex justify-center px-4 mt-20">
+            <div class="max-w-[960px] w-full flex flex-col items-center text-[#2b2926] text-sm py-10">
                 <div class="flex flex-wrap justify-center gap-6 mb-4">
                     <a href="about-us.html">Chi siamo</a>
                     <a href="contatti.html">Contatti</a>
@@ -117,97 +114,5 @@
 </div>
 <script src="/js/app.js"></script>
 <script src="/js/contatti.js"></script>
-</body>
-</html>-->
-
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contatti - CoWorkSpace</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-    <link rel="stylesheet" href="./css/contatti.css">
-    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,">
-</head>
-<body>
-<div class="page-wrapper">
-    <!-- Header -->
-    <header class="main-header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <svg width="28" height="28" viewBox="0 0 48 48" fill="#2a9d8f">
-                        <path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z"/>
-                    </svg>
-                    <span>CoWorkSpace</span>
-                </div>
-                <nav class="main-nav">
-                    <a href="catalogo.html">Esplora</a>
-                    <a href="about-us.html">Chi Siamo</a>
-                    <a href="contatti.html" class="active">Contatti</a>
-                    <a href="offerte.html">Prenota</a>
-                </nav>
-                <a href="login.html" class="btn-login">Accedi</a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="container">
-            <h1>Contatti</h1>
-
-            <!-- Contact Info -->
-            <section class="contact-section">
-                <h2>Informazioni di contatto</h2>
-                <p>Puoi contattarci in uno dei modi seguenti:</p>
-                <ul class="contact-list">
-                    <li><span class="label">Indirizzo:</span> Via dell'Artigianato 12, 00100 Roma</li>
-                    <li><span class="label">Telefono:</span> +39 06 1234567</li>
-                    <li><span class="label">Email:</span> info@convario.it</li>
-                    <li><span class="label">Orari:</span> Lun–Ven 9:00 – 18:00</li>
-                </ul>
-            </section>
-
-            <!-- Modulo di assistenza clienti -->
-            <section class="form-section">
-                <div class="form-container">
-                    <h2>Modulo di assistenza clienti</h2>
-                    <form class="contact-form">
-                        <div class="form-row">
-                            <label for="name">Nome</label>
-                            <input type="text" id="name" name="name" class="underline-input">
-                        </div>
-                        <div class="form-row">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" class="underline-input">
-                        </div>
-                        <div class="form-row message-row">
-                            <label for="message">Messaggio</label>
-                            <textarea id="message" name="message" rows="4" class="underline-input"></textarea>
-                        </div>
-                        <div class="form-submit">
-                            <button type="submit" class="submit-btn">Invia</button>
-                        </div>
-                    </form>
-                </div>
-            </section>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-links">
-                <a href="about-us.html">Chi siamo</a>
-                <a href="contatti.html">Contatti</a>
-                <a href="#">Termini</a>
-                <a href="#">Privacy</a>
-            </div>
-            <p class="copyright">© 2025 CoWorkSpace. Tutti i diritti riservati.</p>
-        </div>
-    </footer>
-</div>
 </body>
 </html>

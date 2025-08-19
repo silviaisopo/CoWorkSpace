@@ -13,28 +13,30 @@
     />-->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 </head>
-<body class="bg-[#122118] text-white" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
+<body class="bg-[#f3f6f4] text-[#212121]" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
 
 <!-- NAVBAR -->
-<header class="flex items-center justify-between border-b border-[#264532] px-10 py-3">
-    <div class="flex items-center gap-8 text-white">
-        <div class="flex items-center gap-4">
-            <svg class="w-4 h-4" viewBox="0 0 48 48" fill="currentColor"><path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z"/></svg>
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#B8E0C2] px-10 py-3">
+    <div class="flex items-center gap-8">
+        <div class="flex items-center gap-4 text-[#212121]">
+            <div class="size-4">
+                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path></svg>
+            </div>
             <a href="index.html">
-                <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">CoWorkSpace</h2>
+                <h2 class="text-[#212121] text-lg font-bold leading-tight tracking-[-0.015em]">CoWorkSpace</h2>
             </a>
         </div>
-        <nav class="flex gap-6 text-sm font-medium">
-            <a href="catalogo.html">Esplora</a>
-            <a href="about-us.html">Chi Siamo</a>
-            <a href="contatti.html">Contatti</a>
-            <a href="offerte.html">Prenota</a>
-        </nav>
+        <div class="flex items-center gap-9">
+            <a class="text-[#212121] text-sm font-bold  leading-normal" href="catalogo.html">Esplora</a>
+            <a class="text-[#212121] text-sm font-bold  leading-normal" href="about-us.html">Chi Siamo</a>
+            <a class="text-[#212121] text-sm font-bold  leading-normal" href="contatti.html">Contatti</a>
+            <a class="text-[#212121] text-sm font-bold  leading-normal" href="offerte.html">Prenota</a>
+        </div>
     </div>
-    <div class="flex items-center gap-4">
+    <div class="flex flex-1 justify-end gap-8">
         <a href="login.html">
             <button
-                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#38e07b] text-[#122118] text-sm font-bold leading-normal tracking-[0.015em]"
+                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold leading-normal tracking-[0.015em]"
             >
                 <span class="truncate">Accedi</span>
             </button>
@@ -45,17 +47,18 @@
                     style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_MVb8XzjwZkF6O5ivyZadhiZ0XFu3eD3FcdLA4Ixll10kk5401IzquwYtZFDU62_BZe5t4MMH_vsl_n-OlC8DmE3TAuYL59BpGsjAUiiYKmyXt19iHlvSxRwnHOXcrL0tZZkBwMt6JXJAihCyIfWS5ZYZOvlrXleOJbjxL4_dwtH5z3dIiicVgsdefagncm7OtGLysfvqF9hePY98itO4GtP3sLCMwziLNNYudYkqwO0-nVMuTdxyLMBx0MOlp5OG4_wDawpRjBtW");'
             ></div>
         </a>
+    </div>
 </header>
 
 <!-- FILTRI ORIZZONTALI -->
 <main class="px-6 md:px-20 py-10">
     <h1 class="text-3xl font-bold mb-8">Trova lo spazio ideale</h1>
-    <form id="filterForm" class="bg-[#1b3124] border border-[#366348] p-6 rounded-lg flex flex-wrap gap-6 items-end justify-between max-w-full">
+    <form id="filterForm" class="bg-[#4a3729] border border-[#2e2219] p-6 rounded-lg flex flex-wrap gap-6 items-end justify-between max-w-full">
 
         <!-- Tipo -->
         <div class="flex flex-col w-[200px]">
-            <label class="text-[#96c5a9] mb-1">Tipo di spazio</label>
-            <select id="tipo" class="bg-[#264532] text-white rounded-lg border-none">
+            <label class="text-[#f3f6f4] mb-1">Tipo di spazio</label>
+            <select id="tipo" class="bg-[#7b6655] text-[#f3f6f4] rounded-lg border-none">
                 <option value="">Tutti</option>
                 <option>Ufficio</option>
                 <option>Coworking</option>
@@ -65,26 +68,34 @@
 
         <!-- Città -->
         <div class="flex flex-col w-[200px]">
-            <label class="text-[#96c5a9] mb-1">Città</label>
-            <input id="citta" type="text" placeholder="Inserisci città" class="bg-[#264532] text-white rounded-lg border-none" />
+            <label class="text-[#f3f6f4] mb-1">Città</label>
+            <input id="citta" type="text" placeholder="Inserisci città" class="bg-[#7b6655] text-[#f3f6f4] placeholder-[#f3f6f4] rounded-lg border-none" />
         </div>
 
         <!-- Prezzo Min -->
         <div class="flex flex-col w-[120px]">
-            <label class="text-[#96c5a9] mb-1">Prezzo Min</label>
-            <input id="prezzoMin" type="number" min="0" class="bg-[#264532] text-white rounded-lg border-none" />
+            <label class="text-[#f3f6f4] mb-1">Prezzo Min</label>
+            <input id="prezzoMin"
+                   type="number"
+                   min="0"
+                   placeholder="- €"
+                   class="bg-[#7b6655] text-[#f3f6f4] placeholder-[#f3f6f4] rounded-lg border-none" />
         </div>
 
         <!-- Prezzo Max -->
         <div class="flex flex-col w-[120px]">
-            <label class="text-[#96c5a9] mb-1">Prezzo Max</label>
-            <input id="prezzoMax" type="number" min="0" class="bg-[#264532] text-white rounded-lg border-none" />
+            <label class="text-[#f3f6f4] mb-1">Prezzo Max</label>
+            <input id="prezzoMax"
+                   type="number"
+                   min="0"
+                   placeholder="- €"
+                   class="bg-[#7b6655] text-[#f3f6f4] placeholder-[#f3f6f4] rounded-lg border-none" />
         </div>
 
         <!-- Strumenti -->
         <div class="flex flex-col w-[240px]">
-            <label class="text-[#96c5a9] mb-1">Strumenti extra</label>
-            <select id="strumento" class="bg-[#264532] text-white rounded-lg border-none">
+            <label class="text-[#f3f6f4] mb-1">Strumenti extra</label>
+            <select id="strumento" class="bg-[#7b6655] text-[#f3f6f4] rounded-lg border-none">
                 <option value="">Qualsiasi</option>
                 <option>Wi-Fi</option>
                 <option>Sala riunioni</option>
@@ -94,7 +105,7 @@
         </div>
 
         <!-- Pulsante -->
-        <button type="submit" class="bg-[#38e07b] text-[#122118] font-bold px-6 py-2 rounded-lg h-12">Cerca</button>
+        <button type="submit" class="bg-[#7b6655] text-[#f3f6f4] font-bold px-6 py-2 rounded-lg h-12">Cerca</button>
     </form>
 
     <!-- RISULTATI -->
@@ -103,7 +114,7 @@
 
 <!-- FOOTER -->
 <footer class="flex justify-center px-4 mt-20">
-    <div class="max-w-[960px] w-full flex flex-col items-center text-[#96c5a9] text-sm py-10">
+    <div class="max-w-[960px] w-full flex flex-col items-center text-[#2b2926] text-sm py-10">
         <div class="flex flex-wrap justify-center gap-6 mb-4">
             <a href="about-us.html">Chi siamo</a>
             <a href="contatti.html">Contatti</a>

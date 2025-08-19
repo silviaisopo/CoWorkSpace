@@ -94,14 +94,14 @@ function displayResults(results) {
     }
 
     resultsContainer.innerHTML = results.map(item => `
-        <div class="bg-[#1b3124] border border-[#366348] rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+        <div class="bg-[#f3f6f4] border border-[#4a3729] rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
             <div class="h-48 bg-cover bg-center" style="background-image: url('${item.image}')"></div>
             <div class="p-4">
-                <h3 class="text-xl font-bold mb-2">${item.title}</h3>
-                <p class="text-[#96c5a9] mb-3">${item.description}</p>
+                <h3 class="text-[#212121] font-bold mb-2">${item.title}</h3>
+                <p class="text-[#212121] mb-3">${item.description}</p>
                 <div class="flex justify-between items-center">
                     <span class="font-bold">€${item.price}/giorno</span>
-                    <a href="dettaglio.html?id=${item.id}" class="bg-[#38e07b] text-[#122118] font-bold px-4 py-1 rounded-lg">Dettagli</a>
+                    <a href="dettaglio.html?id=${item.id}" class="bg-[#4a3729] text-[#f3f6f4] font-bold px-4 py-1 rounded-lg">Dettagli</a>
                 </div>
             </div>
         </div>

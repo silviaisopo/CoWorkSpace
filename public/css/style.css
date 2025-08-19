@@ -407,12 +407,12 @@ footer a:hover {
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
-    .header-content {
+    .header-container {
         flex-direction: column;
         gap: 1.5rem;
     }
 
-    .main-nav ul {
+    .main-nav {
         gap: 1rem;
     }
 
@@ -427,8 +427,7 @@ footer a:hover {
     .section-title {
         margin-bottom: 2rem;
     }
-
-
 }
+
 
 
