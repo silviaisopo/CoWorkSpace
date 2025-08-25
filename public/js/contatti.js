@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Crea il messaggio di conferma
         const confirmationMessage = document.createElement('div');
-        confirmationMessage.className = 'fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-[#38e07b] text-[#122118] px-6 py-3 rounded-lg shadow-lg font-medium animate-fade-in-up';
+        confirmationMessage.className = 'fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-[#4a3729] text-[#f3f6f4] px-6 py-3 rounded-lg shadow-lg font-medium animate-fade-in-up';
         confirmationMessage.textContent = 'Modulo inviato, riceverà assistenza al più presto';
 
         // Aggiungi il messaggio in fondo alla pagina

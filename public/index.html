@@ -19,6 +19,7 @@
 <body>
 <div class="relative flex size-full min-h-screen flex-col bg-[#f3f6f4] dark group/design-root overflow-x-hidden" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
   <div class="layout-container flex h-full grow flex-col">
+
     <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#B8E0C2] px-10 py-3">
       <div class="flex items-center gap-8">
         <div class="flex items-center gap-4 text-[#212121]">
@@ -30,25 +31,28 @@
           </a>
         </div>
         <div class="flex items-center gap-9">
-          <a class="text-[#212121] text-sm font-bold  leading-normal" href="catalogo.html">Esplora</a>
-          <a class="text-[#212121] text-sm font-bold  leading-normal" href="about-us.html">Chi Siamo</a>
-          <a class="text-[#212121] text-sm font-bold  leading-normal" href="contatti.html">Contatti</a>
-          <a class="text-[#212121] text-sm font-bold  leading-normal" href="offerte.html">Prenota</a>
+          <a class="text-[#212121] text-sm font-bold leading-normal" href="catalogo.html">Esplora</a>
+          <a class="text-[#212121] text-sm font-bold leading-normal" href="about-us.html">Chi Siamo</a>
+          <a class="text-[#212121] text-sm font-bold leading-normal" href="contatti.html">Contatti</a>
+          <a class="text-[#212121] text-sm font-bold leading-normal" href="offerte.html">Prenota</a>
         </div>
       </div>
-      <div class="flex flex-1 justify-end gap-8">
+      <div class="flex flex-1 justify-end gap-8 items-center">
+        <a href="area_riservata.html">
+          <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_MVb8XzjwZkF6O5ivyZadhiZ0XFu3eD3FcdLA4Ixll10kk5401IzquwYtZFDU62_BZe5t4MMH_vsl_n-OlC8DmE3TAuYL59BpGsjAUiiYKmyXt19iHlvSxRwnHOXcrL0tZZkBwMt6JXJAihCyIfWS5ZYZOvlrXleOJbjxL4_dwtH5z3dIiicVgsdefagncm7OtGLysfvqF9hePY98itO4GtP3sLCMwziLNNYudYkqwO0-nVMuTdxyLMBx0MOlp5OG4_wDawpRjBtW");'></div>
+        </a>
+        <!-- Icona carrello -->
+        <a href="carrello.html" class="relative">
+          <div class="size-10 flex items-center justify-center bg-[#f3f6f4] rounded-full text-[#4a3729]">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m12-9l2 9m-6-9v9"/>
+            </svg>
+          </div>
+        </a>
         <a href="login.html">
-          <button
-                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold leading-normal tracking-[0.015em]"
-          >
+          <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold leading-normal tracking-[0.015em]">
             <span class="truncate">Accedi</span>
           </button>
-        </a>
-        <a href="area_riservata.html">
-          <div
-                  class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
-                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_MVb8XzjwZkF6O5ivyZadhiZ0XFu3eD3FcdLA4Ixll10kk5401IzquwYtZFDU62_BZe5t4MMH_vsl_n-OlC8DmE3TAuYL59BpGsjAUiiYKmyXt19iHlvSxRwnHOXcrL0tZZkBwMt6JXJAihCyIfWS5ZYZOvlrXleOJbjxL4_dwtH5z3dIiicVgsdefagncm7OtGLysfvqF9hePY98itO4GtP3sLCMwziLNNYudYkqwO0-nVMuTdxyLMBx0MOlp5OG4_wDawpRjBtW");'
-          ></div>
         </a>
       </div>
     </header>
@@ -91,7 +95,7 @@
                   <input
                           id="search-input"
                           placeholder="Cerca spazi di lavoro, città o servizi..."
-                          class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#f3f6f4] focus:outline-0 focus:ring-0 border border-[#f3f6f4] bg-[#f3f6f4] focus:border-[#f3f6f4] h-full placeholder:text-[#2b2926] px-[15px] rounded-r-none border-r-0 pr-2 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal"
+                          class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#212121] focus:outline-0 focus:ring-0 border border-[#f3f6f4] bg-[#f3f6f4] focus:border-[#f3f6f4] h-full placeholder:text-[#2b2926] px-[15px] rounded-r-none border-r-0 pr-2 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal"
                           value=""
                   />
                   <div class="flex items-center justify-center rounded-r-lg border-l-0 border border-[#4a3729] bg-[#54422b] pr-[7px]">

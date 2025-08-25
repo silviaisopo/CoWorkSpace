@@ -1,30 +1,24 @@
-// backend/config/db.js
 const { Sequelize } = require("sequelize");
 require("dotenv").config();
 
-const sequelize = new Sequelize(
-    process.env.DB_NAME || "CoWorkSpace",
-    process.env.DB_USER || "postgres",
-    process.env.DB_PASSWORD || "Silvia24",
-    {
-        host: process.env.DB_HOST || "localhost",
-        dialect: "postgres",
-        logging: false, // meno log in console
-        define: {
-            timestamps: true,
-            underscored: true,
-        },
-    }
-);
+const databaseUrl = process.env.DB_URI || "postgres://postgres:Silvia24@localhost:5432/CoWorkSpace";
 
-// Connessione + sincronizzazione
+const sequelize = new Sequelize(databaseUrl, {
+    dialect: "postgres",
+    logging: false,       // disabilita log SQL in console
+    define: {
+        timestamps: true,  // aggiunge automaticamente createdAt/updatedAt
+        underscored: true, // snake_case per colonne
+    },
+});
+
+// Connessione e sincronizzazione DB
 async function connectDB() {
     try {
         await sequelize.authenticate();
         console.log("✅ Connesso al database");
 
-        // Sincronizza i modelli con il DB
-        await sequelize.sync({ alter: true });
+        await sequelize.sync({ alter: true }); // sincronizza i modelli
         console.log("🔄 Database sincronizzato");
     } catch (err) {
         console.error("❌ Errore connessione DB:", err.message);
@@ -33,3 +27,4 @@ async function connectDB() {
 }
 
 module.exports = { sequelize, connectDB };
+

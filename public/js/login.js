@@ -1,34 +1,39 @@
-// public/js/login.js
+// Mostra/nascondi password
+function togglePassword(inputId) {
+    const passwordInput = document.getElementById(inputId);
+    passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+}
+
+// Event listener per login
 document.getElementById('login-form').addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    const email = document.getElementById('login-email').value.trim();
+    const password = document.getElementById('login-password').value;
     const errorMessage = document.getElementById('error-message');
-
-    // Pulisce eventuali messaggi di errore precedenti
-    errorMessage.textContent = '';
+    if (errorMessage) errorMessage.textContent = '';
 
     try {
-        const res = await fetch('/api/auth/login', {  // percorso relativo al server
+        const response = await fetch('/api/auth/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })
         });
 
-        const data = await res.json();
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.message || 'Errore login');
 
-        if (!res.ok) {
-            throw new Error(data.message || 'Errore login');
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+
+        // Reindirizza in base al ruolo
+        if (data.user.role === 'manager') {
+            window.location.href = '/dashboard-manager.html';
+        } else {
+            window.location.href = '/area_riservata.html';
         }
 
-        // Salva token nel localStorage
-        localStorage.setItem('token', data.token);
-
-        // Reindirizza alla pagina profilo utente
-        window.location.href = '/user-profile.html';
     } catch (err) {
-        errorMessage.textContent = err.message;
+        if (errorMessage) errorMessage.textContent = err.message || 'Errore del server';
     }
 });
-

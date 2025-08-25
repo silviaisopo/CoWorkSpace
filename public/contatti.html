@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8" />
-    <title>CoWorkSpace</title>
+    <title>CoWorkSpace - Contatti</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link rel="stylesheet" href="/css/style.css">
@@ -30,25 +30,28 @@
                     </a>
                 </div>
                 <div class="flex items-center gap-9">
-                    <a class="text-[#212121] text-sm font-bold  leading-normal" href="catalogo.html">Esplora</a>
-                    <a class="text-[#212121] text-sm font-bold  leading-normal" href="about-us.html">Chi Siamo</a>
-                    <a class="text-[#212121] text-sm font-bold  leading-normal" href="contatti.html">Contatti</a>
-                    <a class="text-[#212121] text-sm font-bold  leading-normal" href="offerte.html">Prenota</a>
+                    <a class="text-[#212121] text-sm font-bold leading-normal" href="catalogo.html">Esplora</a>
+                    <a class="text-[#212121] text-sm font-bold leading-normal" href="about-us.html">Chi Siamo</a>
+                    <a class="text-[#212121] text-sm font-bold leading-normal" href="contatti.html">Contatti</a>
+                    <a class="text-[#212121] text-sm font-bold leading-normal" href="offerte.html">Prenota</a>
                 </div>
             </div>
-            <div class="flex flex-1 justify-end gap-8">
+            <div class="flex flex-1 justify-end gap-8 items-center">
+                <a href="area_riservata.html">
+                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_MVb8XzjwZkF6O5ivyZadhiZ0XFu3eD3FcdLA4Ixll10kk5401IzquwYtZFDU62_BZe5t4MMH_vsl_n-OlC8DmE3TAuYL59BpGsjAUiiYKmyXt19iHlvSxRwnHOXcrL0tZZkBwMt6JXJAihCyIfWS5ZYZOvlrXleOJbjxL4_dwtH5z3dIiicVgsdefagncm7OtGLysfvqF9hePY98itO4GtP3sLCMwziLNNYudYkqwO0-nVMuTdxyLMBx0MOlp5OG4_wDawpRjBtW");'></div>
+                </a>
+                <!-- Icona carrello -->
+                <a href="carrello.html" class="relative">
+                    <div class="size-10 flex items-center justify-center bg-[#f3f6f4] rounded-full text-[#4a3729]">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m12-9l2 9m-6-9v9"/>
+                        </svg>
+                    </div>
+                </a>
                 <a href="login.html">
-                    <button
-                            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold leading-normal tracking-[0.015em]"
-                    >
+                    <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold leading-normal tracking-[0.015em]">
                         <span class="truncate">Accedi</span>
                     </button>
-                </a>
-                <a href="area_riservata.html">
-                    <div
-                            class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_MVb8XzjwZkF6O5ivyZadhiZ0XFu3eD3FcdLA4Ixll10kk5401IzquwYtZFDU62_BZe5t4MMH_vsl_n-OlC8DmE3TAuYL59BpGsjAUiiYKmyXt19iHlvSxRwnHOXcrL0tZZkBwMt6JXJAihCyIfWS5ZYZOvlrXleOJbjxL4_dwtH5z3dIiicVgsdefagncm7OtGLysfvqF9hePY98itO4GtP3sLCMwziLNNYudYkqwO0-nVMuTdxyLMBx0MOlp5OG4_wDawpRjBtW");'
-                    ></div>
                 </a>
             </div>
         </header>
@@ -65,7 +68,7 @@
 
                 <section class="mb-10 text-white">
                     <h2 class="text-[#2b2926]  font-semibold mb-2">Informazioni di contatto</h2>
-                    <p class="mb-4">Puoi contattarci in uno dei modi seguenti:</p>
+                    <p class="mb-4 text-[#2b2926]">Puoi contattarci in uno dei modi seguenti:</p>
                     <ul class="text-[#2b2926] space-y-1 pl-4 list-disc">
                         <li><strong>Indirizzo:</strong> Via dell'Artigianato 12, 00100 Roma</li>
                         <li><strong>Telefono:</strong> +39 06 1234567</li>
@@ -80,18 +83,18 @@
                     <form id="assistenzaForm" action="/invia-assistenza" method="POST" class="space-y-4 max-w-xl">
                         <div>
                             <label for="nome" class="block mb-1 font-medium">Nome</label>
-                            <input type="text" id="nome" name="nome" required class="w-full rounded-md border border-[#text-[#d0c6be] ] bg-[#d0c6be] text-[#f3f6f4] px-3 py-2" />
+                            <input type="text" id="nome" name="nome" required class="w-full rounded-md border border-[#text-[#d0c6be] ] bg-[#d0c6be] text-[#212121] px-3 py-2" />
                         </div>
                         <div>
                             <label for="email" class="block mb-1 font-medium">Email</label>
-                            <input type="email" id="email" name="email" required class="w-full rounded-md border border-[#text-[#d0c6be] ] bg-[#d0c6be] text-[#f3f6f4] px-3 py-2" />
+                            <input type="email" id="email" name="email" required class="w-full rounded-md border border-[#text-[#d0c6be] ] bg-[#d0c6be] text-[#212121] px-3 py-2" />
                         </div>
                         <div>
                             <label for="messaggio" class="block mb-1 font-medium">Messaggio</label>
-                            <textarea id="messaggio" name="messaggio" rows="5" required class="w-full rounded-md border border-[#text-[#d0c6be] ] bg-[#d0c6be] text-[#f3f6f4] px-3 py-2"></textarea>
+                            <textarea id="messaggio" name="messaggio" rows="5" required class="w-full rounded-md border border-[#text-[#d0c6be] ] bg-[#d0c6be] text-[#212121] px-3 py-2"></textarea>
                         </div>
                         <div>
-                            <input type="submit" value="Invia" class="cursor-pointer bg-[#4a3729] hover:bg-[#f3f6f4] text-[#f3f6f4] text font-bold py-2 px-6 rounded-md" />
+                            <input type="submit" value="Invia" class="cursor-pointer bg-[#4a3729] text-[#f3f6f4] text font-bold py-2 px-6 rounded-md" />
                         </div>
                     </form>
                 </section>

@@ -2,164 +2,177 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8" />
-    <title>CoWorkSpace</title>
+    <title>CoWorkSpace - Sale Riunioni</title>
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link rel="stylesheet" href="/css/style.css">
-    <!--<link
-            rel="stylesheet"
-            as="style"
-            onload="this.rel='stylesheet'"
-            href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Spline+Sans:wght@400;500;700"
-    />-->
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <style>
-        .offer-card {
-            transition: all 0.3s ease;
-        }
-        .offer-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        .discount-badge {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background: #e03838;
-            color: white;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 14px;
-        }
-    </style>
 </head>
+<body class="bg-[#f3f6f4] text-[#212121]" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
 
-<body>
-<div class="relative flex size-full min-h-screen flex-col bg-[#122118] dark group/design-root overflow-x-hidden" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
+<div class="relative flex size-full min-h-screen flex-col overflow-x-hidden">
     <div class="layout-container flex h-full grow flex-col">
         <!-- HEADER -->
-        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#264532] px-10 py-3">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#B8E0C2] px-10 py-3">
             <div class="flex items-center gap-8">
-                <div class="flex items-center gap-4 text-white">
+                <div class="flex items-center gap-4 text-[#212121]">
                     <div class="size-4">
                         <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path></svg>
                     </div>
                     <a href="index.html">
-                        <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">CoWorkSpace</h2>
+                        <h2 class="text-[#212121] text-lg font-bold leading-tight tracking-[-0.015em]">CoWorkSpace</h2>
                     </a>
                 </div>
                 <div class="flex items-center gap-9">
-                    <a class="text-white text-sm font-medium leading-normal" href="catalogo.html">Esplora</a>
-                    <a class="text-white text-sm font-medium leading-normal" href="about-us.html">Chi Siamo</a>
-                    <a class="text-white text-sm font-medium leading-normal" href="contatti.html">Contatti</a>
-                    <a class="text-white text-sm font-medium leading-normal" href="offerte.html">Prenota</a>
+                    <a class="text-[#212121] text-sm font-bold leading-normal" href="catalogo.html">Esplora</a>
+                    <a class="text-[#212121] text-sm font-bold leading-normal" href="about-us.html">Chi Siamo</a>
+                    <a class="text-[#212121] text-sm font-bold leading-normal" href="contatti.html">Contatti</a>
+                    <a class="text-[#212121] text-sm font-bold leading-normal" href="offerte.html">Prenota</a>
                 </div>
             </div>
-            <div class="flex flex-1 justify-end gap-8">
+            <div class="flex flex-1 justify-end gap-8 items-center">
+                <a href="area_riservata.html">
+                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_MVb8XzjwZkF6O5ivyZadhiZ0XFu3eD3FcdLA4Ixll10kk5401IzquwYtZFDU62_BZe5t4MMH_vsl_n-OlC8DmE3TAuYL59BpGsjAUiiYKmyXt19iHlvSxRwnHOXcrL0tZZkBwMt6JXJAihCyIfWS5ZYZOvlrXleOJbjxL4_dwtH5z3dIiicVgsdefagncm7OtGLysfvqF9hePY98itO4GtP3sLCMwziLNNYudYkqwO0-nVMuTdxyLMBx0MOlp5OG4_wDawpRjBtW");'></div>
+                </a>
+                <!-- Icona carrello -->
+                <a href="carrello.html" class="relative">
+                    <div class="size-10 flex items-center justify-center bg-[#f3f6f4] rounded-full text-[#4a3729]">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m12-9l2 9m-6-9v9"/>
+                        </svg>
+                    </div>
+                </a>
                 <a href="login.html">
-                    <button
-                            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#38e07b] text-[#122118] text-sm font-bold leading-normal tracking-[0.015em]"
-                    >
+                    <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold leading-normal tracking-[0.015em]">
                         <span class="truncate">Accedi</span>
                     </button>
-                </a>
-                <a href="area_riservata.html">
-                    <div
-                            class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_MVb8XzjwZkF6O5ivyZadhiZ0XFu3eD3FcdLA4Ixll10kk5401IzquwYtZFDU62_BZe5t4MMH_vsl_n-OlC8DmE3TAuYL59BpGsjAUiiYKmyXt19iHlvSxRwnHOXcrL0tZZkBwMt6JXJAihCyIfWS5ZYZOvlrXleOJbjxL4_dwtH5z3dIiicVgsdefagncm7OtGLysfvqF9hePY98itO4GtP3sLCMwziLNNYudYkqwO0-nVMuTdxyLMBx0MOlp5OG4_wDawpRjBtW");'
-                    ></div>
                 </a>
             </div>
         </header>
 
-<main class="px-10 py-8 flex flex-col items-center">
-    <div class="w-full max-w-[1200px]">
-        <!-- HERO -->
-        <div class="bg-cover bg-center min-h-80 rounded-xl mb-10 flex items-end"
-             style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0) 25%), url("https://images.unsplash.com/photo-1571624436279-b272aff752b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");'>
-            <h1 class="text-white text-[32px] font-bold p-6">Sale Riunioni</h1>
-        </div>
+        <main class="px-10 py-8 flex flex-col items-center">
+            <div class="w-full max-w-[1200px]">
 
-        <!-- DETTAGLI -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div>
-                <h2 class="text-white text-2xl font-bold mb-4">Spazi professionali per i tuoi meeting</h2>
-                <p class="text-[#96c5a9] mb-6">Le nostre sale riunioni sono progettate per offrirti tutto il necessario per meeting produttivi, presentazioni professionali e sessioni di brainstorming.</p>
+                <!-- HERO -->
+                <div class="bg-cover bg-center min-h-80 rounded-xl mb-10 flex items-end"
+                     style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0) 25%), url("https://images.unsplash.com/photo-1571624436279-b272aff752b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");'>
+                    <h1 class="text-[#f3f6f4] text-[36px] font-bold p-6">Sale Riunioni</h1>
+                </div>
 
-                <ul class="space-y-3 mb-8 text-[#96c5a9]">
-                    <li class="flex items-center gap-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#38e07b" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                        <span>Capienza da 2 a 20 persone</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#38e07b" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                        <span>Schermi LCD e proiettori</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#38e07b" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                        <span>Connessione Wi-Fi ad alta velocità</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#38e07b" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                        <span>Attrezzatura per videoconferenze</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#38e07b" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                        <span>Servizio catering su richiesta</span>
-                    </li>
-                </ul>
-
-                <a href="prenotazioni.html" class="inline-block bg-[#38e07b] hover:bg-[#2ec46d] text-[#122118] font-bold py-3 px-6 rounded-lg mr-4">
-                    Prenota ora
-                </a>
-                <a href="contatti.html" class="inline-block border border-[#38e07b] text-[#38e07b] hover:bg-[#38e07b] hover:text-[#122118] font-bold py-3 px-6 rounded-lg">
-                    Richiedi informazioni
-                </a>
-            </div>
-
-            <div class="bg-[#264532] rounded-lg p-6 border border-[#366348]">
-                <h3 class="text-white text-xl font-bold mb-4">Tariffe e Disponibilità</h3>
-                <p class="text-[#96c5a9] mb-6">Le nostre sale sono disponibili a ore, mezza giornata o giornata intera. Contattaci per pacchetti personalizzati o prenotazioni ricorrenti.</p>
-
-                <div class="space-y-4 mb-6">
+                <!-- SEZIONE DETTAGLI -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                     <div>
-                        <p class="text-white font-medium mb-1">Tariffa oraria:</p>
-                        <p class="text-[#96c5a9]">Da € 25/ora + IVA</p>
+                        <h2 class="text-[#212121] text-3xl font-bold mb-4">Organizza meeting professionali in ambienti attrezzati</h2>
+                        <p class="text-[#2b2926] mb-6">Le nostre sale riunioni offrono spazi confortevoli e tecnologicamente avanzati per meeting, presentazioni e sessioni di brainstorming. Ideali per team di qualsiasi dimensione.</p>
+
+                        <ul class="space-y-3 mb-8 text-[#2b2926]">
+                            <li class="flex items-center gap-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#4a3729" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
+                                <span>Schermi LCD/TV di grandi dimensioni per presentazioni</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#4a3729" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
+                                <span>Sistemi audio e videoconferenza integrati</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#4a3729" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
+                                <span>Connessione Wi-Fi dedicata ad alta velocità</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#4a3729" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
+                                <span>Attrezzature per brainstorming (lavagne, post-it)</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#4a3729" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
+                                <span>Servizio catering su richiesta</span>
+                            </li>
+                        </ul>
+
+                        <div class="flex gap-4">
+                            <a href="prenotazioni.html" class="inline-block bg-[#4a3729] text-[#f3f6f4] font-bold py-3 px-6 rounded-lg">
+                                Prenota ora
+                            </a>
+
+                            <a href="contatti.html" class="inline-block bg-[#4a3729] hover:bg-[#4a3729] text-[#f3f6f4] font-bold py-3 px-6 rounded-lg">
+                                Richiedi informazioni
+                            </a>
+                        </div>
                     </div>
-                    <div>
-                        <p class="text-white font-medium mb-1">Mezza giornata (4 ore):</p>
-                        <p class="text-[#96c5a9]">Da € 80 + IVA</p>
-                    </div>
-                    <div>
-                        <p class="text-white font-medium mb-1">Giornata intera (8 ore):</p>
-                        <p class="text-[#96c5a9]">Da € 140 + IVA</p>
+                    <div class="bg-[#f3f6f4] rounded-lg p-6 border border-[#4a3729]">
+                        <h3 class="text-[#212121] text-xl font-bold mb-4">Tariffe e Opzioni</h3>
+                        <p class="text-[#212121] mb-6">Scegli la sala e la durata più adatte alle tue esigenze. Disponibili sconti per pacchetti orari e abbonamenti.</p>
+                        <div class="space-y-4 mb-6">
+                            <div>
+                                <p class="text-[#212121] font-medium mb-1">Sala Piccola (fino a 6 persone):</p>
+                                <p class="text-[#2b2926]">€ 25/ora + IVA</p>
+                            </div>
+                            <div>
+                                <p class="text-[#212121] font-medium mb-1">Sala Media (fino a 12 persone):</p>
+                                <p class="text-[#2b2926]">€ 40/ora + IVA</p>
+                            </div>
+                            <div>
+                                <p class="text-[#212121] font-medium mb-1">Sala Grande (fino a 20 persone):</p>
+                                <p class="text-[#2b2926]">€ 60/ora + IVA</p>
+                            </div>
+                        </div>
+                        <div class="bg-[#4a3729] rounded-lg p-4">
+                            <p class="text-[#f3f6f4] font-medium mb-2">Pacchetto Meeting:</p>
+                            <p class="text-[#f3f6f4] text-sm">10 ore di utilizzo utilizzabili in 30 giorni con sconto del 20% + caffè e acqua inclusi</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="bg-[#366348] rounded-lg p-4">
-                    <p class="text-white font-medium mb-2">Prenotazione anticipata:</p>
-                    <p class="text-[#96c5a9] text-sm">Prenotando con almeno 48 ore di anticipo potresti ottenere uno sconto del 10%</p>
+                <!-- GALLERIA -->
+                <div class="mb-12">
+                    <h3 class="text-[#212121] text-xl font-bold mb-6">Le nostre sale riunioni</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="h-48 bg-cover bg-center rounded-lg" style="background-image: url('https://images.unsplash.com/photo-1571624436279-b272aff752b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
+                        </div>
+                        <div class="h-48 bg-cover bg-center rounded-lg" style="background-image: url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
+                        </div>
+                        <div class="h-48 bg-cover bg-center rounded-lg" style="background-image: url('https://images.unsplash.com/photo-1533090368676-1fd25485db88?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ -->
+                <div class="bg-[#4a3729] rounded-lg p-6 border border-[#4a3729] mb-12">
+                    <h3 class="text-white text-xl font-bold mb-6">Domande Frequenti - Sale Riunioni</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-[#f3f6f4] font-medium mb-2">È possibile prenotare una sala per meeting con clienti esterni?</p>
+                            <p class="text-[#d0c6be]">Certamente, le nostre sale sono perfette per incontri con clienti e fornitori. Possiamo fornire anche servizio di reception per accogliere i vostri ospiti.</p>
+                        </div>
+                        <div>
+                            <p class="text-[#f3f6f4] font-medium mb-2">Quali attrezzature sono incluse nella prenotazione?</p>
+                            <p class="text-[#d0c6be]">Tutte le sale includono schermo, proiettore o TV, connessione Wi-Fi, lavagna o lavagna magnetica. Su richiesta possiamo fornire attrezzature aggiuntive.</p>
+                        </div>
+                        <div>
+                            <p class="text-[#f3f6f4] font-medium mb-2">C'è un servizio di catering disponibile?</p>
+                            <p class="text-[#d0c6be]">Sì, offriamo servizio di catering con caffè, acqua, succhi e snack. Su richiesta possiamo organizzare colazioni di lavoro o pranzi completi.</p>
+                        </div>
+                        <div>
+                            <p class="text-[#f3f6f4] font-medium mb-2">È possibile prenotare per meeting ricorrenti?</p>
+                            <p class="text-[#d0c6be]">Sì, offriamo tariffe agevolate per prenotazioni ricorrenti (es. ogni settimana o ogni mese). Contattaci per maggiori informazioni.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</main>
+        </main>
 
-<footer class="flex justify-center px-4 mt-20">
-    <div class="max-w-[960px] w-full flex flex-col items-center text-[#96c5a9] text-sm py-10">
-        <div class="flex flex-wrap justify-center gap-6 mb-4">
-            <a href="about-us.html">Chi siamo</a>
-            <a href="contatti.html">Contatti</a>
-            <a href="#">Termini</a>
-            <a href="#">Privacy</a>
-        </div>
-        <p>© 2025 Workspaces. Tutti i diritti riservati.</p>
+        <!-- FOOTER -->
+        <footer class="flex justify-center px-4 mt-20">
+            <div class="max-w-[960px] w-full flex flex-col items-center text-[#2b2926] text-sm py-10">
+                <div class="flex flex-wrap justify-center gap-6 mb-4">
+                    <a href="about-us.html">Chi siamo</a>
+                    <a href="contatti.html">Contatti</a>
+                    <a href="#">Termini</a>
+                    <a href="#">Privacy</a>
+                </div>
+                <p>© 2025 Workspaces. Tutti i diritti riservati.</p>
+            </div>
+        </footer>
     </div>
-</footer>
+</div>
 </body>
 </html>

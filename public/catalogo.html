@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CoWorkSpace</title>
+    <title>CoWorkSpace - Catalogo</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link rel="stylesheet" href="/css/style.css">
@@ -27,25 +27,28 @@
             </a>
         </div>
         <div class="flex items-center gap-9">
-            <a class="text-[#212121] text-sm font-bold  leading-normal" href="catalogo.html">Esplora</a>
-            <a class="text-[#212121] text-sm font-bold  leading-normal" href="about-us.html">Chi Siamo</a>
-            <a class="text-[#212121] text-sm font-bold  leading-normal" href="contatti.html">Contatti</a>
-            <a class="text-[#212121] text-sm font-bold  leading-normal" href="offerte.html">Prenota</a>
+            <a class="text-[#212121] text-sm font-bold leading-normal" href="catalogo.html">Esplora</a>
+            <a class="text-[#212121] text-sm font-bold leading-normal" href="about-us.html">Chi Siamo</a>
+            <a class="text-[#212121] text-sm font-bold leading-normal" href="contatti.html">Contatti</a>
+            <a class="text-[#212121] text-sm font-bold leading-normal" href="offerte.html">Prenota</a>
         </div>
     </div>
-    <div class="flex flex-1 justify-end gap-8">
+    <div class="flex flex-1 justify-end gap-8 items-center">
+        <a href="area_riservata.html">
+            <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_MVb8XzjwZkF6O5ivyZadhiZ0XFu3eD3FcdLA4Ixll10kk5401IzquwYtZFDU62_BZe5t4MMH_vsl_n-OlC8DmE3TAuYL59BpGsjAUiiYKmyXt19iHlvSxRwnHOXcrL0tZZkBwMt6JXJAihCyIfWS5ZYZOvlrXleOJbjxL4_dwtH5z3dIiicVgsdefagncm7OtGLysfvqF9hePY98itO4GtP3sLCMwziLNNYudYkqwO0-nVMuTdxyLMBx0MOlp5OG4_wDawpRjBtW");'></div>
+        </a>
+        <!-- Icona carrello -->
+        <a href="carrello.html" class="relative">
+            <div class="size-10 flex items-center justify-center bg-[#f3f6f4] rounded-full text-[#4a3729]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m12-9l2 9m-6-9v9"/>
+                </svg>
+            </div>
+        </a>
         <a href="login.html">
-            <button
-                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold leading-normal tracking-[0.015em]"
-            >
+            <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold leading-normal tracking-[0.015em]">
                 <span class="truncate">Accedi</span>
             </button>
-        </a>
-        <a href="area_riservata.html">
-            <div
-                    class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
-                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_MVb8XzjwZkF6O5ivyZadhiZ0XFu3eD3FcdLA4Ixll10kk5401IzquwYtZFDU62_BZe5t4MMH_vsl_n-OlC8DmE3TAuYL59BpGsjAUiiYKmyXt19iHlvSxRwnHOXcrL0tZZkBwMt6JXJAihCyIfWS5ZYZOvlrXleOJbjxL4_dwtH5z3dIiicVgsdefagncm7OtGLysfvqF9hePY98itO4GtP3sLCMwziLNNYudYkqwO0-nVMuTdxyLMBx0MOlp5OG4_wDawpRjBtW");'
-            ></div>
         </a>
     </div>
 </header>
@@ -53,49 +56,44 @@
 <!-- FILTRI ORIZZONTALI -->
 <main class="px-6 md:px-20 py-10">
     <h1 class="text-3xl font-bold mb-8">Trova lo spazio ideale</h1>
-    <form id="filterForm" class="bg-[#4a3729] border border-[#2e2219] p-6 rounded-lg flex flex-wrap gap-6 items-end justify-between max-w-full">
-
+    <form id="filterForm" class="bg-[#f3f6f4] border border-[#4a3729] p-6 rounded-lg flex flex-wrap gap-6 items-end justify-between max-w-full">
         <!-- Tipo -->
         <div class="flex flex-col w-[200px]">
-            <label class="text-[#f3f6f4] mb-1">Tipo di spazio</label>
-            <select id="tipo" class="bg-[#7b6655] text-[#f3f6f4] rounded-lg border-none">
+            <label class="text-[#212121] mb-1">Tipo di spazio</label>
+            <select id="tipo" class="bg-[#f3f6f4] border border-[#4a3729] text-[#212121] rounded-lg ">
                 <option value="">Tutti</option>
                 <option>Ufficio</option>
                 <option>Coworking</option>
-                <option>Studio</option>
-            </select>
+                <option>Studio</option> </select>
         </div>
-
         <!-- Città -->
-        <div class="flex flex-col w-[200px]">
-            <label class="text-[#f3f6f4] mb-1">Città</label>
-            <input id="citta" type="text" placeholder="Inserisci città" class="bg-[#7b6655] text-[#f3f6f4] placeholder-[#f3f6f4] rounded-lg border-none" />
+        <div class="flex flex-col">
+            <label class="text-[#212121] mb-1 text-sm font-medium">Città</label>
+            <input id="citta" type="text" placeholder="Inserisci città"
+                   class="bg-[#f3f6f4] border border-[#4a3729] text-[#212121] placeholder-[#212121] rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-[#c8a97e]" />
+        </div>
+        <div class="flex flex-col">
+            <label class="text-[#212121] mb-1 text-sm font-medium">Data</label>
+            <input id="data" type="date"
+                   class="bg-[#f3f6f4] border border-[#4a3729] text-[#212121] rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-[#c8a97e]" />
         </div>
 
-        <!-- Prezzo Min -->
-        <div class="flex flex-col w-[120px]">
-            <label class="text-[#f3f6f4] mb-1">Prezzo Min</label>
-            <input id="prezzoMin"
-                   type="number"
-                   min="0"
-                   placeholder="- €"
-                   class="bg-[#7b6655] text-[#f3f6f4] placeholder-[#f3f6f4] rounded-lg border-none" />
-        </div>
-
-        <!-- Prezzo Max -->
-        <div class="flex flex-col w-[120px]">
-            <label class="text-[#f3f6f4] mb-1">Prezzo Max</label>
-            <input id="prezzoMax"
-                   type="number"
-                   min="0"
-                   placeholder="- €"
-                   class="bg-[#7b6655] text-[#f3f6f4] placeholder-[#f3f6f4] rounded-lg border-none" />
+        <!-- Orari - Modificato per evitare sovrapposizione -->
+        <div class="flex flex-col">
+            <label class="text-[#212121] mb-1 text-sm font-medium">Orario</label>
+            <div class="flex gap-2">
+                <input id="orarioInizio" type="time"
+                       class="bg-[#f3f6f4] border border-[#4a3729] text-[#212121] rounded-lg p-2.5  w-full text-sm focus:ring-2 focus:ring-[#212121]" />
+                <span class="self-center text-[#c8b8a8]">-</span>
+                <input id="orarioFine" type="time"
+                       class="bg-[#f3f6f4] border border-[#4a3729] text-[#212121] rounded-lg p-2.5  w-full text-sm focus:ring-2 focus:ring-[#212121]" />
+            </div>
         </div>
 
         <!-- Strumenti -->
         <div class="flex flex-col w-[240px]">
-            <label class="text-[#f3f6f4] mb-1">Strumenti extra</label>
-            <select id="strumento" class="bg-[#7b6655] text-[#f3f6f4] rounded-lg border-none">
+            <label class="text-[#212121] mb-1">Strumenti extra</label>
+            <select id="strumento" class="bg-[#f3f6f4] border border-[#4a3729] text-[#212121] rounded-lg ">
                 <option value="">Qualsiasi</option>
                 <option>Wi-Fi</option>
                 <option>Sala riunioni</option>
@@ -103,11 +101,9 @@
                 <option>Cucina</option>
             </select>
         </div>
-
         <!-- Pulsante -->
-        <button type="submit" class="bg-[#7b6655] text-[#f3f6f4] font-bold px-6 py-2 rounded-lg h-12">Cerca</button>
+        <button type="submit" class="bg-[#4a3729] text-[#f3f6f4] font-bold px-6 py-2 rounded-lg h-12">Cerca</button>
     </form>
-
     <!-- RISULTATI -->
     <section id="risultati" class="mt-10 grid md:grid-cols-3 gap-6"></section>
 </main>

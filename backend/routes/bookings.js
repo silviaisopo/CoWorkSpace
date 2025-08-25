@@ -1,20 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const bookingController = require('../controllers/bookingController');
-const { authenticate } = require('../middleware/authMiddleware');
+const { authenticate, isUser } = require('../middleware/authMiddleware');
 
-// Debug: verifica gli import
-console.log('Tipo di createBooking:', typeof bookingController.createBooking);
-console.log('Tipo di authenticate:', typeof authenticate);
+// CREA PRENOTAZIONE
+router.post('/', authenticate, isUser, bookingController.createBooking);
 
-router.post('/',
-    authenticate,
-    bookingController.createBooking
-);
+// GET PRENOTAZIONI UTENTE
+router.get('/mybookings', authenticate, isUser, bookingController.getMyBookings);
 
-router.get('/mybookings',
-    authenticate,
-    bookingController.getMyBookings
-);
+// DELETE PRENOTAZIONE
+router.delete('/:id', authenticate, isUser, bookingController.deleteBooking);
 
 module.exports = router;

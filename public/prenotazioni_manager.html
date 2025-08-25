@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Prenotazioni - CoWorkSpace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#f3f6f4] text-[#212121] min-h-screen flex flex-col">
+
+<!-- NAVBAR -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#B8E0C2] px-10 py-3">
+    <div class="flex items-center gap-8">
+        <div class="flex items-center gap-4 text-[#212121]">
+            <div class="size-4">
+                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path></svg>
+            </div>
+            <a href="index.html">
+                <h2 class="text-[#212121] text-lg font-bold leading-tight tracking-[-0.015em]">CoWorkSpace</h2>
+            </a>
+        </div>
+        <div class="flex items-center gap-9">
+            <a class="text-[#212121] text-sm font-bold leading-normal" href="catalogo.html">Esplora</a>
+            <a class="text-[#212121] text-sm font-bold leading-normal" href="about-us.html">Chi Siamo</a>
+            <a class="text-[#212121] text-sm font-bold leading-normal" href="contatti.html">Contatti</a>
+            <a class="text-[#212121] text-sm font-bold leading-normal" href="offerte.html">Prenota</a>
+        </div>
+    </div>
+</header>
+
+<!-- MAIN PRENOTAZIONI -->
+<main class="flex-1 p-10 space-y-10">
+    <h1 class="text-2xl font-bold">Gestione Prenotazioni</h1>
+
+    <!-- Tabella Prenotazioni -->
+    <div class="bg-white border-2 border-[#6d5542] rounded-lg p-6 shadow">
+        <h2 class="text-lg font-bold mb-4">Prenotazioni Correnti</h2>
+        <table class="w-full text-sm border-collapse">
+            <thead>
+            <tr class="bg-[#6d5542] text-[#f3f6f4]">
+                <th class="px-3 py-2 text-left">Cliente</th>
+                <th class="px-3 py-2 text-left">Sede</th>
+                <th class="px-3 py-2 text-left">Postazione / Sala</th>
+                <th class="px-3 py-2 text-left">Data</th>
+                <th class="px-3 py-2 text-left">Azioni</th>
+            </tr>
+            </thead>
+            <tbody id="listaPrenotazioni">
+            <!-- Popolato da JS -->
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="flex justify-center px-4 mt-20">
+    <div class="max-w-[960px] w-full flex flex-col items-center text-secondary text-sm py-10">
+        <div class="flex flex-wrap justify-center gap-6 mb-4">
+            <a href="about-us.html">Chi siamo</a>
+            <a href="contatti.html">Contatti</a>
+            <a href="#">Termini</a>
+            <a href="#">Privacy</a>
+        </div>
+        <p>© 2025 Workspaces. Tutti i diritti riservati.</p>
+    </div>
+</footer>
+
+<script src="js/prenotazioni_manager.js"></script>
+</body>
+</html>

@@ -3,6 +3,7 @@ const User = require('../models/user');
 const Workspace = require('../models/workspace');
 const Location = require('../models/location');
 
+// GET /api/manager/bookings
 const getManagerData = async (req, res) => {
   const manager_id = req.user.id;
 
@@ -20,7 +21,7 @@ const getManagerData = async (req, res) => {
         },
         {
           model: User,
-          attributes: ['id', 'name', 'email'] // Specifica gli attributi per sicurezza
+          attributes: ['id', 'name', 'email']
         }
       ],
       order: [['start_time', 'DESC']]
@@ -40,6 +41,4 @@ const getManagerData = async (req, res) => {
   }
 };
 
-module.exports = {
-  getManagerData
-};
+module.exports = { getManagerData };

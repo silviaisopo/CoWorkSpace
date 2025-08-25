@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8" />
-    <title>Offerte - CoWorkSpace</title>
+    <title>CoWorkSpace - Offerte</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link rel="stylesheet" href="/css/style.css">
@@ -40,25 +40,28 @@
                     </a>
                 </div>
                 <div class="flex items-center gap-9">
-                    <a class="text-[#212121] text-sm font-bold  leading-normal" href="catalogo.html">Esplora</a>
-                    <a class="text-[#212121] text-sm font-bold  leading-normal" href="about-us.html">Chi Siamo</a>
-                    <a class="text-[#212121] text-sm font-bold  leading-normal" href="contatti.html">Contatti</a>
-                    <a class="text-[#212121] text-sm font-bold  leading-normal" href="offerte.html">Prenota</a>
+                    <a class="text-[#212121] text-sm font-bold leading-normal" href="catalogo.html">Esplora</a>
+                    <a class="text-[#212121] text-sm font-bold leading-normal" href="about-us.html">Chi Siamo</a>
+                    <a class="text-[#212121] text-sm font-bold leading-normal" href="contatti.html">Contatti</a>
+                    <a class="text-[#212121] text-sm font-bold leading-normal" href="offerte.html">Prenota</a>
                 </div>
             </div>
-            <div class="flex flex-1 justify-end gap-8">
+            <div class="flex flex-1 justify-end gap-8 items-center">
+                <a href="area_riservata.html">
+                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_MVb8XzjwZkF6O5ivyZadhiZ0XFu3eD3FcdLA4Ixll10kk5401IzquwYtZFDU62_BZe5t4MMH_vsl_n-OlC8DmE3TAuYL59BpGsjAUiiYKmyXt19iHlvSxRwnHOXcrL0tZZkBwMt6JXJAihCyIfWS5ZYZOvlrXleOJbjxL4_dwtH5z3dIiicVgsdefagncm7OtGLysfvqF9hePY98itO4GtP3sLCMwziLNNYudYkqwO0-nVMuTdxyLMBx0MOlp5OG4_wDawpRjBtW");'></div>
+                </a>
+                <!-- Icona carrello -->
+                <a href="carrello.html" class="relative">
+                    <div class="size-10 flex items-center justify-center bg-[#f3f6f4] rounded-full text-[#4a3729]">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m12-9l2 9m-6-9v9"/>
+                        </svg>
+                    </div>
+                </a>
                 <a href="login.html">
-                    <button
-                            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold leading-normal tracking-[0.015em]"
-                    >
+                    <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold leading-normal tracking-[0.015em]">
                         <span class="truncate">Accedi</span>
                     </button>
-                </a>
-                <a href="area_riservata.html">
-                    <div
-                            class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_MVb8XzjwZkF6O5ivyZadhiZ0XFu3eD3FcdLA4Ixll10kk5401IzquwYtZFDU62_BZe5t4MMH_vsl_n-OlC8DmE3TAuYL59BpGsjAUiiYKmyXt19iHlvSxRwnHOXcrL0tZZkBwMt6JXJAihCyIfWS5ZYZOvlrXleOJbjxL4_dwtH5z3dIiicVgsdefagncm7OtGLysfvqF9hePY98itO4GtP3sLCMwziLNNYudYkqwO0-nVMuTdxyLMBx0MOlp5OG4_wDawpRjBtW");'
-                    ></div>
                 </a>
             </div>
         </header>
@@ -80,117 +83,11 @@
                     <p class="max-w-2xl mx-auto">Scegli tra le nostre soluzioni flessibili di coworking, studiate per adattarsi a ogni necessità lavorativa. Dai pacchetti giornalieri alle soluzioni mensili, troverai la formula ideale per il tuo lavoro.</p>
                 </section>
 
-                <!-- OFFERTE -->
-                <section class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                    <!-- OFFERTA GIORNALIERA -->
-                    <div class="offer-card relative bg-[#f3f6f4] rounded-lg p-6 border border-[#2b2926]">
-                        <h3 class="text-[#2b2926] text-xl font-bold mb-4">Giornaliero</h3>
-                        <p class="text-[#2b2926] mb-6">Una postazione in una scrivania condivisa per uno o più giorni</p>
+                <section class="mb-12 w-full max-w-[1200px] mx-auto">
+                    <h2 class="text-[#212121] text-[25px] font-bold mb-6 text-center">Le Nostre Offerte e Disponibilità</h2>
 
-                        <div class="flex items-center gap-2 mb-6">
-                            <span class="text-[#2b2926] line-through">€ 30</span>
-                            <span class="text-[#2b2926] text-2xl font-bold">€ 25</span>
-                            <span class="text-[#2b2926]">al giorno + IVA</span>
-                        </div>
-
-                        <ul class="space-y-2 mb-8 text-[#2b2926]">
-                            <li class="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2b2926" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                                Accesso 24/7
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2b2926" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                                Wi-Fi ad alta velocità
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2b2926" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                                Caffè e snack inclusi
-                            </li>
-                        </ul>
-
-                        <div class="flex justify-between items-center">
-                            <button class="text-[#4a3729] text-sm font-medium flex items-center gap-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4a3729" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"></path></svg>
-                                Dettagli
-                            </button>
-                            <a href="checkout.html?tipo=giornaliero" class="bg-[#4a3729] hover:bg-[#2ec46d] text-[#f3f6f4] font-bold py-2 px-4 rounded">
-                                Prenota
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- OFFERTA SETTIMANALE -->
-                    <div class="offer-card relative bg-[#f3f6f4] rounded-lg p-6 border border-[#2b2926]">
-                        <h3 class="text-[#2b2926] text-xl font-bold mb-4">Settimanale</h3>
-                        <p class="text-[#2b2926] mb-6">Una comoda scrivania condivisa per un'intera settimana (o 7 giorni)</p>
-
-                        <div class="flex items-center gap-2 mb-6">
-                            <span class="text-[#2b2926] line-through">€ 130</span>
-                            <span class="text-[#2b2926] text-2xl font-bold">€ 110</span>
-                            <span class="text-[#2b2926]">alla settimana + IVA</span>
-                        </div>
-
-                        <ul class="space-y-2 mb-8 text-[#2b2926]">
-                            <li class="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2b2926" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                                Tutti i vantaggi del giornaliero
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2b2926" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                                Sconto del 15%
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2b2926" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                                Postazione garantita
-                            </li>
-                        </ul>
-
-                        <div class="flex justify-between items-center">
-                            <button class="text-[#4a3729] text-sm font-medium flex items-center gap-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4a3729" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"></path></svg>
-                                Dettagli
-                            </button>
-                            <a href="checkout.html?tipo=settimanale" class="bg-[#4a3729] hover:bg-[#2ec46d] text-[#f3f6f4] font-bold py-2 px-4 rounded">
-                                Prenota
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- OFFERTA MENSILE -->
-                    <div class="offer-card relative bg-[#f3f6f4] rounded-lg p-6 border border-[#2b2926]">
-                        <h3 class="text-[#2b2926] text-xl font-bold mb-4">Mensile</h3>
-                        <p class="text-[#2b2926] mb-6">Una scrivania dedicata esclusivamente a te per un intero mese (o 30 giorni)</p>
-
-                        <div class="flex items-center gap-2 mb-6">
-                            <span class="text-[#2b2926] line-through">€ 300</span>
-                            <span class="text-[#2b2926] text-2xl font-bold">€ 250</span>
-                            <span class="text-[#2b2926]">al mese + IVA</span>
-                        </div>
-
-                        <ul class="space-y-2 mb-8 text-[#2b2926]">
-                            <li class="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2b2926" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                                Tutti i vantaggi del settimanale
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2b2926" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                                Sconto del 17%
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2b2926" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                                Scrivanìa dedicata
-                            </li>
-                        </ul>
-
-                        <div class="flex justify-between items-center">
-                            <button class="text-[#4a3729] text-sm font-medium flex items-center gap-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4a3729" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"></path></svg>
-                                Dettagli
-                            </button>
-                            <a href="checkout.html?tipo=mensile" class="bg-[#4a3729] hover:bg-[#2ec46d] text-[#f3f6f4] font-bold py-2 px-4 rounded">
-                                Prenota
-                            </a>
-                        </div>
+                    <div id="offers-container" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                        <!-- Qui JS popolerà le offerte -->
                     </div>
                 </section>
 
@@ -219,7 +116,7 @@
                             <div class="flex items-center gap-2 mb-4">
                                 <span class="text-[#212121] text-xl font-bold">Prezzo su richiesta</span>
                             </div>
-                            <a href="ufficio-privato.html" class="inline-block bg-[#4a3729] hover:bg-[#4a3729] text-[#f3f6f4] font-bold py-2 px-4 rounded">
+                            <a href="sala-riunioni.html" class="inline-block bg-[#4a3729] hover:bg-[#4a3729] text-[#f3f6f4] font-bold py-2 px-4 rounded">
                                 Scopri di più
                             </a>
                         </div>
@@ -251,6 +148,7 @@
         </footer>
     </div>
 </div>
-<script src="/public/js/app.js"></script>
+<script src="js/app.js"></script>
+<script src="js/offerte.js"></script>
 </body>
 </html>
