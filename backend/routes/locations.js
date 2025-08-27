@@ -1,15 +1,10 @@
-const express = require('express');
+// routes/locations.js
+const express = require("express");
 const router = express.Router();
-const locationController = require('../controllers/locationController');
+const locationController = require("../controllers/locationController");
 
-// GET /api/locations
-router.get('/', locationController.getLocations);
-
-// GET /api/locations/:id
-router.get('/:id', locationController.getLocationById);
-
-// GET /api/locations/:id/workspaces
-router.get('/:id/workspaces', locationController.getWorkspacesByLocation);
+router.post("/", locationController.createLocation);
+router.get("/", locationController.getLocations);
+router.delete("/:id", locationController.deleteLocation);
 
 module.exports = router;
-

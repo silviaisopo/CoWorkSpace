@@ -34,71 +34,119 @@
         window.location.href = 'login.html';
     });
 });*/
-// js/dashboard_manager.js
-document.addEventListener("DOMContentLoaded", () => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    const token = localStorage.getItem("token");
-
-    // Redirect se non manager o non loggato
-    if (!user || !token || user.role !== "manager") {
-        window.location.href = "login.html";
-        return;
+// dashboard_manager.js
+document.addEventListener("DOMContentLoaded", async () => {
+    // ==========================
+    // 1️⃣ Mostra nome e ruolo
+    // ==========================
+    const manager = JSON.parse(localStorage.getItem("user")); // dati manager dal login
+    if (manager) {
+        document.getElementById("user-name").textContent = manager.name || "Manager";
+        document.getElementById("user-role").textContent = manager.role || "manager";
     }
 
-    // Popolo header sidebar
-    document.getElementById("user-name").textContent = user.name || "Manager";
-    document.getElementById("user-role").textContent = user.role || "";
+    // ==========================
+    // 2️⃣ Aggiungi sede
+    // ==========================
+    const addForm = document.getElementById("add-location-form");
+    addForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-    // Logout
-    const logoutBtn = document.getElementById("logout-btn");
-    logoutBtn.addEventListener("click", () => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
-        window.location.href = "login.html";
-    });
+        const formData = new FormData(addForm);
+        const data = Object.fromEntries(formData.entries());
+        data.manager_id = manager?.id || null;
 
-    // Funzioni gestione Sale
-    const saleList = document.getElementById("sale-list");
-    document.getElementById("add-sala").addEventListener("click", () => {
-        const val = document.getElementById("new-sala").value.trim();
-        if(val){
-            const li = document.createElement("li");
-            li.textContent = val;
-            saleList.appendChild(li);
-            document.getElementById("new-sala").value = "";
+        // Validazione base
+        if (!data.name || !data.address || !data.city || !data.type || !data.description || !data.capacity || !data.price_per_hour) {
+            return alert("❌ Compila tutti i campi obbligatori.");
+        }
+
+        try {
+            const res = await fetch("/api/locations", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            });
+            const result = await res.json();
+
+            if (res.ok) {
+                alert("✅ Sede aggiunta con successo!");
+                addForm.reset();
+                loadLocations();
+            } else {
+                alert("❌ Errore: " + (result.error || "Problema server"));
+            }
+        } catch (err) {
+            console.error(err);
+            alert("❌ Errore di connessione al server");
         }
     });
-    document.getElementById("remove-sala").addEventListener("click", () => {
-        if(saleList.lastChild) saleList.removeChild(saleList.lastChild);
+
+    // ==========================
+    // 3️⃣ Lista, ricerca ed elimina sedi
+    // ==========================
+    const locationsList = document.getElementById("locations-list");
+    const searchInput = document.getElementById("search-location");
+    const deleteBtn = document.getElementById("delete-location");
+    let selectedLocationId = null;
+
+    async function loadLocations(query = "") {
+        try {
+            const res = await fetch(`/api/locations?city=${encodeURIComponent(query)}`);
+            const locations = await res.json();
+
+            locationsList.innerHTML = locations
+                .map(
+                    (loc) =>
+                        `<li data-id="${loc.id}" class="cursor-pointer hover:bg-gray-100 p-2 rounded">${loc.name} - ${loc.city} (${loc.type})</li>`
+                )
+                .join("");
+        } catch (err) {
+            console.error(err);
+            locationsList.innerHTML = "<li>Errore nel caricamento delle sedi</li>";
+        }
+    }
+
+    // Carica tutte le sedi inizialmente
+    loadLocations();
+
+    // Ricerca dinamica
+    searchInput.addEventListener("input", () => {
+        loadLocations(searchInput.value);
     });
 
-    // Funzioni gestione Uffici
-    const ufficiList = document.getElementById("uffici-list");
-    document.getElementById("add-ufficio").addEventListener("click", () => {
-        const val = document.getElementById("new-ufficio").value.trim();
-        if(val){
-            const li = document.createElement("li");
-            li.textContent = val;
-            ufficiList.appendChild(li);
-            document.getElementById("new-ufficio").value = "";
-        }
-    });
-    document.getElementById("remove-ufficio").addEventListener("click", () => {
-        if(ufficiList.lastChild) ufficiList.removeChild(ufficiList.lastChild);
+    // Seleziona sede cliccata
+    locationsList.addEventListener("click", (e) => {
+        const li = e.target.closest("li");
+        if (!li) return;
+        selectedLocationId = li.dataset.id;
+
+        // evidenzia selezione
+        locationsList.querySelectorAll("li").forEach((el) => el.classList.remove("bg-gray-200"));
+        li.classList.add("bg-gray-200");
     });
 
-    // Funzioni gestione Postazioni
-    const postazioniList = document.getElementById("postazioni-list");
-    document.getElementById("add-postazione").addEventListener("click", () => {
-        const val = document.getElementById("new-postazione").value.trim();
-        if(val){
-            const li = document.createElement("li");
-            li.textContent = val;
-            postazioniList.appendChild(li);
-            document.getElementById("new-postazione").value = "";
+    // Elimina sede selezionata
+    deleteBtn.addEventListener("click", async () => {
+        if (!selectedLocationId) return alert("Seleziona prima una sede da eliminare");
+        if (!confirm("Sei sicuro di voler eliminare questa sede?")) return;
+
+        try {
+            const res = await fetch(`/api/locations/${selectedLocationId}`, {
+                method: "DELETE",
+            });
+            const result = await res.json();
+
+            if (res.ok) {
+                alert("✅ Sede eliminata con successo!");
+                selectedLocationId = null;
+                loadLocations();
+            } else {
+                alert("❌ Errore: " + (result.error || "Problema server"));
+            }
+        } catch (err) {
+            console.error(err);
+            alert("❌ Errore di connessione al server");
         }
-    });
-    document.getElementById("remove-postazione").addEventListener("click", () => {
-        if(postazioniList.lastChild) postazioniList.removeChild(postazioniList.lastChild);
     });
 });

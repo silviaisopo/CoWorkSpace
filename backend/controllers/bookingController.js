@@ -1,18 +1,18 @@
+// bookingController.js
 const Booking = require('../models/booking');
-const Workspace = require('../models/workspace');
 const Location = require('../models/location');
 
 // CREA PRENOTAZIONE
 const createBooking = async (req, res) => {
-  const { workspace_id, start_time, end_time } = req.body;
+  const { location_id, start_time, end_time } = req.body;
 
   try {
-    if (!workspace_id || !start_time || !end_time) {
+    if (!location_id || !start_time || !end_time) {
       return res.status(400).json({ error: 'Tutti i campi sono obbligatori' });
     }
 
-    const workspace = await Workspace.findByPk(workspace_id);
-    if (!workspace) return res.status(404).json({ error: 'Workspace non trovato' });
+    const location = await Location.findByPk(location_id);
+    if (!location) return res.status(404).json({ error: 'Location non trovata' });
 
     const startTime = new Date(start_time);
     const endTime = new Date(end_time);
@@ -22,11 +22,11 @@ const createBooking = async (req, res) => {
     }
 
     const durationHours = (endTime - startTime) / (1000 * 60 * 60);
-    const total_price = durationHours * parseFloat(workspace.price_per_hour);
+    const total_price = durationHours * parseFloat(location.price_per_hour);
 
     const booking = await Booking.create({
       user_id: req.user.id,
-      workspace_id,
+      location_id,
       start_time: startTime,
       end_time: endTime,
       total_price,
@@ -46,9 +46,7 @@ const getMyBookings = async (req, res) => {
   try {
     const bookings = await Booking.findAll({
       where: { user_id: req.user.id },
-      include: [
-        { model: Workspace, include: [Location] }
-      ],
+      include: [Location],
       order: [['start_time', 'DESC']]
     });
 
@@ -59,7 +57,7 @@ const getMyBookings = async (req, res) => {
   }
 };
 
-// 🔹 DELETE /api/bookings/:id
+// DELETE PRENOTAZIONE
 const deleteBooking = async (req, res) => {
   try {
     const booking = await Booking.findByPk(req.params.id);

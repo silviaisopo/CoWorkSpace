@@ -1,124 +1,3 @@
-<!--<!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CoWorkSpace - Dashboard Manager </title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-[#f3f6f4] text-[#212121] min-h-screen flex flex-col">
-
-<!-- NAVBAR
-<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#B8E0C2] px-10 py-3">
-  <div class="flex items-center gap-8">
-    <div class="flex items-center gap-4 text-[#212121]">
-      <div class="size-4">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path></svg>
-      </div>
-      <a href="index.html">
-        <h2 class="text-[#212121] text-lg font-bold leading-tight tracking-[-0.015em]">CoWorkSpace</h2>
-      </a>
-    </div>
-    <div class="flex items-center gap-9">
-      <a class="text-[#212121] text-sm font-bold leading-normal" href="catalogo.html">Esplora</a>
-      <a class="text-[#212121] text-sm font-bold leading-normal" href="about-us.html">Chi Siamo</a>
-      <a class="text-[#212121] text-sm font-bold leading-normal" href="contatti.html">Contatti</a>
-      <a class="text-[#212121] text-sm font-bold leading-normal" href="offerte.html">Prenota</a>
-    </div>
-  </div>
-  <!--<div class="flex flex-1 justify-end gap-8">
-    <button id="logout-btn" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold">
-      <span class="truncate">Logout</span>
-    </button>
-  </div>-->
-<!-- MAIN DASHBOARD
-<main class="flex-1 p-10 space-y-10">
-  <h1 class="text-2xl font-bold">Dashboard Manager</h1>
-
-
-  <!-- Sezione Sedi
-  <section class="grid md:grid-cols-2 gap-6">
-    <!-- Aggiungi Sede
-    <div class="bg-white border-2 border-[#6d5542] rounded-lg p-6 shadow">
-      <h2 class="text-lg font-bold mb-4">Aggiungi Sede</h2>
-      <form id="formAggiungiSede" class="flex flex-col gap-3">
-        <input type="text" placeholder="Nome Sede" class="border border-[#6d5542] rounded px-3 py-2">
-        <input type="text" placeholder="Indirizzo" class="border border-[#6d5542] rounded px-3 py-2">
-        <button type="submit" class="bg-[#4a3729] text-[#f3f6f4] rounded px-4 py-2 font-bold">Aggiungi</button>
-      </form>
-    </div>
-
-    <!-- Lista Sedi
-    <div class="bg-white border-2 border-[#6d5542] rounded-lg p-6 shadow">
-      <h2 class="text-lg font-bold mb-4">Sedi Esistenti</h2>
-      <table class="w-full text-sm border-collapse">
-        <thead>
-        <tr class="bg-[#6d5542] text-[#f3f6f4]">
-          <th class="px-3 py-2 text-left">Nome</th>
-          <th class="px-3 py-2 text-left">Indirizzo</th>
-          <th class="px-3 py-2 text-left">Azioni</th>
-        </tr>
-        </thead>
-        <tbody id="listaSedi">
-        <!-- Dati popolati da JS -->
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- Sezione Postazioni / Sale
-  <section class="grid md:grid-cols-2 gap-6">
-    <!-- Gestione Postazioni
-    <div class="bg-white border-2 border-[#6d5542] rounded-lg p-6 shadow">
-      <h2 class="text-lg font-bold mb-4">Aggiungi Sala/Postazione</h2>
-      <form id="formPostazioni" class="flex flex-col gap-3">
-        <select class="border border-[#6d5542] rounded px-3 py-2" id="sedeSelect">
-          <option value="Sala Riunioni" >Sala Riunione</option>
-            <option value="Postazione Condivisa" >Postazione Condivisa</option>
-          <!-- Dati sede popolati da JS
-        </select>
-        <input type="text" placeholder="Indirizzo" class="border border-[#6d5542] rounded px-3 py-2">
-        <input type="number" placeholder="Numero di posti" class="border border-[#6d5542] rounded px-3 py-2">
-        <button type="submit" class="bg-[#4a3729] text-[#f3f6f4] rounded px-4 py-2 font-bold">Aggiorna Disponibilità</button>
-      </form>
-    </div>
-
-    <!-- Lista Postazioni
-    <div class="bg-white border-2 border-[#6d5542] rounded-lg p-6 shadow">
-      <h2 class="text-lg font-bold mb-4">Postazioni / Sale</h2>
-      <table class="w-full text-sm border-collapse">
-        <thead>
-        <tr class="bg-[#6d5542] text-[#f3f6f4]">
-          <th class="px-3 py-2 text-left">Sede</th>
-          <th class="px-3 py-2 text-left">Postazione / Sala</th>
-          <th class="px-3 py-2 text-left">Disponibilità</th>
-        </tr>
-        </thead>
-        <tbody id="listaPostazioni">
-        <!-- Dati popolati da JS
-        </tbody>
-      </table>
-    </div>
-  </section>
-</main>
-
-<!-- FOOTER
-<footer class="flex justify-center px-4 mt-20">
-  <div class="max-w-[960px] w-full flex flex-col items-center text-secondary text-sm py-10">
-    <div class="flex flex-wrap justify-center gap-6 mb-4">
-      <a href="about-us.html">Chi siamo</a>
-      <a href="contatti.html">Contatti</a>
-      <a href="#">Termini</a>
-      <a href="#">Privacy</a>
-    </div>
-    <p>© 2025 Workspaces. Tutti i diritti riservati.</p>
-  </div>
-</footer>
-
-<script src="js/dashboard_manager.js"></script>
-</body>
-</html>-->
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -143,6 +22,7 @@
 </head>
 <body class="bg-[#f3f6f4]" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
 <div class="flex flex-col min-h-screen">
+
   <!-- HEADER -->
   <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#c4b5a7] px-10 py-3">
     <div class="flex items-center gap-8">
@@ -190,37 +70,32 @@
     <div class="flex-1 p-8 bg-[#f3f6f4]">
       <h1 class="text-[#4a3729] text-2xl font-bold mb-6">Dashboard Manager</h1>
 
-      <!-- GESTIONE SALE -->
-      <div class="bg-[#FFFFFF] rounded-lg p-6 border border-[#212121] mb-6">
-        <h2 class="text-[#4a3729] text-xl font-bold mb-4">Gestione Sale</h2>
-        <div class="flex gap-4">
-          <input type="text" id="new-sala" placeholder="Nome sala" class="border p-2 rounded">
-          <button id="add-sala" class="bg-[#4a3729] text-white px-4 py-2 rounded">Aggiungi</button>
-          <button id="remove-sala" class="bg-[#dc3545] text-white px-4 py-2 rounded">Rimuovi</button>
-        </div>
-        <ul id="sale-list" class="mt-4 list-disc list-inside"></ul>
+      <!-- FORM AGGIUNTA SEDE -->
+      <div class="bg-white rounded-lg p-6 border border-[#212121] mb-6 shadow-md">
+        <h2 class="text-[#4a3729] text-xl font-bold mb-4">Aggiungi una Sede</h2>
+        <form id="add-location-form" class="flex flex-col gap-3">
+          <input type="text" name="name" placeholder="Nome sede" required class="border p-2 rounded w-full">
+          <input type="text" name="address" placeholder="Indirizzo" required class="border p-2 rounded w-full">
+          <input type="text" name="city" placeholder="Città" required class="border p-2 rounded w-full">
+          <select name="type" required class="border p-2 rounded w-full">
+            <option value="ufficio privato">Ufficio Privato</option>
+            <option value="sala riunioni">Sala Riunioni</option>
+            <option value="postazione condivisa">Postazione Condivisa</option>
+          </select>
+          <input type="text" name="description" placeholder="Città" required class="border p-2 rounded w-full">
+          <input type="text" name="services" placeholder="Servizi (es: Wi-Fi, Proiettore)" class="border p-2 rounded w-full">
+          <input type="number" name="capacity" placeholder="Capienza" required class="border p-2 rounded w-full">
+          <input type="number" name="price_per_hour" placeholder="Prezzo/ora" required class="border p-2 rounded w-full" step="0.01">
+          <button type="submit" class="bg-[#4a3729] text-white px-4 py-2 rounded w-full">Aggiungi Sede</button>
+        </form>
       </div>
 
-      <!-- GESTIONE UFFICI -->
-      <div class="bg-[#FFFFFF] rounded-lg p-6 border border-[#212121] mb-6">
-        <h2 class="text-[#4a3729] text-xl font-bold mb-4">Gestione Uffici</h2>
-        <div class="flex gap-4">
-          <input type="text" id="new-ufficio" placeholder="Nome ufficio" class="border p-2 rounded">
-          <button id="add-ufficio" class="bg-[#4a3729] text-white px-4 py-2 rounded">Aggiungi</button>
-          <button id="remove-ufficio" class="bg-[#dc3545] text-white px-4 py-2 rounded">Rimuovi</button>
-        </div>
-        <ul id="uffici-list" class="mt-4 list-disc list-inside"></ul>
-      </div>
-
-      <!-- GESTIONE POSTAZIONI -->
-      <div class="bg-[#FFFFFF] rounded-lg p-6 border border-[#212121] mb-6">
-        <h2 class="text-[#4a3729] text-xl font-bold mb-4">Gestione Postazioni</h2>
-        <div class="flex gap-4">
-          <input type="text" id="new-postazione" placeholder="Nome postazione" class="border p-2 rounded">
-          <button id="add-postazione" class="bg-[#4a3729] text-white px-4 py-2 rounded">Aggiungi</button>
-          <button id="remove-postazione" class="bg-[#dc3545] text-white px-4 py-2 rounded">Rimuovi</button>
-        </div>
-        <ul id="postazioni-list" class="mt-4 list-disc list-inside"></ul>
+      <!-- FORM ELIMINAZIONE SEDE -->
+      <div class="bg-white rounded-lg p-6 border border-[#212121] mb-6 shadow-md">
+        <h2 class="text-[#4a3729] text-xl font-bold mb-4">Elimina una Sede</h2>
+        <input type="text" id="search-location" placeholder="Cerca per città o nome" class="border p-2 rounded w-full mb-3">
+        <ul id="locations-list" class="list-disc list-inside mb-3 max-h-64 overflow-y-auto"></ul>
+        <button id="delete-location" class="bg-red-600 text-white px-4 py-2 rounded w-full">Elimina Sede Selezionata</button>
       </div>
 
     </div>
@@ -240,7 +115,6 @@
     </div>
   </footer>
 </div>
-
-<script src="js/dashboard_manager.js"></script>
+<script src="/js/dashboard_manager.js"></script>
 </body>
 </html>
