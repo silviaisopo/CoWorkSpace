@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
     <link rel="stylesheet" href="/css/style.css">
-    <title>CoWorkSpace</title>
+    <title>CoWorkSpace - Area Riservata</title>
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style>
@@ -15,34 +15,16 @@
         .animate-fade-in-up {
             animation: fadeInUp 0.3s ease-out forwards;
         }
-
-        /* Sidebar */
-        .sidebar-container {
-            position: relative;
-            width: 16rem; /* w-64 */
-            background-color: #f3f6f4;
-        }
-
-        .sidebar-line {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            width: 1px;
-            background-color: #4a3729;
-        }
-
-        /* Riga del footer che parte esattamente dopo la sidebar */
-        footer .footer-line {
-            border-top: 1px solid #4a3729;
-            width: calc(100% - 16rem);
-            margin-left: 16rem;
-        }
+        .sidebar-container { position: relative; width: 16rem; background-color: #f3f6f4; }
+        .sidebar-line { position: absolute; top: 0; bottom: 0; right: 0; width: 1px; background-color: #4a3729; }
+        footer .footer-line { border-top: 1px solid #4a3729; width: calc(100% - 16rem); margin-left: 16rem; }
     </style>
 </head>
+
 <body class="bg-[#f3f6f4]" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
 <div class="flex flex-col min-h-screen">
-    <!-- HEADER -->
+    <h1 id="welcome-message"></h1>
+    <!-- HEADER-->
     <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#c4b5a7] px-10 py-3">
         <div class="flex items-center gap-8">
             <div class="flex items-center gap-4 text-[#4a3729]">
@@ -54,28 +36,27 @@
                 </a>
             </div>
             <div class="flex items-center gap-9">
-                <a class="text-[#4a3729] text-sm font-bold  leading-normal" href="catalogo.html">Esplora</a>
-                <a class="text-[#4a3729] text-sm font-bold  leading-normal" href="about-us.html">Chi Siamo</a>
-                <a class="text-[#4a3729] text-sm font-bold  leading-normal" href="contatti.html">Contatti</a>
-                <a class="text-[#4a3729] text-sm font-bold  leading-normal" href="offerte.html">Prenota</a>
+                <a class="text-[#4a3729] text-sm font-bold" href="catalogo.html">Esplora</a>
+                <a class="text-[#4a3729] text-sm font-bold" href="about-us.html">Chi Siamo</a>
+                <a class="text-[#4a3729] text-sm font-bold" href="contatti.html">Contatti</a>
+                <a class="text-[#4a3729] text-sm font-bold" href="offerte.html">Prenota</a>
             </div>
         </div>
         <div class="flex flex-1 justify-end gap-8">
-            <button onclick="logout()" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold leading-normal tracking-[0.015em]">
+            <button id="logout-btn" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold">
                 <span class="truncate">Logout</span>
             </button>
         </div>
     </header>
 
-    <!-- CONTENUTO PRINCIPALE -->
     <div class="flex flex-1 main-container">
         <!-- SIDEBAR -->
         <aside class="w-64 bg-[#f3f6f4] border-r border-[#4a3729] p-4 animate-fade-in-up">
             <div class="flex items-center gap-3 mb-8">
                 <div class="bg-cover bg-center rounded-full size-12" style='background-image:url("https://lh3.googleusercontent.com/aida-public/AB6AXuDFKjw25kx-CWVhvIZfBaBRYk0uPNb0p0WuP_cb0VfACRXiVCp-Z71ompgqnSySKXQW39r2-bNrcE3wL3GWmnwtibjIjT_k0kMqiFyMKAMo62K4j5To1XFkUnOHUZ1idWH9MaLBsCXU_rpIdt3mIwPGmPZTdF_1tI9edsYbtjo9Uq4Enla9GRkrm343m4HSD_UHctO15j3WPQwtC8ocfgGv7lM7uKPNtiR0Q-OrLuV3Mv_K-fm-ir2mEPSB6-EA13nrqH67B8bj0pXQ");'></div>
                 <div>
-                    <h1 class="text-[#4a3729] font-medium">Mario Rossi</h1>
-                    <p class="text-[#8b6b4d] text-sm">Premium Member</p>
+                    <h1 id="user-name" class="text-[#4a3729] font-medium">Caricamento...</h1>
+                    <p id="user-role" class="text-[#8b6b4d] text-sm"></p>
                 </div>
             </div>
             <nav class="space-y-1 text-[#4a3729] font-medium">
@@ -85,11 +66,19 @@
             </nav>
         </aside>
 
-        <!-- CONTENUTO -->
+        <!-- CONTENUTO-->
         <div class="flex-1 p-8 bg-[#f3f6f4]">
             <h1 class="text-[#4a3729] text-2xl font-bold mb-6">Dashboard</h1>
 
-            <!-- STATISTICHE -->
+            <!-- CARD PROFILO-->
+            <div class="bg-[#FFFFFF] rounded-lg p-6 border border-[#212121] mb-8">
+                <h2 class="text-[#4a3729] text-xl font-bold mb-4">Il tuo profilo</h2>
+                <p><strong>Nome:</strong> <span id="user-name-detail">Caricamento...</span></p>
+                <p><strong>Email:</strong> <span id="user-email">Caricamento...</span></p>
+                <p><strong>Ruolo:</strong> <span id="user-role-detail">Caricamento...</span></p>
+            </div>
+
+            <!-- STATISTICHE-->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div class="bg-[#FFFFFF] rounded-lg p-6 border border-[#212121]">
                     <h3 class="text-[#6d5542] text-sm font-medium mb-2">Prenotazioni Attive</h3>
@@ -105,7 +94,7 @@
                 </div>
             </div>
 
-            <!-- PRENOTAZIONI RECENTI -->
+            <!-- PRENOTAZIONI RECENTI-->
             <div class="bg-[#FFFFFF] rounded-lg p-6 border border-[#212121] mb-8">
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-[#4a3729] text-xl font-bold">Prenotazioni Recenti</h2>
@@ -167,7 +156,7 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
+    <!-- FOOTER-->
     <footer class="flex flex-col items-center px-4 mt-20 relative z-10">
         <div class="footer-line mb-6"></div>
         <div class="max-w-[960px] w-full flex flex-col items-center text-[#6d5542] text-sm pb-10">
@@ -181,7 +170,6 @@
         </div>
     </footer>
 </div>
-<script src="js/app.js"></script>
 <script src="js/area_riservata.js"></script>
 </body>
 </html>

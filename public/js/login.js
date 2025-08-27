@@ -1,39 +1,52 @@
-// Mostra/nascondi password
+// login.js
 function togglePassword(inputId) {
     const passwordInput = document.getElementById(inputId);
     passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
 }
 
-// Event listener per login
-document.getElementById('login-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('login-form');
+    const messageBox = document.getElementById('login-message');
 
-    const email = document.getElementById('login-email').value.trim();
-    const password = document.getElementById('login-password').value;
-    const errorMessage = document.getElementById('error-message');
-    if (errorMessage) errorMessage.textContent = '';
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-    try {
-        const response = await fetch('/api/auth/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password })
-        });
+        const email = document.getElementById('login-email').value.trim();
+        const password = document.getElementById('login-password').value;
 
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.message || 'Errore login');
+        // reset messaggi
+        messageBox.style.display = "none";
+        messageBox.textContent = "";
 
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('user', JSON.stringify(data.user));
+        try {
+            const response = await fetch('http://localhost:3000/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
 
-        // Reindirizza in base al ruolo
-        if (data.user.role === 'manager') {
-            window.location.href = '/dashboard-manager.html';
-        } else {
-            window.location.href = '/area_riservata.html';
+            const data = await response.json();
+
+            if (!response.ok || !data.success) {
+                throw new Error(data.message || 'Errore login');
+            }
+
+            // Salva token e user
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('user', JSON.stringify(data.user));
+
+            // Redirect in base al ruolo
+            if (data.user.role === 'manager') {
+                window.location.href = 'dashboard_manager.html';
+            } else {
+                window.location.href = 'area_riservata.html';
+            }
+
+        } catch (err) {
+            messageBox.textContent = err.message || 'Errore del server';
+            messageBox.style.display = "block";
+            messageBox.style.background = "#dc3545"; // rosso errore
+            messageBox.style.color = "#fff";
         }
-
-    } catch (err) {
-        if (errorMessage) errorMessage.textContent = err.message || 'Errore del server';
-    }
+    });
 });

@@ -26,11 +26,19 @@
       <a class="text-[#212121] text-sm font-bold leading-normal" href="offerte.html">Prenota</a>
     </div>
   </div>
+  <!--<div class="flex flex-1 justify-end gap-8">
+    <button id="logout-btn" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold">
+      <span class="truncate">Logout</span>
+    </button>
+  </div>-->
+  <div id="manager-info"></div>
+  <button id="logout-btn">Logout</button>
 </header>
 
 <!-- MAIN DASHBOARD -->
 <main class="flex-1 p-10 space-y-10">
   <h1 class="text-2xl font-bold">Dashboard Manager</h1>
+
 
   <!-- Sezione Sedi -->
   <section class="grid md:grid-cols-2 gap-6">
@@ -66,7 +74,7 @@
   <section class="grid md:grid-cols-2 gap-6">
     <!-- Gestione Postazioni -->
     <div class="bg-white border-2 border-[#6d5542] rounded-lg p-6 shadow">
-      <h2 class="text-lg font-bold mb-4">Gestione Postazioni</h2>
+      <h2 class="text-lg font-bold mb-4">Aggiungi Sala/Postazione</h2>
       <form id="formPostazioni" class="flex flex-col gap-3">
         <select class="border border-[#6d5542] rounded px-3 py-2" id="sedeSelect">
           <option value="Sala Riunioni" >Sala Riunione</option>

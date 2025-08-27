@@ -1,3 +1,4 @@
+// Middleware per autenticazione e autorizzazione basata su ruoli
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
@@ -61,5 +62,3 @@ module.exports = {
   isManager,
   isUser
 };
-
-

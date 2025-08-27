@@ -7,4 +7,3 @@ const { authenticate, isManager } = require('../middleware/authMiddleware');
 router.get('/bookings', authenticate, isManager, getManagerData);
 
 module.exports = router;
-

@@ -1,91 +1,83 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const token = localStorage.getItem('jwt_token');
-    if (token) {
-        window.location.href = 'area_riservata.html';
-    }
-
-    // Aggiorna anno corrente
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-
-    // Validazione password in tempo reale
-    document.getElementById('password').addEventListener('input', function() {
-        const password = this.value;
-        const strengthBar = document.getElementById('password-strength');
-
-        if (password.length === 0) {
-            strengthBar.style.width = '0%';
-            strengthBar.style.background = 'var(--secondary-color)';
-        } else if (password.length < 6) {
-            strengthBar.style.width = '33%';
-            strengthBar.style.background = '#dc3545';
-        } else if (password.length < 8) {
-            strengthBar.style.width = '66%';
-            strengthBar.style.background = '#ffc107';
-        } else {
-            strengthBar.style.width = '100%';
-            strengthBar.style.background = '#198754';
-        }
-    });
-
-    // Controlla corrispondenza password
-    document.getElementById('confirm-password').addEventListener('input', function() {
-        const password = document.getElementById('password').value;
-        const confirmPassword = this.value;
-        const matchDiv = document.getElementById('password-match');
-
-        if (confirmPassword && password !== confirmPassword) {
-            matchDiv.style.display = 'block';
-        } else {
-            matchDiv.style.display = 'none';
-        }
-    });
+//registrazione.js
+    document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('register-form');
+    const messageBox = document.getElementById('register-message');
 
     // Gestione registrazione
-    document.getElementById('register-form').addEventListener('submit', async function(e) {
-        e.preventDefault();
+    form.addEventListener('submit', async function(e) {
+    e.preventDefault();
 
-        const name = document.getElementById('register-name').value;
-        const email = document.getElementById('register-email').value;
-        const password = document.getElementById('register-password').value;
-        const confirmPassword = document.getElementById('register-confirm-password').value;
-        const role = document.getElementById('role-user-label').value;
+    const name = document.getElementById('register-name').value.trim();
+    const email = document.getElementById('register-email').value.trim();
+    const password = document.getElementById('register-password').value;
+    const confirmPassword = document.getElementById('register-confirm-password').value;
+    const role = document.querySelector('input[name="role"]:checked').value;
 
-        // Validazione
-        if (password !== confirmPassword) {
-            console.error('le password non coincidono');
-            return;
-        }
+    // Validazione
+    if (password !== confirmPassword) {
+    showMessage("Le password non coincidono!", true);
+    return;
+}
 
-        // Mostra loading
-        const submitBtn = this.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Registrazione in corso...';
-        submitBtn.disabled = true;
+    // Mostra loading
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Registrazione...';
+    submitBtn.disabled = true;
 
-        try {
-            const response = await fetch('http://localhost:3000/api/auth/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    email: email,
-                    password: password,
-                    full_name: name,
-                    role: role
-                })
-            });
-
-            let data;
-            data = await response.json();
-            setTimeout(() => {
-                window.location.href = 'login.html';
-            }, 1000);
-
-        } finally {
-            // Ripristina pulsante
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-        }
-    });
+    try {
+    const response = await fetch('http://localhost:3000/api/auth/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+    name: name,
+    email: email,
+    password: password,
+    role: role
+})
 });
+
+    const data = await response.json();
+
+    if (!response.ok || !data.success) {
+    console.error("Errore registrazione:", data);
+    showMessage("Errore: " + (data.message || "Impossibile registrarsi"), true);
+    return;
+}
+
+    console.log("Registrazione riuscita:", data);
+
+    // ✅ Svuota form
+    form.reset();
+
+    // ✅ Mostra messaggio di successo
+    showMessage("Registrazione avvenuta con successo, accedi!", false);
+
+    // ✅ Reindirizza dopo 2s
+    setTimeout(() => {
+    window.location.href = 'login.html';
+}, 2000);
+
+} catch (err) {
+    console.error("Errore di rete:", err);
+    showMessage("Errore di rete, riprova più tardi.", true);
+} finally {
+    submitBtn.innerHTML = originalText;
+    submitBtn.disabled = false;
+}
+});
+
+    // Funzione per mostrare messaggi
+    function showMessage(text, isError) {
+    messageBox.textContent = text;
+    messageBox.style.display = "block";
+    messageBox.style.background = isError ? "#dc3545" : "#4a3729"; // rosso se errore, marrone se ok
+    messageBox.style.color = "#fff";
+}
+});
+
+    // ✅ Funzione globale per mostrare/nascondere password
+    function togglePassword(fieldId) {
+    const input = document.getElementById(fieldId);
+    input.type = (input.type === "password") ? "text" : "password";
+}

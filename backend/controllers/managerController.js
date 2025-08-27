@@ -1,3 +1,4 @@
+// controller per gestire le richieste dei manager
 const Booking = require('../models/booking');
 const User = require('../models/user');
 const Workspace = require('../models/workspace');
@@ -41,4 +42,6 @@ const getManagerData = async (req, res) => {
   }
 };
 
+// 🔑 esporta la funzione correttamente
 module.exports = { getManagerData };
+
