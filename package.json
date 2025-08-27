@@ -1,0 +1,25 @@
+{
+  "name": "test-new-progetto-web",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teppyk9/TEST-NEW-progetto-web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/teppyk9/TEST-NEW-progetto-web/issues"
+  },
+  "homepage": "https://github.com/teppyk9/TEST-NEW-progetto-web#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "helmet-csp": "^4.0.0",
+    "sequelize": "^6.37.7"
+  }
+}
