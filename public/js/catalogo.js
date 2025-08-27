@@ -7,24 +7,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // --- Legge parametro search dalla URL ---
     const urlParams = new URLSearchParams(window.location.search);
-    const searchTerm = urlParams.get('search');
+    const searchTerm = urlParams.get('search'); // corrisponde a index.js
 
     if (searchTerm) {
         const cittaInput = document.getElementById('citta');
         if (cittaInput) {
             cittaInput.value = decodeURIComponent(searchTerm);
         }
-        applyFilters();
-    } else {
-        applyFilters();
     }
+
+    applyFilters();
 });
 
+// --- Applica filtri ai risultati ---
 function applyFilters() {
-    const tipo = document.getElementById('tipo').value;
-    const citta = document.getElementById('citta').value;
-    const strumento = document.getElementById('strumento').value;
+    const tipo = document.getElementById('tipo')?.value || '';
+    const citta = document.getElementById('citta')?.value || '';
+    const strumento = document.getElementById('strumento')?.value || '';
 
     const mockResults = [
         {
@@ -67,6 +68,7 @@ function applyFilters() {
     displayResults(filteredResults);
 }
 
+// --- Mostra risultati ---
 function displayResults(results) {
     const resultsContainer = document.getElementById('risultati');
     if (!resultsContainer) return;

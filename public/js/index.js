@@ -1,32 +1,47 @@
-// js/index.js
-function handleSearch() {
-    const searchInput = document.getElementById('search-input');
-    const searchTerm = searchInput.value.trim();
+// index.js
+document.addEventListener("DOMContentLoaded", () => {
 
-    if (!searchTerm) {
-        alert('Inserisci un termine di ricerca');
-        return;
-    }
+    // --- GESTIONE RICERCA ---
+    const searchInput = document.getElementById("search-input");
+    const searchForm = searchInput?.closest("form");
 
-    const encodedSearchTerm = encodeURIComponent(searchTerm);
-    window.location.href = `catalogo.html?search=${encodedSearchTerm}`;
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    const searchForm = document.querySelector('form[onsubmit="handleSearch(); return false;"]');
     if (searchForm) {
-        searchForm.addEventListener('submit', function(e) {
+        searchForm.addEventListener("submit", (e) => {
             e.preventDefault();
-            handleSearch();
+            const query = searchInput.value.trim();
+            if (!query) return;
+
+            // Reindirizza a catalogo.html con parametro search
+            const url = `catalogo.html?search=${encodeURIComponent(query)}`;
+            window.location.href = url;
         });
     }
 
-    const searchInput = document.getElementById('search-input');
-    if (searchInput) {
-        searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                handleSearch();
+    // --- BOTTONI ---
+    const signupBtn = document.querySelector('a[href="registrazione.html"] button');
+    if (signupBtn) {
+        signupBtn.addEventListener("click", () => window.location.href = "registrazione.html");
+    }
+
+    const loginBtn = document.querySelector('a[href="login.html"] button');
+    if (loginBtn) {
+        loginBtn.addEventListener("click", () => window.location.href = "login.html");
+    }
+
+    const profileBtn = document.getElementById("profile-btn");
+    if (profileBtn) {
+        profileBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const user = JSON.parse(localStorage.getItem("user"));
+            if (!user || !user.role) {
+                window.location.href = "login.html";
+            } else if (user.role === "manager") {
+                window.location.href = "dashboard_manager.html";
+            } else {
+                window.location.href = "area_riservata.html";
             }
         });
     }
 });
+
+

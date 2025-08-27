@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
@@ -8,7 +8,7 @@
 </head>
 <body class="bg-[#f3f6f4] text-[#212121] min-h-screen flex flex-col">
 
-<!-- NAVBAR -->
+<!-- NAVBAR
 <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#B8E0C2] px-10 py-3">
   <div class="flex items-center gap-8">
     <div class="flex items-center gap-4 text-[#212121]">
@@ -31,18 +31,14 @@
       <span class="truncate">Logout</span>
     </button>
   </div>-->
-  <div id="manager-info"></div>
-  <button id="logout-btn">Logout</button>
-</header>
-
-<!-- MAIN DASHBOARD -->
+<!-- MAIN DASHBOARD
 <main class="flex-1 p-10 space-y-10">
   <h1 class="text-2xl font-bold">Dashboard Manager</h1>
 
 
-  <!-- Sezione Sedi -->
+  <!-- Sezione Sedi
   <section class="grid md:grid-cols-2 gap-6">
-    <!-- Aggiungi Sede -->
+    <!-- Aggiungi Sede
     <div class="bg-white border-2 border-[#6d5542] rounded-lg p-6 shadow">
       <h2 class="text-lg font-bold mb-4">Aggiungi Sede</h2>
       <form id="formAggiungiSede" class="flex flex-col gap-3">
@@ -52,7 +48,7 @@
       </form>
     </div>
 
-    <!-- Lista Sedi -->
+    <!-- Lista Sedi
     <div class="bg-white border-2 border-[#6d5542] rounded-lg p-6 shadow">
       <h2 class="text-lg font-bold mb-4">Sedi Esistenti</h2>
       <table class="w-full text-sm border-collapse">
@@ -70,16 +66,16 @@
     </div>
   </section>
 
-  <!-- Sezione Postazioni / Sale -->
+  <!-- Sezione Postazioni / Sale
   <section class="grid md:grid-cols-2 gap-6">
-    <!-- Gestione Postazioni -->
+    <!-- Gestione Postazioni
     <div class="bg-white border-2 border-[#6d5542] rounded-lg p-6 shadow">
       <h2 class="text-lg font-bold mb-4">Aggiungi Sala/Postazione</h2>
       <form id="formPostazioni" class="flex flex-col gap-3">
         <select class="border border-[#6d5542] rounded px-3 py-2" id="sedeSelect">
           <option value="Sala Riunioni" >Sala Riunione</option>
             <option value="Postazione Condivisa" >Postazione Condivisa</option>
-          <!-- Dati sede popolati da JS -->
+          <!-- Dati sede popolati da JS
         </select>
         <input type="text" placeholder="Indirizzo" class="border border-[#6d5542] rounded px-3 py-2">
         <input type="number" placeholder="Numero di posti" class="border border-[#6d5542] rounded px-3 py-2">
@@ -87,7 +83,7 @@
       </form>
     </div>
 
-    <!-- Lista Postazioni -->
+    <!-- Lista Postazioni
     <div class="bg-white border-2 border-[#6d5542] rounded-lg p-6 shadow">
       <h2 class="text-lg font-bold mb-4">Postazioni / Sale</h2>
       <table class="w-full text-sm border-collapse">
@@ -99,14 +95,14 @@
         </tr>
         </thead>
         <tbody id="listaPostazioni">
-        <!-- Dati popolati da JS -->
+        <!-- Dati popolati da JS
         </tbody>
       </table>
     </div>
   </section>
 </main>
 
-<!-- FOOTER -->
+<!-- FOOTER
 <footer class="flex justify-center px-4 mt-20">
   <div class="max-w-[960px] w-full flex flex-col items-center text-secondary text-sm py-10">
     <div class="flex flex-wrap justify-center gap-6 mb-4">
@@ -121,5 +117,130 @@
 
 <script src="js/dashboard_manager.js"></script>
 </body>
-</html>
+</html>-->
 
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+  <link rel="stylesheet" href="/css/style.css">
+  <title>CoWorkSpace - Dashboard Manager</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style>
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-up {
+      animation: fadeInUp 0.3s ease-out forwards;
+    }
+    .sidebar-container { position: relative; width: 16rem; background-color: #f3f6f4; }
+    .sidebar-line { position: absolute; top: 0; bottom: 0; right: 0; width: 1px; background-color: #4a3729; }
+    footer .footer-line { border-top: 1px solid #4a3729; width: calc(100% - 16rem); margin-left: 16rem; }
+  </style>
+</head>
+<body class="bg-[#f3f6f4]" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
+<div class="flex flex-col min-h-screen">
+  <!-- HEADER -->
+  <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#c4b5a7] px-10 py-3">
+    <div class="flex items-center gap-8">
+      <div class="flex items-center gap-4 text-[#4a3729]">
+        <div class="size-4">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path></svg>
+        </div>
+        <a href="index.html">
+          <h2 class="text-[#4a3729] text-lg font-bold leading-tight tracking-[-0.015em]">CoWorkSpace</h2>
+        </a>
+      </div>
+      <div class="flex items-center gap-9">
+        <a class="text-[#4a3729] text-sm font-bold" href="catalogo.html">Esplora</a>
+        <a class="text-[#4a3729] text-sm font-bold" href="about-us.html">Chi Siamo</a>
+        <a class="text-[#4a3729] text-sm font-bold" href="contatti.html">Contatti</a>
+        <a class="text-[#4a3729] text-sm font-bold" href="offerte.html">Prenota</a>
+      </div>
+    </div>
+    <div class="flex flex-1 justify-end gap-8">
+      <button id="logout-btn" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold">
+        <span class="truncate">Logout</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="flex flex-1 main-container">
+    <!-- SIDEBAR -->
+    <aside class="w-64 bg-[#f3f6f4] border-r border-[#4a3729] p-4 animate-fade-in-up">
+      <div class="flex items-center gap-3 mb-8">
+        <div class="bg-cover bg-center rounded-full size-12" style='background-image:url("https://lh3.googleusercontent.com/aida-public/AB6AXuDFKjw25kx-CWVhvIZfBaBRYk0uPNb0p0WuP_cb0VfACRXiVCp-Z71ompgqnSySKXQW39r2-bNrcE3wL3GWmnwtibjIjT_k0kMqiFyMKAMo62K4j5To1XFkUnOHUZ1idWH9MaLBsCXU_rpIdt3mIwPGmPZTdF_1tI9edsYbtjo9Uq4Enla9GRkrm343m4HSD_UHctO15j3WPQwtC8ocfgGv7lM7uKPNtiR0Q-OrLuV3Mv_K-fm-ir2mEPSB6-EA13nrqH67B8bj0pXQ");'></div>
+        <div>
+          <h1 id="user-name" class="text-[#4a3729] font-medium">Caricamento...</h1>
+          <p id="user-role" class="text-[#8b6b4d] text-sm"></p>
+        </div>
+      </div>
+      <nav class="space-y-1 text-[#4a3729] font-medium">
+        <a href="dashboard_manager.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">🏠 Dashboard</a>
+        <a href="gestione_sale.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">🏢 Sale</a>
+        <a href="gestione_uffici.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">🏬 Uffici</a>
+        <a href="gestione_postazioni.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">💺 Postazioni</a>
+      </nav>
+    </aside>
+
+    <!-- CONTENUTO DASHBOARD -->
+    <div class="flex-1 p-8 bg-[#f3f6f4]">
+      <h1 class="text-[#4a3729] text-2xl font-bold mb-6">Dashboard Manager</h1>
+
+      <!-- GESTIONE SALE -->
+      <div class="bg-[#FFFFFF] rounded-lg p-6 border border-[#212121] mb-6">
+        <h2 class="text-[#4a3729] text-xl font-bold mb-4">Gestione Sale</h2>
+        <div class="flex gap-4">
+          <input type="text" id="new-sala" placeholder="Nome sala" class="border p-2 rounded">
+          <button id="add-sala" class="bg-[#4a3729] text-white px-4 py-2 rounded">Aggiungi</button>
+          <button id="remove-sala" class="bg-[#dc3545] text-white px-4 py-2 rounded">Rimuovi</button>
+        </div>
+        <ul id="sale-list" class="mt-4 list-disc list-inside"></ul>
+      </div>
+
+      <!-- GESTIONE UFFICI -->
+      <div class="bg-[#FFFFFF] rounded-lg p-6 border border-[#212121] mb-6">
+        <h2 class="text-[#4a3729] text-xl font-bold mb-4">Gestione Uffici</h2>
+        <div class="flex gap-4">
+          <input type="text" id="new-ufficio" placeholder="Nome ufficio" class="border p-2 rounded">
+          <button id="add-ufficio" class="bg-[#4a3729] text-white px-4 py-2 rounded">Aggiungi</button>
+          <button id="remove-ufficio" class="bg-[#dc3545] text-white px-4 py-2 rounded">Rimuovi</button>
+        </div>
+        <ul id="uffici-list" class="mt-4 list-disc list-inside"></ul>
+      </div>
+
+      <!-- GESTIONE POSTAZIONI -->
+      <div class="bg-[#FFFFFF] rounded-lg p-6 border border-[#212121] mb-6">
+        <h2 class="text-[#4a3729] text-xl font-bold mb-4">Gestione Postazioni</h2>
+        <div class="flex gap-4">
+          <input type="text" id="new-postazione" placeholder="Nome postazione" class="border p-2 rounded">
+          <button id="add-postazione" class="bg-[#4a3729] text-white px-4 py-2 rounded">Aggiungi</button>
+          <button id="remove-postazione" class="bg-[#dc3545] text-white px-4 py-2 rounded">Rimuovi</button>
+        </div>
+        <ul id="postazioni-list" class="mt-4 list-disc list-inside"></ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="flex flex-col items-center px-4 mt-20 relative z-10">
+    <div class="footer-line mb-6"></div>
+    <div class="max-w-[960px] w-full flex flex-col items-center text-[#6d5542] text-sm pb-10">
+      <div class="flex flex-wrap justify-center gap-6 mb-4">
+        <a href="about-us.html" class="hover:text-[#4a3729]">Chi siamo</a>
+        <a href="contatti.html" class="hover:text-[#4a3729]">Contatti</a>
+        <a href="#" class="hover:text-[#4a3729]">Termini</a>
+        <a href="#" class="hover:text-[#4a3729]">Privacy</a>
+      </div>
+      <p>© 2025 Workspaces. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+</div>
+
+<script src="js/dashboard_manager.js"></script>
+</body>
+</html>

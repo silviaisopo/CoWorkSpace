@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
 require("dotenv").config();
 
-const databaseUrl = process.env.DB_URI || "npmpostgres://postgres:1234567890@localhost:5432/Progetto_Web";
+const databaseUrl = process.env.DB_URI || "npmpostgres://postgres:Silvia24@localhost:5432/CoWorkSpace";
 
 const sequelize = new Sequelize(databaseUrl, {
     dialect: "postgres",
