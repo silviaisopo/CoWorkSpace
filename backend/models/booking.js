@@ -1,3 +1,4 @@
+//model for bookings table
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/db');
 const Location = require('./location');

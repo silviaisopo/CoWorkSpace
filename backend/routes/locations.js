@@ -35,6 +35,19 @@ router.get("/public", async (req, res) => {
 // GET /api/locations/manager -> solo manager vede le proprie sedi
 router.get('/manager', authenticate, isManager, locationController.getManagerLocations);
 
+// GET /api/locations/:id -> info singola sede
+router.get("/:id", async (req, res) => {
+    try {
+        const location = await Location.findByPk(req.params.id);
+        if (!location) return res.status(404).json({ error: "Sede non trovata" });
+        res.json(location);
+    } catch (err) {
+        console.error("Errore get /:id:", err);
+        res.status(500).json({ error: "Errore del server" });
+    }
+});
+
+
 module.exports = router;
 
 
