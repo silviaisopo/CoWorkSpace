@@ -29,10 +29,16 @@ exports.login = async (req, res) => {
     const match = await bcrypt.compare(password, user.password);
     if (!match) return res.status(401).json({ success: false, message: 'Email o password errati' });
 
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET || 'supersegreto123', { expiresIn: '2h' });
+    const token = jwt.sign(
+        { id: user.id, role: user.role, email: user.email },
+        process.env.JWT_SECRET || 'supersegreto123',
+        { expiresIn: '2h' }
+    );
     return res.json({ success: true, token, user: { id: user.id, name: user.name, email: user.email, role: user.role } });
   } catch (err) {
     console.error(err);
     return res.status(500).json({ success: false, message: 'Errore server' });
   }
 };
+
+

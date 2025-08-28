@@ -49,8 +49,13 @@ const Location = sequelize.define('Location', {
             model: 'users',
             key: 'id'
         }
-    }
-}, {
+    },
+    image_url: {
+            type: DataTypes.STRING(255),
+            allowNull: true
+        }
+    },
+    {
     tableName: 'locations',
     timestamps: false
 });

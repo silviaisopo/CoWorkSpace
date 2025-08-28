@@ -1,3 +1,4 @@
+<!-- dashboard con side bar e possibilità di aggiungere sede, tutte le sedi+ possibilità di eliminarle in sedi_manager-->
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -60,9 +61,9 @@
       </div>
       <nav class="space-y-1 text-[#4a3729] font-medium">
         <a href="dashboard_manager.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">🏠 Dashboard</a>
-        <a href="gestione_sale.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">🏢 Sale</a>
-        <a href="gestione_uffici.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">🏬 Uffici</a>
-        <a href="gestione_postazioni.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">💺 Postazioni</a>
+        <a href="sedi_manager.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">🏢 Sedi</a>
+        <a href="sedi_manager.html#search-location" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">🏬 Elimina sede</a>
+        <a href="prenotazioni_manager.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">💺 Prenotazioni</a>
       </nav>
     </aside>
 
@@ -70,34 +71,41 @@
     <div class="flex-1 p-8 bg-[#f3f6f4]">
       <h1 class="text-[#4a3729] text-2xl font-bold mb-6">Dashboard Manager</h1>
 
+      <div class="bg-white rounded-lg p-6 border border-[#212121] mb-6 shadow-m" style="max-width: 800px;">
+        <h2 class="text-[#4a3729] text-xl font-bold mb-4">Il tuo profilo</h2>
+        <p><strong>Nome:</strong> <span id="user-name-detail">Caricamento...</span></p>
+        <p><strong>Email:</strong> <span id="user-email">Caricamento...</span></p>
+        <p><strong>Ruolo:</strong> <span id="user-role-detail">Caricamento...</span></p>
+      </div>
+
       <!-- FORM AGGIUNTA SEDE -->
-      <div class="bg-white rounded-lg p-6 border border-[#212121] mb-6 shadow-md">
+      <div class="bg-white rounded-lg p-6 border border-[#212121] mb-6 shadow-m" style="max-width: 800px;">
         <h2 class="text-[#4a3729] text-xl font-bold mb-4">Aggiungi una Sede</h2>
-        <form id="add-location-form" class="flex flex-col gap-3">
-          <input type="text" name="name" placeholder="Nome sede" required class="border p-2 rounded w-full">
+        <form id="add-location-form" class="flex flex-col gap-3" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="Nome sede" required class="border p-2 rounded w-full">
           <input type="text" name="address" placeholder="Indirizzo" required class="border p-2 rounded w-full">
           <input type="text" name="city" placeholder="Città" required class="border p-2 rounded w-full">
           <select name="type" required class="border p-2 rounded w-full">
+            <option value="" disabled selected>Seleziona il tipo di sede</option>
             <option value="ufficio privato">Ufficio Privato</option>
             <option value="sala riunioni">Sala Riunioni</option>
             <option value="postazione condivisa">Postazione Condivisa</option>
           </select>
-          <input type="text" name="description" placeholder="Città" required class="border p-2 rounded w-full">
+          <input type="text" name="description" placeholder="Descrizione" required class="border p-2 rounded w-full">
           <input type="text" name="services" placeholder="Servizi (es: Wi-Fi, Proiettore)" class="border p-2 rounded w-full">
           <input type="number" name="capacity" placeholder="Capienza" required class="border p-2 rounded w-full">
           <input type="number" name="price_per_hour" placeholder="Prezzo/ora" required class="border p-2 rounded w-full" step="0.01">
+          <div>
+            <label for="image-upload" class="upload-label">
+              <i class="fas fa-upload mr-2"></i> Seleziona immagine dal computer
+            </label>
+            <input type="file" id="image-upload" name="image" accept="image/*" class="hidden">
+            <img id="image-preview" class="image-preview" alt="Anteprima immagine">
+          </div>
+
           <button type="submit" class="bg-[#4a3729] text-white px-4 py-2 rounded w-full">Aggiungi Sede</button>
         </form>
       </div>
-
-      <!-- FORM ELIMINAZIONE SEDE -->
-      <div class="bg-white rounded-lg p-6 border border-[#212121] mb-6 shadow-md">
-        <h2 class="text-[#4a3729] text-xl font-bold mb-4">Elimina una Sede</h2>
-        <input type="text" id="search-location" placeholder="Cerca per città o nome" class="border p-2 rounded w-full mb-3">
-        <ul id="locations-list" class="list-disc list-inside mb-3 max-h-64 overflow-y-auto"></ul>
-        <button id="delete-location" class="bg-red-600 text-white px-4 py-2 rounded w-full">Elimina Sede Selezionata</button>
-      </div>
-
     </div>
   </div>
 

@@ -10,18 +10,19 @@ document.addEventListener('DOMContentLoaded', () => {
     tabPast.addEventListener('click', () => switchTab('past'));
 });
 
-// Popola nome e ruolo utente come in area_riservata
-function populateUserProfile() {
+document.addEventListener("DOMContentLoaded", () => {
     const user = JSON.parse(localStorage.getItem("user"));
-    if (!user) return;
+    const token = localStorage.getItem("token");
 
-    const userNameElements = document.querySelectorAll("#user-name, #user-name-detail");
-    const userEmailElements = document.querySelectorAll("#user-email");
-    const userRoleElements = document.querySelectorAll("#user-role, #user-role-detail");
+    // Se non sei loggato → redirect
+    if (!user || !token) {
+        window.location.href = "login.html";
+        return;
+    }
 
-    userNameElements.forEach(el => el.textContent = user.name || "Utente");
-    userEmailElements.forEach(el => el.textContent = user.email || "");
-    userRoleElements.forEach(el => el.textContent = user.role || "");
+    // Popolo i dati dell'utente
+    document.getElementById("user-name").textContent = user.name || "Utente";
+    document.getElementById("user-role").textContent = user.role || "";
 
     // Logout
     const logoutBtn = document.getElementById("logout-btn");
@@ -32,7 +33,7 @@ function populateUserProfile() {
             window.location.href = "login.html";
         });
     }
-}
+});
 
 // Gestione tab attive/passate
 function switchTab(tab) {

@@ -1,64 +1,11 @@
-//locationController.js
-/*const { Op } = require('sequelize');
-const Location = require('../models/location');
-
-
-exports.createLocation = async (req, res) => {
-  const { name, address, city, description, type, capacity, service, price_per_hour, manager_id } = req.body;
-  try {
-    const newLocation = await Location.create({
-      name,
-      address,
-      city,
-      description,
-      type,
-      capacity,
-      service,
-      price_per_hour,
-      manager_id
-    });
-    res.status(201).json(newLocation);
-  } catch (err) {
-    console.error('Errore createLocation:', err);
-    res.status(500).json({ message: 'Errore server' });
-  }
-};
-
-exports.getLocations = async (req, res) => {
-  const { city } = req.query;
-  try {
-    const whereClause = city ? { city: { [Op.iLike]: `%${city}%` } } : {};
-    const locations = await Location.findAll({ where: whereClause });
-    res.status(200).json(locations);
-  } catch (err) {
-    console.error('Errore getLocations:', err);
-    res.status(500).json({ message: 'Errore server' });
-  }
-};
-
-exports.getLocationById = async (req, res) => {
-  try {
-    const location = await Location.findByPk(req.params.id);
-    if (!location) {
-      return res.status(404).json({ message: 'Location non trovata' });
-    }
-    res.status(200).json(location);
-  } catch (err) {
-    console.error('Errore getLocationById:', err);
-    res.status(500).json({ message: 'Errore server' });
-  }
-};*/
 // controllers/locationsController.js
-
 const Location = require('../models/location');
 
 exports.createLocation = async (req, res) => {
   try {
     const { name, address, city, description, capacity, price_per_hour, type, services, manager_id } = req.body;
 
-    if (!name || !address || !city || !capacity || !price_per_hour || !type) {
-      return res.status(400).json({ error: "Campi obbligatori mancanti" });
-    }
+    const image_url = req.file ? `/uploads/${req.file.filename}`.slice(0, 255) : null;
 
     const location = await Location.create({
       name,
@@ -68,13 +15,28 @@ exports.createLocation = async (req, res) => {
       capacity,
       price_per_hour,
       type,
-      service: services || null,
-      manager_id: manager_id || null
+      services: services || null,
+      manager_id: manager_id || null,
+      image_url
     });
 
     res.status(201).json({ message: "Sede creata con successo", id: location.id });
   } catch (err) {
     console.error("Errore creazione sede:", err);
+    res.status(500).json({ error: "Errore del server" });
+  }
+};
+
+// OTTIENI TUTTE LE SEDI DI UN MANAGER
+exports.getManagerLocations = async (req, res) => {
+  try {
+    const managerId = req.user.id; // recupera id dal token autenticato
+    const locations = await Location.findAll({
+      where: { manager_id: managerId }
+    });
+    res.status(200).json(locations);
+  } catch (err) {
+    console.error("Errore getManagerLocations:", err);
     res.status(500).json({ error: "Errore del server" });
   }
 };

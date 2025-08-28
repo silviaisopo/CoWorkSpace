@@ -1,17 +1,3 @@
--- ENUM per tipi di location
-DO $$ BEGIN
-    CREATE TYPE location_type_enum AS ENUM ('sala riunioni', 'ufficio privato', 'postazione condivisa');
-EXCEPTION
-    WHEN duplicate_object THEN null;
-END $$;
-
--- ENUM per servizi
-DO $$ BEGIN
-    CREATE TYPE location_service_enum AS ENUM ('Wi-Fi', 'Proiettore', 'Stampante', 'LIM', 'Aria condizionata');
-EXCEPTION
-    WHEN duplicate_object THEN null;
-END $$;
-
 -- Users Table
 CREATE TABLE IF NOT EXISTS public.users (
                                             id SERIAL PRIMARY KEY,
@@ -30,9 +16,9 @@ CREATE TABLE IF NOT EXISTS public.locations (
                                                 address TEXT NOT NULL,
                                                 city VARCHAR(255) NOT NULL,
                                                 description TEXT,
-                                                type location_type_enum NOT NULL DEFAULT 'ufficio privato',
+                                               type VARCHAR(50) ,
+                                                services TEXT,
                                                 capacity INTEGER NOT NULL DEFAULT 1,
-                                                service location_service_enum NOT NULL DEFAULT 'Wi-Fi',
                                                 price_per_hour NUMERIC(10, 2) NOT NULL,
                                                 manager_id INTEGER REFERENCES public.users(id)
 );

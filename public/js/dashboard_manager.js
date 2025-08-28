@@ -1,152 +1,135 @@
-/*document.addEventListener('DOMContentLoaded', async () => {
-    const managerBox = document.getElementById('manager-info');
-    const logoutBtn = document.getElementById('logout-btn');
-
+async function checkManagerAuth() {
     const token = localStorage.getItem('token');
-    if (!token) {
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    // Se non c'è token o user, reindirizza al login
+    if (!token || !user) {
         alert('Devi effettuare il login!');
         window.location.href = 'login.html';
-        return;
+        return false;
     }
 
+    // Verifica che l'utente sia un manager
+    if (user.role !== 'manager') {
+        alert('Accesso consentito solo ai manager!');
+        window.location.href = 'index.html';
+        return false;
+    }
+
+    // Verifica la validità del token con il server
     try {
         const res = await fetch('/api/manager/profile', {
             headers: { 'Authorization': `Bearer ${token}` }
         });
-        const data = await res.json();
-        if (!data.success) throw new Error('Token non valido');
 
-        const manager = data.manager;
-        managerBox.innerHTML = `
-            <p>Nome: ${manager.name}</p>
-            <p>Email: ${manager.email}</p>
-            <p>Ruolo: ${manager.role}</p>
-        `;
+        if (!res.ok) {
+            throw new Error('Token non valido');
+        }
+
+        const data = await res.json();
+        return data.manager || user;
+
     } catch (err) {
-        console.error(err);
+        console.error('Errore autenticazione:', err);
         alert('Sessione scaduta, effettua nuovamente il login.');
         localStorage.clear();
         window.location.href = 'login.html';
+        return false;
+    }
+}
+
+// Funzione di logout
+function setupLogout() {
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            localStorage.clear();
+            window.location.href = 'login.html';
+        });
+    }
+}
+
+// Inizializzazione della dashboard manager
+document.addEventListener('DOMContentLoaded', async () => {
+    // Verifica autenticazione
+    const manager = await checkManagerAuth();
+    if (!manager) return;
+
+    // Imposta le informazioni del manager nell'UI
+    document.getElementById('user-name').textContent = manager.name || 'Manager';
+    document.getElementById('user-role').textContent = manager.role || '';
+    document.getElementById('user-name-detail').textContent = manager.name || '';
+    document.getElementById('user-email').textContent = manager.email || '';
+    document.getElementById('user-role-detail').textContent = manager.role || '';
+
+    // Configura il logout
+    setupLogout();
+
+    // Gestione anteprima immagine
+    const imageUpload = document.getElementById('image-upload');
+    if (imageUpload) {
+        imageUpload.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('image-preview');
+                    if (preview) {
+                        preview.src = e.target.result;   // mostra anteprima
+                        preview.style.display = 'block';
+                    }
+
+                    // NON impostiamo più image-url qui
+                    // Il backend creerà l'URL corretto al momento del salvataggio
+
+                    alert(`Immagine "${file.name}" selezionata. Verrà caricata sul server all'invio del form.`);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
     }
 
-    logoutBtn.addEventListener('click', () => {
-        localStorage.clear();
-        window.location.href = 'login.html';
-    });
-});*/
-// dashboard_manager.js
-document.addEventListener("DOMContentLoaded", async () => {
-    // ==========================
-    // 1️⃣ Mostra nome e ruolo
-    // ==========================
-    const manager = JSON.parse(localStorage.getItem("user")); // dati manager dal login
-    if (manager) {
-        document.getElementById("user-name").textContent = manager.name || "Manager";
-        document.getElementById("user-role").textContent = manager.role || "manager";
-    }
-
-    // ==========================
-    // 2️⃣ Aggiungi sede
-    // ==========================
-    const addForm = document.getElementById("add-location-form");
-    addForm.addEventListener("submit", async (e) => {
+    const addForm = document.getElementById('add-location-form');
+    addForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         const formData = new FormData(addForm);
-        const data = Object.fromEntries(formData.entries());
-        data.manager_id = manager?.id || null;
+        formData.append('manager_id', manager.id);  // aggiungi id manager
 
-        // Validazione base
-        if (!data.name || !data.address || !data.city || !data.type || !data.description || !data.capacity || !data.price_per_hour) {
-            return alert("❌ Compila tutti i campi obbligatori.");
+        // Validazione
+        if (!formData.get('name') || !formData.get('address') || !formData.get('city') ||
+            !formData.get('type') || !formData.get('description') ||
+            !formData.get('capacity') || !formData.get('price_per_hour')) {
+            return alert('❌ Compila tutti i campi obbligatori.');
         }
 
         try {
-            const res = await fetch("/api/locations", {
+            const token = localStorage.getItem('token');
+            const response = await fetch("/api/locations", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data),
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                },
+                body: formData
             });
-            const result = await res.json();
 
-            if (res.ok) {
-                alert("✅ Sede aggiunta con successo!");
+            const result = await response.json();
+
+            if (response.ok) {
+                alert('✅ Sede aggiunta con successo!');
                 addForm.reset();
-                loadLocations();
+
+                // Nascondi anteprima immagine
+                const preview = document.getElementById('image-preview');
+                if (preview) preview.style.display = 'none';
+
+                if (typeof loadLocations === 'function') loadLocations();
             } else {
-                alert("❌ Errore: " + (result.error || "Problema server"));
+                alert('❌ Errore: ' + (result.error || 'Problema server'));
             }
         } catch (err) {
             console.error(err);
-            alert("❌ Errore di connessione al server");
-        }
-    });
-
-    // ==========================
-    // 3️⃣ Lista, ricerca ed elimina sedi
-    // ==========================
-    const locationsList = document.getElementById("locations-list");
-    const searchInput = document.getElementById("search-location");
-    const deleteBtn = document.getElementById("delete-location");
-    let selectedLocationId = null;
-
-    async function loadLocations(query = "") {
-        try {
-            const res = await fetch(`/api/locations?city=${encodeURIComponent(query)}`);
-            const locations = await res.json();
-
-            locationsList.innerHTML = locations
-                .map(
-                    (loc) =>
-                        `<li data-id="${loc.id}" class="cursor-pointer hover:bg-gray-100 p-2 rounded">${loc.name} - ${loc.city} (${loc.type})</li>`
-                )
-                .join("");
-        } catch (err) {
-            console.error(err);
-            locationsList.innerHTML = "<li>Errore nel caricamento delle sedi</li>";
-        }
-    }
-
-    // Carica tutte le sedi inizialmente
-    loadLocations();
-
-    // Ricerca dinamica
-    searchInput.addEventListener("input", () => {
-        loadLocations(searchInput.value);
-    });
-
-    // Seleziona sede cliccata
-    locationsList.addEventListener("click", (e) => {
-        const li = e.target.closest("li");
-        if (!li) return;
-        selectedLocationId = li.dataset.id;
-
-        // evidenzia selezione
-        locationsList.querySelectorAll("li").forEach((el) => el.classList.remove("bg-gray-200"));
-        li.classList.add("bg-gray-200");
-    });
-
-    // Elimina sede selezionata
-    deleteBtn.addEventListener("click", async () => {
-        if (!selectedLocationId) return alert("Seleziona prima una sede da eliminare");
-        if (!confirm("Sei sicuro di voler eliminare questa sede?")) return;
-
-        try {
-            const res = await fetch(`/api/locations/${selectedLocationId}`, {
-                method: "DELETE",
-            });
-            const result = await res.json();
-
-            if (res.ok) {
-                alert("✅ Sede eliminata con successo!");
-                selectedLocationId = null;
-                loadLocations();
-            } else {
-                alert("❌ Errore: " + (result.error || "Problema server"));
-            }
-        } catch (err) {
-            console.error(err);
-            alert("❌ Errore di connessione al server");
+            alert('❌ Errore di connessione al server');
         }
     });
 });

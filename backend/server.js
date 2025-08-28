@@ -32,6 +32,8 @@ app.use((req, res, next) => {
     req.url = req.url.replace(/\/\/+/g, '/');
     next();
 });
+// Rende pubblica la cartella uploads
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // 🔹 ROTTE API
 app.use("/api/auth", authRoutes);

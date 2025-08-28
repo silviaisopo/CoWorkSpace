@@ -1,11 +1,10 @@
-<!-- fa recap delle prenotazioni fatte degli utenti-->
 <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
     <link rel="stylesheet" href="/css/style.css">
-    <title>CoWorkSpace - Prenotazioni Manager</title>
+    <title>CoWorkSpace - Sedi</title>
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style>
@@ -19,21 +18,17 @@
         .sidebar-container { position: relative; width: 16rem; background-color: #f3f6f4; }
         .sidebar-line { position: absolute; top: 0; bottom: 0; right: 0; width: 1px; background-color: #4a3729; }
         footer .footer-line { border-top: 1px solid #4a3729; width: calc(100% - 16rem); margin-left: 16rem; }
-        .booking-card {
+        .location-card {
             transition: all 0.3s ease;
         }
-        .booking-card:hover {
+        .location-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
-        .selected-booking {
+        .selected-location {
             background-color: #e5e7eb !important;
             border-left: 4px solid #4a3729;
         }
-        .status-pending { background-color: #fef3c7; color: #92400e; }
-        .status-confirmed { background-color: #d1fae5; color: #065f46; }
-        .status-cancelled { background-color: #fee2e2; color: #b91c1c; }
-        .status-completed { background-color: #dbeafe; color: #1e40af; }
         .loading-spinner {
             border: 3px solid #f3f3f3;
             border-top: 3px solid #4a3729;
@@ -89,66 +84,31 @@
             </div>
             <nav class="space-y-1 text-[#4a3729] font-medium">
                 <a href="dashboard_manager.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">🏠 Dashboard</a>
-                <a href="sedi_manager.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">🏢 Sedi</a>
+                <a href="sedi_manager.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be] bg-[#d0c6be]">🏢 Sedi</a>
                 <a href="sedi_manager.html#search-location" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">🏬 Elimina sede</a>
-                <a href="prenotazioni_manager.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be] bg-[#d0c6be]">💺 Prenotazioni</a>
+                <a href="prenotazioni_manager.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">💺 Prenotazioni</a>
             </nav>
         </aside>
 
         <!-- CONTENUTO DASHBOARD -->
         <div class="flex-1 p-8 bg-[#f3f6f4]">
-            <h1 class="text-[#4a3729] text-2xl font-bold mb-6">Gestione Prenotazioni</h1>
+            <h1 class="text-[#4a3729] text-2xl font-bold mb-6">Location e Spazi</h1>
 
-            <!-- Filtri -->
-            <div class="bg-white rounded-lg p-6 border border-[#e5e7eb] mb-6 shadow-md">
-                <h2 class="text-[#4a3729] text-xl font-bold mb-4">Filtra Prenotazioni</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Stato</label>
-                        <select id="filter-status" class="border p-2 rounded w-full">
-                            <option value="">Tutti gli stati</option>
-                            <option value="pending">In attesa</option>
-                            <option value="confirmed">Confermata</option>
-                            <option value="cancelled">Cancellata</option>
-                            <option value="completed">Completata</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Data inizio</label>
-                        <input type="date" id="filter-start-date" class="border p-2 rounded w-full">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Data fine</label>
-                        <input type="date" id="filter-end-date" class="border p-2 rounded w-full">
-                    </div>
-                </div>
-                <button id="apply-filters" class="mt-4 bg-[#4a3729] text-white px-4 py-2 rounded hover:bg-[#5c4938] transition-colors">Applica Filtri</button>
-            </div>
-
-            <!-- visualizza prenotazioni -->
-            <div class="bg-white rounded-lg p-6 border border-[#e5e7eb] mb-6 shadow-md">
-                <h2 class="text-[#4a3729] text-xl font-bold mb-4">Tutte le Prenotazioni</h2>
-                <div id="bookings-container" class="grid grid-cols-1 gap-4">
+            <!-- visualizza sedi -->
+            <div class="bg-white rounded-lg p-6 border border-[#e5e7eb] mb-6 shadow-md card mx-auto" style="max-width: 100%;">
+                <h2 class="text-[#4a3729] text-xl font-bold mb-4">Tutte le sedi</h2>
+                <div id="locations-container" class="grid grid-cols-1 gap-4">
                     <div class="loading-spinner" id="loading-spinner"></div>
-                    <p class="text-center text-gray-500 py-4" id="no-bookings-message" style="display: none;">Nessuna prenotazione trovata.</p>
+                    <p class="text-center text-gray-500 py-4" id="no-locations-message" style="display: none;">Nessuna sede aggiunta ancora.</p>
                 </div>
             </div>
 
-            <!-- FORM GESTIONE PRENOTAZIONE -->
+            <!-- FORM ELIMINAZIONE SEDE -->
             <div class="bg-white rounded-lg p-6 border border-[#212121] mb-6 shadow-md">
-                <h2 class="text-[#4a3729] text-xl font-bold mb-4">Gestisci Prenotazione</h2>
-                <input type="text" id="search-booking" placeholder="Cerca per ID, utente o sede" class="border p-2 rounded w-full mb-3">
-                <ul id="bookings-list" class="mb-3 max-h-64 overflow-y-auto border rounded p-2"></ul>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                    <select id="update-status" class="border p-2 rounded w-full">
-                        <option value="pending">In attesa</option>
-                        <option value="confirmed">Conferma</option>
-                        <option value="cancelled">Cancella</option>
-                        <option value="completed">Completa</option>
-                    </select>
-                    <button id="update-booking" class="bg-[#4a3729] text-white px-4 py-2 rounded w-full hover:bg-[#5c4938] transition-colors">Aggiorna Stato</button>
-                </div>
+                <h2 class="text-[#4a3729] text-xl font-bold mb-4">Elimina una Sede</h2>
+                <input type="text" id="search-location" placeholder="Cerca per città o nome" class="border p-2 rounded w-full mb-3">
+                <ul id="locations-list" class="mb-3 max-h-64 overflow-y-auto border rounded p-2"></ul>
+                <button id="delete-location" class="bg-red-600 text-white px-4 py-2 rounded w-full hover:bg-red-700 transition-colors">Elimina Sede Selezionata</button>
             </div>
         </div>
     </div>
@@ -167,6 +127,6 @@
         </div>
     </footer>
 </div>
-<script src="js/prenotazioni_manager.js"></script>
 </body>
+<script src="js/sedi_manager.js"></script>
 </html>

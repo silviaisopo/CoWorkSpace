@@ -11,13 +11,9 @@ const getManagerData = async (req, res) => {
     const bookings = await Booking.findAll({
       include: [
         {
-          model: Workspace,
-          include: [
-            {
-              model: Location,
-              where: { manager_id }
-            }
-          ]
+          model: Location,
+          where: { manager_id },
+          attributes: ['id', 'name', 'city', 'type']
         },
         {
           model: User,
@@ -41,6 +37,5 @@ const getManagerData = async (req, res) => {
   }
 };
 
-// 🔑 esporta la funzione correttamente
+// 🔑 esporta la funzione
 module.exports = { getManagerData };
-
