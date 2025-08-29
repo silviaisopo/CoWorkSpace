@@ -53,7 +53,7 @@
     <div class="flex flex-1 main-container">
 
         <!-- SIDEBAR -->
-        <aside class="w-64 bg-[#f3f6f4] border-r border-[#4a3729] p-4 animate-fade-in-up">
+        <aside class="w-64 bg-[#f3f6f4] p-4 relative">
             <div class="flex items-center gap-3 mb-8">
                 <div class="bg-cover bg-center rounded-full size-12" style='background-image:url("/img/avatar.png");'></div>
                 <div>
@@ -65,6 +65,22 @@
                 <a href="area_riservata.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">🏠 Dashboard</a>
                 <a href="prenotazioni_utente.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">📅 Prenotazioni</a>
             </nav>
+            <svg
+                    class="absolute top-0 left-0 w-full pointer-events-none"
+                    height="260"
+                    viewBox="0 0 100 260"
+                    preserveAspectRatio="none"
+                    aria-hidden="true"
+            >
+                <path
+                        d="M100 0 V180 Q100 200 92 200 H0"
+                        stroke="#c4b5a7"
+                        stroke-width="1"
+                        fill="none"
+                        vector-effect="non-scaling-stroke"
+                        stroke-linecap="round"
+                />
+            </svg>
         </aside>
 
         <!-- CONTENUTO-->
@@ -109,7 +125,7 @@
 
     <!-- FOOTER-->
     <footer class="flex flex-col items-center px-4 mt-20 relative z-10">
-        <div class="footer-line mb-6"></div>
+        <!--<div class="footer-line mb-6"></div>-->
         <div class="max-w-[960px] w-full flex flex-col items-center text-[#6d5542] text-sm pb-10">
             <div class="flex flex-wrap justify-center gap-6 mb-4">
                 <a href="about-us.html" class="hover:text-[#4a3729]">Chi siamo</a>
