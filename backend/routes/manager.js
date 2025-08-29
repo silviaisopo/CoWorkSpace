@@ -1,8 +1,16 @@
+/*const express = require('express');
+const router = express.Router();
+const { getManagerData } = require('../controllers/managerController');
+const { authenticate, isManager } = require('../middleware/authMiddleware');
+
+// Route per i dati del manager (solo manager)
+router.get('/bookings', authenticate, isManager, getManagerData);
+
+module.exports = router;*/
 
 const express = require('express');
 const router = express.Router();
 const { authenticate, isManager } = require('../middleware/authMiddleware');
-const { deleteManagerAccount } = require("../controllers/managerController");
 
 // Profilo del manager loggato
 router.get('/profile', authenticate, isManager, async (req, res) => {
@@ -17,7 +25,5 @@ router.get('/profile', authenticate, isManager, async (req, res) => {
         res.status(500).json({ success: false, message: "Errore server" });
     }
 });
-
-router.delete("/me", authenticate, deleteManagerAccount);
 
 module.exports = router;

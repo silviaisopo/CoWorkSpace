@@ -5,19 +5,22 @@ const Payment = require('./payment');
 
 module.exports = () => {
     // Location → Manager
-    User.hasMany(Location, { foreignKey: 'manager_id', onDelete: 'CASCADE' }); // Manager è anche User con ruolo manager
-    Location.belongsTo(User, { foreignKey: 'manager_id', onDelete: 'CASCADE' });
+    Location.belongsTo(User, { as: 'manager', foreignKey: 'manager_id' });
+    User.hasMany(Location, { as: 'managedLocations', foreignKey: 'manager_id' });
 
     // Booking → User & Location
-    Booking.belongsTo(User, { foreignKey: 'user_id', onDelete: 'CASCADE' });
-    User.hasMany(Booking, { foreignKey: 'user_id', onDelete: 'CASCADE' });
+    Booking.belongsTo(User, { foreignKey: 'user_id' });
+    User.hasMany(Booking, { foreignKey: 'user_id' });
 
-    Booking.belongsTo(Location, { foreignKey: 'location_id', onDelete: 'CASCADE' });
-    Location.hasMany(Booking, { foreignKey: 'location_id', onDelete: 'CASCADE' });
+    Booking.belongsTo(Location, { foreignKey: 'location_id' });
+    Location.hasMany(Booking, { foreignKey: 'location_id' });
 
     // Payment → Booking
-    Payment.belongsTo(Booking, {foreignKey: 'booking_id', onDelete: 'CASCADE'});
-    Booking.hasOne(Payment, { foreignKey: 'booking_id', onDelete: 'CASCADE'});
+    Payment.belongsTo(Booking, {foreignKey: 'booking_id', onDelete: 'CASCADE',  // <-- aggiungi
+    });
+
+    Booking.hasOne(Payment, { foreignKey: 'booking_id', onDelete: 'CASCADE',  // <-- aggiungi
+    });
 
 };
 
