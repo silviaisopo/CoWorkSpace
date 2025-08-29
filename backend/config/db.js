@@ -1,3 +1,4 @@
+//configurazione database PostgreSQL con Sequelize
 const { Sequelize } = require("sequelize");
 require("dotenv").config();
 

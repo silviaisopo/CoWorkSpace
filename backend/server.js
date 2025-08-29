@@ -4,12 +4,22 @@ const path = require("path");
 require("dotenv").config();
 const { connectDB } = require("./config/db");
 
+const Booking = require("./models/booking");
+const Location = require("./models/location");
+const User = require("./models/user");
+const Payment = require("./models/payment");
+
+// Inizializza le associazioni
+require("./models/associazioni")();
+
 // Rotte
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 const managerRoutes = require("./routes/manager");
 const bookingRoutes = require("./routes/bookings");
 const locationRoutes = require("./routes/locations");
+const paymentRoutes = require('./routes/payments');
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -41,6 +51,7 @@ app.use("/api/user", userRoutes);
 app.use("/api/manager", managerRoutes);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/locations", locationRoutes);
+app.use('/api/payments', paymentRoutes);
 
 // 🔹 HEALTH CHECK
 app.get("/api/health", (req, res) => res.json({ status: "ok", uptime: process.uptime() }));

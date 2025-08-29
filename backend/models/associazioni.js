@@ -16,7 +16,12 @@ module.exports = () => {
     Location.hasMany(Booking, { foreignKey: 'location_id' });
 
     // Payment → Booking
-    Payment.belongsTo(Booking, { foreignKey: 'booking_id' });
-    Booking.hasOne(Payment, { foreignKey: 'booking_id' });
+    Payment.belongsTo(Booking, {foreignKey: 'booking_id', onDelete: 'CASCADE',  // <-- aggiungi
+    });
+
+    Booking.hasOne(Payment, { foreignKey: 'booking_id', onDelete: 'CASCADE',  // <-- aggiungi
+    });
+
 };
+
 

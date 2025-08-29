@@ -1,24 +1,7 @@
-/*const express = require('express');
-const router = express.Router();
-const bookingController = require('../controllers/bookingController');
-const { authenticate, isUser } = require('../middleware/authMiddleware');
-
-// CREA PRENOTAZIONE
-router.post('/', authenticate, isUser, bookingController.createBooking);
-
-// GET PRENOTAZIONI UTENTE
-router.get('/mybookings', authenticate, isUser, bookingController.getMyBookings);
-
-// DELETE PRENOTAZIONE
-router.delete('/:id', authenticate, isUser, bookingController.deleteBooking);
-
-router.post('/check-availability', bookingController.checkAvailability);
-
-module.exports = router;*/
 const express = require('express');
 const router = express.Router();
 const bookingController = require('../controllers/bookingController');
-const { authenticate, isUser } = require('../middleware/authMiddleware');
+const { authenticate, isUser, isManager } = require('../middleware/authMiddleware');
 
 // CREA PRENOTAZIONE
 router.post('/', authenticate, isUser, bookingController.createBooking);
@@ -30,9 +13,10 @@ router.post('/check-availability', bookingController.checkAvailability);
 router.get('/location/:location_id', bookingController.getBookingsByLocation);
 
 // GET PRENOTAZIONI UTENTE
-router.get('/mybookings', authenticate, isUser, bookingController.getMyBookings);
+router.get('/my-bookings', authenticate, isUser, bookingController.getMyBookings);
 
 // DELETE PRENOTAZIONE
 router.delete('/:id', authenticate, isUser, bookingController.deleteBooking);
-
+router.patch('/:id', authenticate, isManager, bookingController.updateBooking);
+router.get('/', authenticate, isManager, bookingController.getAllBookings);
 module.exports = router;

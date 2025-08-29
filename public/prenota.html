@@ -1,236 +1,163 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+  <link
+          rel="stylesheet"
+          as="style"
+          onload="this.rel='stylesheet'"
+          href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
+  />
+  <link rel="stylesheet" as="style" onload="this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Spline+Sans%3Awght%40400%3B500%3B700" />
   <title>CoWorkSpace - Prenota</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/it.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-
-    .card-hover:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-    }
-
-    .time-slot {
+    body { font-family: "Spline Sans", "Noto Sans", sans-serif; }
+    .slot-button {
       transition: all 0.2s ease;
     }
-
-    .time-slot:hover {
-      background-color: #f0f7f2;
+    .slot-button:hover:not(.disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-
-    .time-slot.selected {
-      background-color: #B8E0C2;
-      color: #212121;
-      font-weight: 600;
+    .slot-button.selected {
+      background-color: #4a3729;
+      color: white;
+      border-color: #4a3729;
     }
-
-    .flatpickr-calendar {
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    .slot-button.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
     }
-
-    .flatpickr-time {
-      border-radius: 0 0 12px 12px;
-    }
-
-    calendar-icon, .clock-icon {
-      position: absolute;
-      right: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #6b7280;
-      pointer-events: none;
-    }
-
-    .clock-picker {
-      position: relative;
-    }
-
-    .clock-dropdown {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      background: white;
-      border: 1px solid #e5e7eb;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      z-index: 10;
-      padding: 12px;
-      max-height: 200px;
-      overflow-y: auto;
-    }
-
-    .clock-option {
-      padding: 8px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.2s;
-    }
-
-    .clock-option:hover {
-      background-color: #f3f6f4;
-    }
-
-    .clock-dropdown.show {
-      display: block;
+    .flatpickr-day.selected {
+      background-color: #4a3729;
+      border-color: #4a3729;
     }
   </style>
 </head>
-<body class="bg-[#f3f6f4] text-[#212121]">
+<body>
+<div class="relative flex size-full min-h-screen flex-col bg-[#f3f6f4] dark group/design-root overflow-x-hidden" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
+  <div class="layout-container flex h-full grow flex-col">
 
-<!-- HEADER -->
-<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#B8E0C2] px-10 py-3">
-  <div class="flex items-center gap-8">
-    <div class="flex items-center gap-4 text-[#212121]">
-      <div class="size-4">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path></svg>
-      </div>
-      <a href="index.html">
-        <h2 class="text-[#212121] text-lg font-bold leading-tight tracking-[-0.015em]">CoWorkSpace</h2>
-      </a>
-    </div>
-    <div class="flex items-center gap-9">
-      <a class="text-[#212121] text-sm font-bold leading-normal" href="catalogo.html">Esplora</a>
-      <a class="text-[#212121] text-sm font-bold leading-normal" href="about-us.html">Chi Siamo</a>
-      <a class="text-[#212121] text-sm font-bold leading-normal" href="contatti.html">Contatti</a>
-      <a class="text-[#212121] text-sm font-bold leading-normal" href="offerte.html">Prenota</a>
-    </div>
-  </div>
-  <div class="flex flex-1 justify-end gap-8 items-center">
-    <div class="flex flex-1 justify-end gap-8 items-center">
-      <a id="profile-btn" href="#">
-        <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_MVb8XzjwZkF6O5ivyZadhiZ0XFu3eD3FcdLA4Ixll10kk5401IzquwYtZFDU62_BZe5t4MMH_vsl_n-OlC8DmE3TAuYL59BpGsjAUiiYKmyXt19iHlvSxRwnHOXcrL0tZZkBwMt6JXJAihCyIfWS5ZYZOvlrXleOJbjxL4_dwtH5z3dIiicVgsdefagncm7OtGLysfvqF9hePY98itO4GtP3sLCMwziLNNYudYkqwO0-nVMuTdxyLMBx0MOlp5OG4_wDawpRjBtW");'></div>
-      </a>
-    </div>
-    <!-- Icona carrello -->
-    <a href="carrello.html" class="relative">
-      <div class="size-10 flex items-center justify-center bg-[#f3f6f4] rounded-full text-[#4a3729]">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m12-9l2 9m-6-9v9"/>
-        </svg>
-      </div>
-    </a>
-    <a href="login.html">
-      <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold leading-normal tracking-[0.015em]">
-        <span class="truncate">Accedi</span>
-      </button>
-    </a>
-  </div>
-</header>
-
-<main class="max-w-6xl mx-auto p-4 md:p-6">
-  <h1 class="text-2xl font-bold mb-6">Prenotazione Sede</h1>
-
-  <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
-    <!-- Card Sede (più larga) -->
-    <div class="lg:col-span-1">
-      <div id="location-details" class="bg-white rounded-lg shadow-sm border border-[#e5e7eb] p-5 transition-all duration-200 card-hover">
-        <!-- Il contenuto verrà popolato dinamicamente -->
-      </div>
-    </div>
-
-    <!-- Sezione Prenotazione -->
-    <div class="lg:col-span-3">
-      <div class="bg-white rounded-lg shadow-sm border border-[#e5e7eb] p-5 mb-6">
-        <h2 class="text-xl font-semibold mb-6 text-[#4a3729]">Seleziona Data e Orario</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
-          <div class="relative">
-            <label class="block mb-2 text-sm font-medium">Data</label>
-            <input type="text" id="booking-date" class="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#B8E0C2] pr-10" placeholder="Seleziona data" readonly>
-            <i class="fas fa-calendar calendar-icon"></i>
+    <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#B8E0C2] px-10 py-3">
+      <div class="flex items-center gap-8">
+        <div class="flex items-center gap-4 text-[#212121]">
+          <div class="size-4">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path></svg>
           </div>
-
-          <div class="relative clock-picker">
-            <label class="block mb-2 text-sm font-medium">Ora Inizio</label>
-            <input type="text" id="start-time" class="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#B8E0C2] pr-10" placeholder="Seleziona orario" readonly>
-            <i class="fas fa-clock clock-icon"></i>
-            <div id="start-time-dropdown" class="clock-dropdown">
-              <!-- Opzioni orario verranno generate dinamicamente -->
-            </div>
+          <a href="index.html">
+            <h2 class="text-[#212121] text-lg font-bold leading-tight tracking-[-0.015em]">CoWorkSpace</h2>
+          </a>
+        </div>
+        <div class="flex items-center gap-9">
+          <a class="text-[#212121] text-sm font-bold leading-normal" href="catalogo.html">Esplora</a>
+          <a class="text-[#212121] text-sm font-bold leading-normal" href="about-us.html">Chi Siamo</a>
+          <a class="text-[#212121] text-sm font-bold leading-normal" href="contatti.html">Contatti</a>
+          <a class="text-[#212121] text-sm font-bold leading-normal" href="offerte.html">Prenota</a>
+        </div>
+      </div>
+      <div class="flex flex-1 justify-end gap-8 items-center">
+        <div class="flex flex-1 justify-end gap-8 items-center">
+          <a id="profile-btn" href="#">
+            <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_MVb8XzjwZkF6O5ivyZadhiZ0XFu3eD3FcdLA4Ixll10kk5401IzquwYtZFDU62_BZe5t4MMH_vsl_n-OlC8DmE3TAuYL59BpGsjAUiiYKmyXt19iHlvSxRwnHOXcrL0tZZkBwMt6JXJAihCyIfWS5ZYZOvlrXleOJbjxL4_dwtH5z3dIiicVgsdefagncm7OtGLysfvqF9hePY98itO4GtP3sLCMwziLNNYudYkqwO0-nVMuTdxyLMBx0MOlp5OG4_wDawpRjBtW");'></div>
+          </a>
+        </div>
+        <!-- Icona carrello -->
+        <a href="carrello.html" class="relative">
+          <div class="size-10 flex items-center justify-center bg-[#f3f6f4] rounded-full text-[#4a3729]">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m12-9l2 9m-6-9v9"/>
+            </svg>
           </div>
+        </a>
+        <a href="login.html">
+          <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold leading-normal tracking-[0.015em]">
+            <span class="truncate">Accedi</span>
+          </button>
+        </a>
+      </div>
+    </header>
 
-          <div class="relative clock-picker">
-            <label class="block mb-2 text-sm font-medium">Ora Fine</label>
-            <input type="text" id="end-time" class="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#B8E0C2] pr-10 bg-gray-50" placeholder="Seleziona orario" readonly>
-            <i class="fas fa-clock clock-icon"></i>
-            <div id="end-time-dropdown" class="clock-dropdown">
-              <!-- Opzioni orario verranno generate dinamicamente -->
-            </div>
+    <div class="max-w-6xl mx-auto py-8 px-4">
+      <!-- Hero Section -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Dettagli sede -->
+        <div id="location-details" class="bg-white rounded-lg border border-[#c4b5a7] p-6 shadow-sm">
+          <h2 class="text-xl font-bold mb-4 text-[#212121]">Dettagli Sede</h2>
+          <!-- Riempito da JS -->
+          <div class="animate-pulse">
+            <div class="h-48 bg-gray-200 rounded-lg mb-4"></div>
+            <div class="h-4 bg-gray-200 rounded mb-2"></div>
+            <div class="h-4 bg-gray-200 rounded mb-2 w-3/4"></div>
+            <div class="h-4 bg-gray-200 rounded mb-2 w-1/2"></div>
           </div>
         </div>
 
-        <div class="mb-6">
-          <label class="block mb-3 text-sm font-medium">Durata</label>
-          <div class="flex flex-wrap gap-3">
-            <button type="button" data-hours="1" class="time-slot px-5 py-2.5 rounded-lg border bg-white text-sm">1 ora</button>
-            <button type="button" data-hours="2" class="time-slot px-5 py-2.5 rounded-lg border bg-white text-sm">2 ore</button>
-            <button type="button" data-hours="3" class="time-slot px-5 py-2.5 rounded-lg border bg-white text-sm">3 ore</button>
-            <button type="button" data-hours="4" class="time-slot px-5 py-2.5 rounded-lg border bg-white text-sm">4 ore</button>
-            <button type="button" data-hours="8" class="time-slot px-5 py-2.5 rounded-lg border bg-white text-sm">Giornata (8h)</button>
+        <!-- Sezione prenotazione -->
+        <div class="md:col-span-2 bg-white rounded-lg border border-[#c4b5a7] p-6 shadow-sm">
+          <h2 class="text-xl font-bold mb-4 text-[#212121]">Seleziona una data</h2>
+
+          <div class="mb-6">
+            <input
+                    type="text"
+                    id="booking-date"
+                    class="w-full p-3 border border-[#c4b5a7] rounded-lg focus:ring-2 focus:ring-[#4a3729] focus:border-[#4a3729]"
+                    placeholder="Scegli una data"
+                    readonly
+            >
           </div>
-        </div>
 
-        <div class="flex justify-between items-center mt-8 pt-5 border-t border-gray-100">
-          <div id="price-display" class="text-xl font-semibold text-[#4a3729]">Totale: €0.00</div>
-          <button id="confirm-booking" class="bg-[#4a3729] text-[#f3f6f4] px-8 py-3 rounded-lg hover:bg-[#5a4739] transition-colors font-medium" disabled>Conferma Prenotazione</button>
-        </div>
-      </div>
+          <!-- Tabella disponibilità -->
+          <h3 class="text-lg font-semibold mb-3 text-[#212121]">Fasce orarie disponibili</h3>
+          <div id="slots-grid" class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+            <!-- Popolata da JS -->
+            <div class="h-12 bg-gray-200 rounded animate-pulse"></div>
+            <div class="h-12 bg-gray-200 rounded animate-pulse"></div>
+            <div class="h-12 bg-gray-200 rounded animate-pulse"></div>
+            <div class="h-12 bg-gray-200 rounded animate-pulse"></div>
+          </div>
 
-      <!-- Disponibilità -->
-      <div class="bg-white rounded-lg shadow-sm border border-[#e5e7eb] p-5">
-        <h2 class="text-xl font-semibold mb-5 text-[#4a3729]">Disponibilità</h2>
-        <div class="overflow-x-auto rounded-lg">
-          <table class="w-full text-left border-collapse">
-            <thead>
-            <tr class="bg-gray-50">
-              <th class="p-4 text-sm font-semibold text-gray-700 border-b">Data</th>
-              <th class="p-4 text-sm font-semibold text-gray-700 border-b">Orario Inizio</th>
-              <th class="p-4 text-sm font-semibold text-gray-700 border-b">Orario Fine</th>
-            </tr>
-            </thead>
-            <tbody id="availability-list">
-            <!-- Le prenotazioni esistenti verranno inserite qui -->
-            <tr><td colspan="3" class="p-4 text-center text-gray-500">Caricamento disponibilità...</td></tr>
-            </tbody>
-          </table>
+          <!-- Messaggi -->
+          <div id="availability-msg" class="text-red-600 mb-3 hidden p-3 bg-red-50 rounded-lg"></div>
+          <div id="booking-success" class="text-green-600 mb-3 hidden p-3 bg-green-50 rounded-lg"></div>
+
+          <!-- Prezzo -->
+          <div id="price-display" class="text-lg font-bold mb-4 p-3 bg-[#f3f6f4] rounded-lg text-[#4a3729]">
+            Totale: €0.00
+          </div>
+
+          <!-- Pulsante conferma -->
+          <button
+                  id="confirm-booking"
+                  disabled
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold leading-normal tracking-[0.015em] disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <span class="truncate">Conferma Prenotazione</span>
+          </button>
         </div>
       </div>
     </div>
+
+    <footer class="flex justify-center px-4 mt-20">
+      <div class="max-w-[960px] w-full flex flex-col items-center text-[#2b2926] text-sm py-10">
+        <div class="flex flex-wrap justify-center gap-6 mb-4">
+          <a href="about-us.html">Chi siamo</a>
+          <a href="contatti.html">Contatti</a>
+          <a href="#">Termini</a>
+          <a href="#">Privacy</a>
+        </div>
+        <p>© 2025 Workspaces. Tutti i diritti riservati.</p>
+      </div>
+    </footer>
   </div>
 
-  <!-- Messaggi di stato -->
-  <div id="availability-msg" class="mt-6 p-4 bg-red-50 text-red-700 rounded-lg font-semibold hidden"></div>
-  <div id="booking-success" class="mt-6 p-4 bg-green-50 text-green-700 rounded-lg font-semibold hidden"></div>
-</main>
-
-<!-- FOOTER -->
-<footer class="flex justify-center px-4 mt-20">
-  <div class="max-w-[960px] w-full flex flex-col items-center text-[#2b2926] text-sm py-10">
-    <div class="flex flex-wrap justify-center gap-6 mb-4">
-      <a href="about-us.html" class="hover:text-[#4a3729]">Chi siamo</a>
-      <a href="contatti.html" class="hover:text-[#4a3729]">Contatti</a>
-      <a href="#" class="hover:text-[#4a3729]">Termini</a>
-      <a href="#" class="hover:text-[#4a3729]">Privacy</a>
-    </div>
-    <p>© 2025 Workspaces. Tutti i diritti riservati.</p>
-  </div>
-</footer>
-
-<script src="js/prenota.js"></script>
-<script src="js/app.js"> </script>
+  <script src="js/prenota.js"></script>
+  <script src="js/app.js"></script>
+</div>
 </body>
 </html>
