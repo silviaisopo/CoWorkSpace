@@ -12,9 +12,7 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .animate-fade-in-up {
-            animation: fadeInUp 0.3s ease-out forwards;
-        }
+        .animate-fade-in-up { animation: fadeInUp 0.3s ease-out forwards; }
         .sidebar-container { position: relative; width: 16rem; background-color: #f3f6f4; }
         .sidebar-line { position: absolute; top: 0; bottom: 0; right: 0; width: 1px; background-color: #4a3729; }
         footer .footer-line { border-top: 1px solid #4a3729; width: calc(100% - 16rem); margin-left: 16rem; }
@@ -24,12 +22,15 @@
 <body class="bg-[#f3f6f4]" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
 <div class="flex flex-col min-h-screen">
     <h1 id="welcome-message"></h1>
+
     <!-- HEADER-->
     <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#c4b5a7] px-10 py-3">
         <div class="flex items-center gap-8">
             <div class="flex items-center gap-4 text-[#4a3729]">
                 <div class="size-4">
-                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path></svg>
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path>
+                    </svg>
                 </div>
                 <a href="index.html">
                     <h2 class="text-[#4a3729] text-lg font-bold leading-tight tracking-[-0.015em]">CoWorkSpace</h2>
@@ -50,6 +51,7 @@
     </header>
 
     <div class="flex flex-1 main-container">
+
         <!-- SIDEBAR -->
         <aside class="w-64 bg-[#f3f6f4] border-r border-[#4a3729] p-4 animate-fade-in-up">
             <div class="flex items-center gap-3 mb-8">
@@ -81,15 +83,15 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div class="bg-[#FFFFFF] rounded-lg p-6 border border-[#212121]">
                     <h3 class="text-[#6d5542] text-sm font-medium mb-2">Prenotazioni Attive</h3>
-                    <p class="text-[#4a3729] text-2xl font-bold">2</p>
+                    <p id="dashboard-active" class="text-[#4a3729] text-2xl font-bold">0</p>
                 </div>
                 <div class="bg-[#FFFFFF] rounded-lg p-6 border border-[#212121]">
                     <h3 class="text-[#6d5542] text-sm font-medium mb-2">Prenotazioni Passate</h3>
-                    <p class="text-[#4a3729] text-2xl font-bold">5</p>
+                    <p id="dashboard-past" class="text-[#4a3729] text-2xl font-bold">0</p>
                 </div>
                 <div class="bg-[#FFFFFF] rounded-lg p-6 border border-[#212121]">
                     <h3 class="text-[#6d5542] text-sm font-medium mb-2">Prossima Prenotazione</h3>
-                    <p class="text-[#4a3729] text-2xl font-bold">15 Ott</p>
+                    <p id="dashboard-next" class="text-[#4a3729] text-2xl font-bold">Nessuna</p>
                 </div>
             </div>
 
@@ -99,58 +101,8 @@
                     <h2 class="text-[#4a3729] text-xl font-bold">Prenotazioni Recenti</h2>
                     <a href="prenotazioni_utente.html" class="text-[#4a3729] text-sm font-medium hover:text-[#6d5542]">Vedi tutte</a>
                 </div>
-
-                <div class="space-y-4">
-                    <div class="bg-[#d0c6be] rounded-lg p-4 border border-[#212121]">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="text-[#4a3729] font-bold">Hub Creativo</h3>
-                                <p class="text-[#6d5542] text-sm">Postazione singola • Piano 2</p>
-                            </div>
-                            <span class="bg-[#4a3729] text-white text-xs font-bold px-2 py-1 rounded">Attiva</span>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                            <div>
-                                <p class="text-[#6d5542] text-sm mb-1">Data</p>
-                                <p class="text-[#4a3729] font-medium">15 Ott 2023 - 20 Ott 2023</p>
-                            </div>
-                            <div>
-                                <p class="text-[#6d5542] text-sm mb-1">Orario</p>
-                                <p class="text-[#4a3729] font-medium">09:00 - 18:00</p>
-                            </div>
-                            <div>
-                                <p class="text-[#6d5542] text-sm mb-1">Totale</p>
-                                <p class="text-[#4a3729] font-medium">€ 250,00</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-[#d0c6be] rounded-lg p-4 border border-[#212121]">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="text-[#4a3729] font-bold">Sala Riunioni</h3>
-                                <p class="text-[#6d5542] text-sm">Sala A • Piano 1</p>
-                            </div>
-                            <span class="bg-[#4a3729] text-white text-xs font-bold px-2 py-1 rounded">Attiva</span>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                            <div>
-                                <p class="text-[#6d5542] text-sm mb-1">Data</p>
-                                <p class="text-[#4a3729] font-medium">22 Ott 2023</p>
-                            </div>
-                            <div>
-                                <p class="text-[#6d5542] text-sm mb-1">Orario</p>
-                                <p class="text-[#4a3729] font-medium">14:00 - 16:00</p>
-                            </div>
-                            <div>
-                                <p class="text-[#6d5542] text-sm mb-1">Totale</p>
-                                <p class="text-[#4a3729] font-medium">€ 120,00</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div id="active-bookings" class="space-y-4"></div>
+                <div id="past-bookings" class="space-y-4"></div>
             </div>
         </div>
     </div>
@@ -172,3 +124,4 @@
 <script src="js/area_riservata.js"></script>
 </body>
 </html>
+

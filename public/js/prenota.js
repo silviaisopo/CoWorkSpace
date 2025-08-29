@@ -1,518 +1,191 @@
+
 // prenota.js
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener("DOMContentLoaded", async () => {
     const params = new URLSearchParams(window.location.search);
-    const locationId = params.get('location');
-    const locationDetails = document.getElementById('location-details');
-    const availabilityList = document.getElementById('availability-list');
-    const availabilityMsg = document.getElementById('availability-msg');
-    const bookingSuccess = document.getElementById('booking-success');
-    const bookingDate = document.getElementById('booking-date');
-    const startTimeInput = document.getElementById('start-time');
-    const endTimeInput = document.getElementById('end-time');
-    const startTimeDropdown = document.getElementById('start-time-dropdown');
-    const endTimeDropdown = document.getElementById('end-time-dropdown');
-    const confirmButton = document.getElementById('confirm-booking');
-    const priceDisplay = document.getElementById('price-display');
-    const timeSlots = document.querySelectorAll('.time-slot');
-    const clockPickers = document.querySelectorAll('.clock-picker');
+    const locationId = params.get("location");
+    const locationDetails = document.getElementById("location-details");
+    const slotsGrid = document.getElementById("slots-grid");
+    const bookingDate = document.getElementById("booking-date");
+    const confirmButton = document.getElementById("confirm-booking");
+    const priceDisplay = document.getElementById("price-display");
+    const availabilityMsg = document.getElementById("availability-msg");
 
     let location = null;
     let selectedDate = null;
-    let selectedStartTime = null;
-    let selectedEndTime = null;
-    let selectedDuration = 0;
+    let selectedSlots = []; // es: ["10:00", "11:00"]
     let existingBookings = [];
 
+    // 🔹 Se non c’è la sede selezionata
     if (!locationId) {
         locationDetails.innerHTML = '<p class="text-red-500">Sede non selezionata.</p>';
         return;
     }
 
-    // Controllo login
-    const token = localStorage.getItem('token');
+    // 🔹 Controllo login
+    const token = localStorage.getItem("token");
     if (!token) {
-        alert('Devi effettuare il login per prenotare.');
-        window.location.href = 'login.html';
+        alert("Devi effettuare il login per prenotare.");
+        window.location.href = "login.html";
         return;
     }
 
-    // Inizializza il calendario
+    // 🔹 Datepicker
     const datepicker = flatpickr(bookingDate, {
         locale: "it",
         minDate: "today",
         dateFormat: "d/m/Y",
-        onChange: function(selectedDates, dateStr, instance) {
+        onChange: async function (selectedDates, dateStr) {
             selectedDate = dateStr;
-            updateTimeOptions();
-            updateFormState();
-        }
+            selectedSlots = [];
+            await renderDailySlots();
+        },
     });
 
-    // Genera opzioni orarie (dalle 8:00 alle 20:00)
-    /*function generateTimeOptions() {
-        let options = '';
-        for (let hour = 8; hour <= 20; hour++) {
-            for (let minute = 0; minute < 60; minute += 30) {
-                const timeValue = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
-                options += `<div class="clock-option" data-time="${timeValue}">${timeValue}</div>`;
-            }
-        }
-        startTimeDropdown.innerHTML = options;
-        endTimeDropdown.innerHTML = options;
-
-        // Aggiungi event listener alle opzioni
-        document.querySelectorAll('#start-time-dropdown .clock-option').forEach(option => {
-            option.addEventListener('click', function() {
-                selectedStartTime = this.dataset.time;
-                startTimeInput.value = selectedStartTime;
-                startTimeDropdown.classList.remove('show');
-                updateEndTimeOptions();
-                updateFormState();
-            });
-        });
-
-        document.querySelectorAll('#end-time-dropdown .clock-option').forEach(option => {
-            option.addEventListener('click', function() {
-                selectedEndTime = this.dataset.time;
-                endTimeInput.value = selectedEndTime;
-                endTimeDropdown.classList.remove('show');
-                calculateDuration();
-                updateFormState();
-            });
-        });
-    }*/
-    function generateTimeOptions() {
-        let options = '';
-        for (let hour = 8; hour <= 20; hour++) {
-            for (let minute = 0; minute < 60; minute += 30) {
-                const timeValue = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
-                options += `<div class="clock-option" data-time="${timeValue}">${timeValue}</div>`;
-            }
-        }
-        startTimeDropdown.innerHTML = options;
-        endTimeDropdown.innerHTML = options;
-
-        // Aggiungi event listener alle opzioni
-        document.querySelectorAll('#start-time-dropdown .clock-option').forEach(option => {
-            option.addEventListener('click', function() {
-                selectedStartTime = this.dataset.time;
-                startTimeInput.value = selectedStartTime;
-                startTimeDropdown.classList.remove('show');
-                updateEndTimeOptions();
-                updateFormState();
-            });
-        });
-
-        document.querySelectorAll('#end-time-dropdown .clock-option').forEach(option => {
-            option.addEventListener('click', function() {
-                selectedEndTime = this.dataset.time;
-                endTimeInput.value = selectedEndTime;
-                endTimeDropdown.classList.remove('show');
-                calculateDuration();
-                updateFormState();
-            });
-        });
-    }
-
-    // Aggiorna le opzioni orarie in base alla data selezionata
-    async function updateTimeOptions() {
-        if (!selectedDate) return;
-
-        try {
-            const availableSlots = await loadAvailableSlots(selectedDate);
-
-            document.querySelectorAll('.clock-option').forEach(option => {
-                const timeValue = option.dataset.time;
-
-                if (availableSlots.includes(timeValue)) {
-                    option.style.opacity = '1';
-                    option.style.pointerEvents = 'auto';
-                } else {
-                    option.style.opacity = '0.5';
-                    option.style.pointerEvents = 'none';
-                }
-            });
-        } catch (error) {
-            console.error('Errore nell\'aggiornamento delle opzioni orarie:', error);
-        }
-    }
-
-    // Aggiorna le opzioni per l'orario di fine
-    function updateEndTimeOptions() {
-        if (!selectedStartTime) return;
-
-        const [startHour, startMinute] = selectedStartTime.split(':').map(Number);
-        const startTotalMinutes = startHour * 60 + startMinute;
-
-        document.querySelectorAll('#end-time-dropdown .clock-option').forEach(option => {
-            const [optionHour, optionMinute] = option.dataset.time.split(':').map(Number);
-            const optionTotalMinutes = optionHour * 60 + optionMinute;
-
-            if (optionTotalMinutes <= startTotalMinutes) {
-                option.style.opacity = '0.5';
-                option.style.pointerEvents = 'none';
-            } else {
-                option.style.opacity = '1';
-                option.style.pointerEvents = 'auto';
-            }
-        });
-    }
-
-    // Calcola la durata in base agli orari di inizio e fine
-    function calculateDuration() {
-        if (!selectedStartTime || !selectedEndTime) return;
-
-        const [startHour, startMinute] = selectedStartTime.split(':').map(Number);
-        const [endHour, endMinute] = selectedEndTime.split(':').map(Number);
-
-        const startTotalMinutes = startHour * 60 + startMinute;
-        const endTotalMinutes = endHour * 60 + endMinute;
-
-        selectedDuration = (endTotalMinutes - startTotalMinutes) / 60;
-        updatePrice();
-
-        // Seleziona automaticamente il pulsante di durata corrispondente
-        timeSlots.forEach(slot => {
-            if (parseInt(slot.dataset.hours) === selectedDuration) {
-                slot.classList.add('selected');
-            } else {
-                slot.classList.remove('selected');
-            }
-        });
-    }
-
-    // Aggiorna il prezzo
-    function updatePrice() {
-        if (location && selectedDuration > 0) {
-            // Converti il prezzo in numero (numeric(10,2) viene restituito come stringa)
-            const price = parseFloat(location.price_per_hour);
-            const total = price * selectedDuration;
-            priceDisplay.textContent = `Totale: €${total.toFixed(2)}`;
-        } else {
-            priceDisplay.textContent = 'Totale: €0.00';
-        }
-    }
-
-    // Controlla se el form è completo
-    function updateFormState() {
-        if (selectedDate && selectedStartTime && selectedEndTime) {
-            confirmButton.disabled = false;
-        } else {
-            confirmButton.disabled = true;
-        }
-    }
-
-    // Gestione click sui pulsanti di durata
-    timeSlots.forEach(slot => {
-        slot.addEventListener('click', function() {
-            timeSlots.forEach(s => s.classList.remove('selected'));
-            this.classList.add('selected');
-            selectedDuration = parseInt(this.dataset.hours);
-
-            if (selectedStartTime) {
-                const [hours, minutes] = selectedStartTime.split(':').map(Number);
-                const endDate = new Date(0, 0, 0, hours, minutes);
-                endDate.setHours(endDate.getHours() + selectedDuration);
-
-                const endHours = endDate.getHours().toString().padStart(2, '0');
-                const endMinutes = endDate.getMinutes().toString().padStart(2, '0');
-                selectedEndTime = `${endHours}:${endMinutes}`;
-                endTimeInput.value = selectedEndTime;
-
-                updatePrice();
-                updateFormState();
-            }
-        });
-    });
-
-    // Gestione dropdown orari
-    clockPickers.forEach(picker => {
-        const input = picker.querySelector('input');
-        const dropdown = picker.querySelector('.clock-dropdown');
-
-        input.addEventListener('focus', function() {
-            dropdown.classList.add('show');
-        });
-
-        input.addEventListener('click', function() {
-            dropdown.classList.toggle('show');
-        });
-
-        // Chiudi il dropdown quando si clicca fuori
-        document.addEventListener('click', function(e) {
-            if (!picker.contains(e.target)) {
-                dropdown.classList.remove('show');
-            }
-        });
-    });
-
-    // Carica info sede
+    // 🔹 Carica info sede
     async function loadLocation() {
-        try {
-            const res = await fetch(`/api/locations/${locationId}`);
-
-            if (!res.ok) throw new Error('Sede non trovata');
-            location = await res.json();
-
-            // Converti il prezzo in numero (numeric(10,2) viene restituito come stringa)
-            const price = parseFloat(location.price_per_hour);
-
-            locationDetails.innerHTML = `
-                <div class="flex flex-col h-full">
-                    <img src="${location.image_url || '/uploads/default.jpg'}" alt="${location.name}" class="w-full h-48 object-cover rounded-lg mb-4">
-                    <h3 class="text-xl font-bold mb-2 text-[#4a3729]">${location.name}</h3>
-                    <p class="text-gray-700 text-sm mb-2"><strong>Indirizzo:</strong> ${location.address}, ${location.city}</p>
-                    <p class="text-gray-700 text-sm mb-2"><strong>Capienza:</strong> ${location.capacity} persone</p>
-                    <p class="text-gray-700 text-sm mb-2"><strong>Prezzo orario:</strong> €${price.toFixed(2)}</p>
-                    <p class="text-gray-700 text-sm mb-3"><strong>Servizi:</strong> ${location.services || "Nessuno"}</p>
-                    <p class="text-gray-600 text-sm mt-auto">${location.description || ""}</p>
-                </div>
-            `;
-        } catch (err) {
-            console.error('Errore nel caricamento della sede:', err);
-            locationDetails.innerHTML = `
-                <div class="flex flex-col h-full">
-                    <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center">
-                        <span class="text-gray-500">Immagine non disponibile</span>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 text-[#4a3729]">Sede #${locationId}</h3>
-                    <p class="text-gray-700 text-sm mb-2"><strong>Indirizzo:</strong> Informazioni non disponibili</p>
-                    <p class="text-gray-700 text-sm mb-2"><strong>Capienza:</strong> Informazioni non disponibili</p>
-                    <p class="text-gray-700 text-sm mb-2"><strong>Prezzo orario:</strong> €0.00</p>
-                    <p class="text-gray-700 text-sm mb-3"><strong>Servizi:</strong> Nessuno</p>
-                    <p class="text-gray-600 text-sm mt-auto">Descrizione non disponibile</p>
-                </div>
-            `;
-        }
+        const res = await fetch(`/api/locations/${locationId}`);
+        location = await res.json();
+        locationDetails.innerHTML = `
+          <img src="${location.image_url || "/uploads/default.jpg"}" 
+               alt="${location.name}" 
+               class="w-full h-48 object-cover rounded-lg mb-4">
+          <h3 class="text-xl font-bold mb-2 text-[#4a3729]">${location.name}</h3>
+          <p><strong>Indirizzo:</strong> ${location.address}, ${location.city}</p>
+          <p><strong>Capienza:</strong> ${location.capacity} persone</p>
+          <p><strong>Prezzo orario:</strong> €${parseFloat(location.price_per_hour).toFixed(2)}</p>
+        `;
     }
 
-    async function loadAvailableSlots(date) {
-        try {
-            const formattedDate = date.split('/').reverse().join('-');
-            const res = await fetch(`/api/bookings/available-slots/${locationId}/${formattedDate}`);
-
-            if (!res.ok) throw new Error('Errore nel recupero slot disponibili');
-
-            const data = await res.json();
-            return data.availableSlots || [];
-        } catch (err) {
-            console.error('Errore nel caricamento slot disponibili:', err);
-            return [];
-        }
+    // 🔹 Carica prenotazioni già fatte
+    async function loadBookings(date) {
+        const res = await fetch(`/api/bookings/location/${locationId}`);
+        const bookings = await res.json();
+        if (!date) return [];
+        const [d, m, y] = date.split("/");
+        const formatted = `${y}-${m.padStart(2, "0")}-${d.padStart(2, "0")}`;
+        return bookings.filter((b) => b.start_time.startsWith(formatted));
     }
 
-    // Carica disponibilità prenotazioni
-    async function loadAvailability() {
-        try {
-            const res = await fetch(`/api/bookings/location/${locationId}`);
+    // 🔹 Genera slot giornalieri
+    async function renderDailySlots() {
+        slotsGrid.innerHTML = "";
+        existingBookings = await loadBookings(selectedDate);
 
-            // Controlla se la risposta è HTML invece di JSON
-            const contentType = res.headers.get('content-type');
-            if (!contentType || !contentType.includes('application/json')) {
-                throw new Error('Risposta non JSON dal server');
-            }
+        for (let h = 8; h < 20; h++) {
+            const slot = `${h.toString().padStart(2, "0")}:00`;
+            const slotEnd = `${(h + 1).toString().padStart(2, "0")}:00`;
 
-            if (!res.ok) throw new Error('Errore nel recupero disponibilità');
-
-            const existingBookings = await res.json();
-
-            availabilityList.innerHTML = '';
-
-            if (existingBookings.length === 0) {
-                availabilityList.innerHTML = '<tr><td colspan="3" class="p-4 text-center text-gray-500">Nessuna prenotazione esistente</td></tr>';
-                return;
-            }
-
-            existingBookings.forEach(b => {
-                const row = document.createElement('tr');
-                row.classList.add('hover:bg-gray-50');
-                row.innerHTML = `
-                <td class="p-4 border-b text-sm">${new Date(b.start_time).toLocaleDateString()}</td>
-                <td class="p-4 border-b text-sm">${new Date(b.start_time).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</td>
-                <td class="p-4 border-b text-sm">${new Date(b.end_time).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</td>
-            `;
-                availabilityList.appendChild(row);
-            });
-        } catch (err) {
-            console.error('Errore nel caricamento delle prenotazioni:', err);
-            availabilityList.innerHTML = '<tr><td colspan="3" class="p-4 text-center text-red-500">Errore nel caricamento delle prenotazioni</td></tr>';
-        }
-    }
-
-    // Funzione per verificare la disponibilità prima della prenotazione
-    async function checkAvailability(startTime, endTime) {
-        try {
-            const res = await fetch(`/api/bookings/check-availability`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    location_id: parseInt(locationId),
-                    start_time: startTime,
-                    end_time: endTime
-                })
+            const isBooked = existingBookings.some((b) => {
+                const start = new Date(b.start_time);
+                const end = new Date(b.end_time);
+                const slotDate = new Date(
+                    selectedDate.split("/").reverse().join("-") + "T" + slot + ":00"
+                );
+                return slotDate >= start && slotDate < end;
             });
 
-            return res.ok;
-        } catch (error) {
-            console.error('Errore nel controllo disponibilità:', error);
-            return false;
+            const btn = document.createElement("button");
+            btn.textContent = `${slot} - ${slotEnd}`;
+            btn.className =
+                "p-3 text-sm rounded-lg w-full " +
+                (isBooked
+                    ? "bg-red-300 text-white cursor-not-allowed"
+                    : "bg-green-200 hover:bg-green-300");
+
+            if (!isBooked) {
+                btn.addEventListener("click", () => toggleSlot(slot, btn));
+            }
+
+            slotsGrid.appendChild(btn);
         }
     }
 
-    // Gestione conferma prenotazione
-    /*confirmButton.addEventListener('click', async () => {
-        availabilityMsg.classList.add('hidden');
-        bookingSuccess.classList.add('hidden');
-
-        if (!selectedDate || !selectedStartTime || !selectedEndTime) {
-            availabilityMsg.textContent = 'Seleziona data, orario di inizio e fine';
-            availabilityMsg.classList.remove('hidden');
-            return;
+    // 🔹 Selezione slot
+    function toggleSlot(slot, btn) {
+        if (selectedSlots.includes(slot)) {
+            selectedSlots = selectedSlots.filter((s) => s !== slot);
+            btn.classList.remove("bg-green-500", "text-white");
+            btn.classList.add("bg-green-200");
+        } else {
+            selectedSlots.push(slot);
+            selectedSlots.sort();
+            btn.classList.remove("bg-green-200");
+            btn.classList.add("bg-green-500", "text-white");
         }
+        validateSelection();
+    }
 
-        // Formatta la data nel formato YYYY-MM-DD
-        const [day, month, year] = selectedDate.split('/');
-        const formattedDate = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
-
-        const start_time = `${formattedDate}T${selectedStartTime}:00`;
-        const end_time = `${formattedDate}T${selectedEndTime}:00`;
-
-        // Verifica disponibilità
-        const isAvailable = await checkAvailability(start_time, end_time);
-        if (!isAvailable) {
-            availabilityMsg.textContent = 'Questo slot orario non è più disponibile. Si prega di scegliere un altro orario.';
-            availabilityMsg.classList.remove('hidden');
-            return;
-        }
-
-        try {
-            const res = await fetch('/api/bookings', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({
-                    location_id: parseInt(locationId),
-                    start_time,
-                    end_time
-                })
-            });
-
-            // Controlla se la risposta è OK
-            if (!res.ok) {
-                const errorData = await res.json().catch(() => ({ error: 'Errore sconosciuto' }));
-                availabilityMsg.textContent = errorData.error || 'Errore durante la prenotazione';
-                availabilityMsg.classList.remove('hidden');
-                return;
-            }
-
-            const data = await res.json();
-
-            bookingSuccess.textContent = 'Prenotazione confermata con successo!';
-            bookingSuccess.classList.remove('hidden');
-
-            // Reset del form
-            datepicker.clear();
-            startTimeInput.value = '';
-            endTimeInput.value = '';
-            selectedDate = null;
-            selectedStartTime = null;
-            selectedEndTime = null;
-            selectedDuration = 0;
+    // 🔹 Controlli su selezione
+    function validateSelection() {
+        if (selectedSlots.length === 0) {
+            priceDisplay.textContent = "Totale: €0.00";
             confirmButton.disabled = true;
-            priceDisplay.textContent = 'Totale: €0.00';
-            timeSlots.forEach(s => s.classList.remove('selected'));
-
-            // Ricarica la disponibilità
-            await loadAvailability();
-
-        } catch (err) {
-            console.error('Errore durante la prenotazione:', err);
-            availabilityMsg.textContent = 'Errore di connessione. Riprova più tardi.';
-            availabilityMsg.classList.remove('hidden');
-        }
-    });*/
-    // Modifica la funzione di conferma prenotazione
-    confirmButton.addEventListener('click', async () => {
-        availabilityMsg.classList.add('hidden');
-        bookingSuccess.classList.add('hidden');
-
-        if (!selectedDate || !selectedStartTime || !selectedEndTime) {
-            availabilityMsg.textContent = 'Seleziona data, orario di inizio e fine';
-            availabilityMsg.classList.remove('hidden');
             return;
         }
 
-        // Formatta la data nel formato YYYY-MM-DD
-        const [day, month, year] = selectedDate.split('/');
-        const formattedDate = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
-
-        const start_time = `${formattedDate}T${selectedStartTime}:00`;
-        const end_time = `${formattedDate}T${selectedEndTime}:00`;
-
-        try {
-            const res = await fetch('/api/bookings', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({
-                    location_id: parseInt(locationId),
-                    start_time,
-                    end_time
-                })
-            });
-
-            const responseText = await res.text();
-
-            // Prova a parsare come JSON, altrimenti usa il testo della risposta
-            let data;
-            try {
-                data = JSON.parse(responseText);
-            } catch (e) {
-                console.error('Risposta non JSON:', responseText);
-                availabilityMsg.textContent = 'Errore nel server. Riprova più tardi.';
-                availabilityMsg.classList.remove('hidden');
+        // controllo contiguità
+        const hours = selectedSlots.map((s) => parseInt(s.split(":")[0], 10));
+        for (let i = 1; i < hours.length; i++) {
+            if (hours[i] !== hours[i - 1] + 1) {
+                availabilityMsg.textContent = "Seleziona solo ore consecutive.";
+                availabilityMsg.classList.remove("hidden");
+                confirmButton.disabled = true;
                 return;
             }
-
-            if (!res.ok) {
-                availabilityMsg.textContent = data.error || 'Errore durante la prenotazione';
-                availabilityMsg.classList.remove('hidden');
-                return;
-            }
-
-            bookingSuccess.textContent = 'Prenotazione confermata con successo!';
-            bookingSuccess.classList.remove('hidden');
-
-            // Reset del form
-            datepicker.clear();
-            startTimeInput.value = '';
-            endTimeInput.value = '';
-            selectedDate = null;
-            selectedStartTime = null;
-            selectedEndTime = null;
-            selectedDuration = 0;
-            confirmButton.disabled = true;
-            priceDisplay.textContent = 'Totale: €0.00';
-            timeSlots.forEach(s => s.classList.remove('selected'));
-
-            // Ricarica la disponibilità
-            await loadAvailability();
-
-        } catch (err) {
-            console.error('Errore durante la prenotazione:', err);
-            availabilityMsg.textContent = 'Errore di connessione. Riprova più tardi.';
-            availabilityMsg.classList.remove('hidden');
         }
+
+        if (hours.length > 8) {
+            availabilityMsg.textContent = "Puoi prenotare al massimo 8 ore.";
+            availabilityMsg.classList.remove("hidden");
+            confirmButton.disabled = true;
+            return;
+        }
+
+        availabilityMsg.classList.add("hidden");
+        const price = parseFloat(location.price_per_hour) * hours.length;
+        priceDisplay.textContent = `Totale: €${price.toFixed(2)}`;
+        confirmButton.disabled = false;
+    }
+
+    // 🔹 Conferma prenotazione → redirect al carrello
+    // 🔹 Conferma prenotazione → salva in localStorage e redirect al carrello
+    confirmButton.addEventListener("click", () => {
+        if (!selectedDate || selectedSlots.length === 0) return;
+
+        const startHour = selectedSlots[0].split(":")[0];
+        const endHour = parseInt(selectedSlots[selectedSlots.length - 1].split(":")[0]) + 1;
+
+        // Genero ISO string per start_time e end_time
+        const start_time = new Date(
+            selectedDate.split("/").reverse().join("-") + `T${startHour}:00:00`
+        ).toISOString();
+
+        const end_time = new Date(
+            selectedDate.split("/").reverse().join("-") + `T${endHour}:00:00`
+        ).toISOString();
+
+        const user = JSON.parse(localStorage.getItem("user")) || {};
+        const totalPrice = parseFloat(location.price_per_hour) || 0;
+        const bookingData = {
+            user_id: user.id,
+            location_id: location.id,
+            location_name: location.name,
+            start_time,
+            end_time,
+            hours: selectedSlots.length,
+            total_price: totalPrice * selectedSlots.length,
+            readable_date: selectedDate || ""
+        };
+        localStorage.setItem("pendingBooking", JSON.stringify(bookingData));
+
+
+        // Salvo la prenotazione temporanea
+        localStorage.setItem("pendingBooking", JSON.stringify(bookingData));
+
+        // Redirect al carrello
+        window.location.href = "carrello.html";
     });
 
-    // Inizializza la pagina
-    generateTimeOptions();
     await loadLocation();
-    await loadAvailability();
 });
+

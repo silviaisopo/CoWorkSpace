@@ -4,6 +4,7 @@ const { sequelize } = require('../config/db');
 const Payment = sequelize.define('Payment', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     amount: { type: DataTypes.DECIMAL(10, 2), allowNull: false },
+    booking_id: { type: DataTypes.INTEGER, allowNull: false },
     payment_method: { type: DataTypes.STRING(100) },
     status: { type: DataTypes.STRING(50), allowNull: false, defaultValue: 'completed' },
     transaction_id: { type: DataTypes.STRING(255) }
