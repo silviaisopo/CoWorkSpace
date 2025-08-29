@@ -1,4 +1,5 @@
 <!--prenotazioni_utente.html-->
+<!--prenotazioni_utente.html-->
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -6,6 +7,13 @@
   <title>CoWorkSpace</title>
   <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style>
+    .active-tab {
+      border-bottom: 2px solid #54422b;
+      color: #212121;
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body style='font-family: "Spline Sans", "Noto Sans", sans-serif; background-color:#f3f6f4; color:#212121; margin:0;'>
 <div style="display:flex; flex-direction:column; min-height:100vh;">
@@ -71,7 +79,7 @@
 
       <!-- TABS -->
       <div style="display:flex; border-bottom:1px solid #6d5542; margin-bottom:24px;">
-        <button id="tab-active" style="padding:8px 16px; border:none; border-bottom:2px solid #54422b; background:none; color:#212121; font-weight:500;">Attive</button>
+        <button id="tab-active" class="active-tab" style="padding:8px 16px; border:none; background:none;">Attive</button>
         <button id="tab-past" style="padding:8px 16px; border:none; background:none; color:#2b2926; font-weight:500;">Passate</button>
       </div>
 

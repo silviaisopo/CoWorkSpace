@@ -16,7 +16,7 @@
 <body class="bg-[#f3f6f4] text-[#212121]" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
 
 <!-- NAVBAR -->
-<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#B8E0C2] px-10 py-3">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#c4b5a7] px-10 py-3">
     <div class="flex items-center gap-8">
         <div class="flex items-center gap-4 text-[#212121]">
             <div class="size-4">
@@ -35,7 +35,7 @@
     </div>
     <div class="flex flex-1 justify-end gap-8 items-center">
         <div class="flex flex-1 justify-end gap-8 items-center">
-            <a id="profile-btn" href="#">
+            <a id="profile-btn" href="img/avatar.png">
                 <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("/img/avatar.png");'></div>
             </a>
         </div>
@@ -56,59 +56,38 @@
 </header>
 
 <!-- FILTRI ORIZZONTALI -->
-<main class="px-6 md:px-20 py-10">
-    <h1 class="text-3xl font-bold mb-8">Trova lo spazio ideale</h1>
-    <form id="filterForm" class="bg-[#f3f6f4] border border-[#4a3729] p-6 rounded-lg flex flex-wrap gap-6 items-end justify-between max-w-full">
+<main class="px-6 md:px-20 py-10 bg-[#f9faf8] min-h-screen">
+    <h1 class="text-3xl md:text-4xl font-bold mb-10 text-center text-[#3b3b3b]">Trova lo spazio ideale</h1>
+
+    <form id="filterForm" class="bg-[#f3f6f4] border border-[#4a3729] p-8 rounded-xl flex flex-col md:flex-row gap-6 items-end justify-center max-w-2xl mx-auto shadow-lg">
         <!-- Tipo -->
-        <div class="flex flex-col w-[200px]">
-            <label class="text-[#212121] mb-1">Tipo di spazio</label>
-            <select id="tipo" class="bg-[#f3f6f4] border border-[#4a3729] text-[#212121] rounded-lg ">
+        <div class="flex flex-col w-full md:w-[220px]">
+            <label class="text-[#212121] mb-2 font-medium">Tipo di spazio</label>
+            <select id="tipo" class="bg-[#f3f6f4] border border-[#4a3729] text-[#212121] rounded-lg p-3 hover:border-[#c8a97e] focus:outline-none focus:ring-2 focus:ring-[#c8a97e] transition">
                 <option value="">Tutti</option>
                 <option>Ufficio Privato</option>
                 <option>Postazione Condivisa</option>
-                <option>Sala Riunioni</option> </select>
-        </div>
-        <!-- Città -->
-        <div class="flex flex-col">
-            <label class="text-[#212121] mb-1 text-sm font-medium">Città</label>
-            <input id="citta" type="text" placeholder="Inserisci città"
-                   class="bg-[#f3f6f4] border border-[#4a3729] text-[#212121] placeholder-[#212121] rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-[#c8a97e]" />
-        </div>
-        <div class="flex flex-col">
-            <label class="text-[#212121] mb-1 text-sm font-medium">Data</label>
-            <input id="data" type="date"
-                   class="bg-[#f3f6f4] border border-[#4a3729] text-[#212121] rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-[#c8a97e]" />
-        </div>
-
-        <!-- Orari - Modificato per evitare sovrapposizione -->
-        <div class="flex flex-col">
-            <label class="text-[#212121] mb-1 text-sm font-medium">Orario</label>
-            <div class="flex gap-2">
-                <input id="orarioInizio" type="time"
-                       class="bg-[#f3f6f4] border border-[#4a3729] text-[#212121] rounded-lg p-2.5  w-full text-sm focus:ring-2 focus:ring-[#212121]" />
-                <span class="self-center text-[#c8b8a8]">-</span>
-                <input id="orarioFine" type="time"
-                       class="bg-[#f3f6f4] border border-[#4a3729] text-[#212121] rounded-lg p-2.5  w-full text-sm focus:ring-2 focus:ring-[#212121]" />
-            </div>
-        </div>
-
-        <!-- Strumenti -->
-        <div class="flex flex-col w-[240px]">
-            <label class="text-[#212121] mb-1">Strumenti extra</label>
-            <select id="strumento" class="bg-[#f3f6f4] border border-[#4a3729] text-[#212121] rounded-lg ">
-                <option value="">Qualsiasi</option>
-                <option>Wi-Fi</option>
-                <option>Sala riunioni</option>
-                <option>Stampante</option>
-                <option>Cucina</option>
+                <option>Sala Riunioni</option>
             </select>
         </div>
+
+        <!-- Città -->
+        <div class="flex flex-col w-full md:w-[220px]">
+            <label class="text-[#212121] mb-2 font-medium">Città</label>
+            <input id="citta" type="text" placeholder="Inserisci città"
+                   class="bg-[#f3f6f4] border border-[#4a3729] text-[#212121] placeholder-[#212121] rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#c8a97e] transition" />
+        </div>
+
         <!-- Pulsante -->
-        <button type="submit" class="bg-[#4a3729] text-[#f3f6f4] font-bold px-6 py-2 rounded-lg h-12">Cerca</button>
+        <div class="flex flex-col w-full md:w-auto">
+            <button type="submit" class="bg-[#4a3729] text-[#f3f6f4] font-bold px-8 py-3 rounded-lg h-12 hover:bg-[#3a2f28] transition">Cerca</button>
+        </div>
     </form>
+
     <!-- RISULTATI -->
-    <section id="results" class="mt-10 grid md:grid-cols-3 gap-6"></section>
+    <section id="results" class="mt-12 grid md:grid-cols-3 gap-6"></section>
 </main>
+
 
 <!-- FOOTER -->
 <footer class="flex justify-center px-4 mt-20">
