@@ -26,12 +26,12 @@
             <a class="text-[#212121] text-sm font-bold leading-normal" href="catalogo.html">Esplora</a>
             <a class="text-[#212121] text-sm font-bold leading-normal" href="about-us.html">Chi Siamo</a>
             <a class="text-[#212121] text-sm font-bold leading-normal" href="contatti.html">Contatti</a>
-            <a class="text-[#212121] text-sm font-bold leading-normal" href="offerte.html">Prenota</a>
+            <!--<a class="text-[#212121] text-sm font-bold leading-normal" href="offerte.html">Prenota</a>-->
         </div>
     </div>
     <div class="flex flex-1 justify-end gap-8 items-center">
         <div class="flex flex-1 justify-end gap-8 items-center">
-            <a id="profile-btn" href="img/avatar.png">
+            <a id="profile-btn" href="#">
                 <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("/img/avatar.png");'></div>
             </a>
         </div>
@@ -42,9 +42,16 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m12-9l2 9m-6-9v9"/>
                 </svg>
             </div>
+
+            <!-- 🔹 Badge -->
+            <span id="cart-badge"
+                  class="hidden absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold rounded-full px-1.5 py-0.5">
+            1
+          </span>
         </a>
-        <a href="login.html">
-            <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold leading-normal tracking-[0.015em]">
+
+        <a id="login-btn" href="login.html">
+            <button id="login-button" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold leading-normal tracking-[0.015em]">
                 <span class="truncate">Accedi</span>
             </button>
         </a>
@@ -52,7 +59,7 @@
 </header>
 
 <!-- FILTRI ORIZZONTALI -->
-<main class="px-6 md:px-20 py-10 bg-[#f9faf8] min-h-screen">
+<main class="px-6 md:px-20 py-10 bg-[#f3f6f4] min-h-screen">
     <h1 class="text-3xl md:text-4xl font-bold mb-10 text-center text-[#3b3b3b]">Trova lo spazio ideale</h1>
 
     <form id="filterForm" class="bg-[#f3f6f4] border border-[#4a3729] p-8 rounded-xl flex flex-col md:flex-row gap-6 items-end justify-center max-w-2xl mx-auto shadow-lg">

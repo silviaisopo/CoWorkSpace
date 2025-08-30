@@ -68,12 +68,12 @@
 });
 
     // Funzione per mostrare messaggi
-    function showMessage(text, isError) {
-    messageBox.textContent = text;
-    messageBox.style.display = "block";
-    messageBox.style.background = isError ? "#dc3545" : "#4a3729"; // rosso se errore, marrone se ok
-    messageBox.style.color = "#fff";
-}
+        function showMessage(text, isError) {
+            messageBox.textContent = isError ? text : "✅ " + text; // icona ✅ se successo
+            messageBox.style.display = "block";
+            messageBox.style.background = "#f3f6f4" // rosso se errore, verde se ok
+            messageBox.style.color = isError ? "#dc3545" : "#28a745";
+        }
 });
 
     // ✅ Funzione globale per mostrare/nascondere password

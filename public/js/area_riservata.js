@@ -173,6 +173,39 @@ function rebook(locationId) {
     window.location.href = `prenota.html?location=${locationId}`;
 }
 
+const deleteBtn = document.getElementById("delete-account-btn");
+if (deleteBtn) {
+    deleteBtn.addEventListener("click", async () => {
+        const confirmDelete = confirm("Sei sicuro di voler eliminare il tuo account? Questa azione è irreversibile.");
+        if (!confirmDelete) return;
+
+        const token = localStorage.getItem("token");
+
+        try {
+            const res = await fetch("/api/user/me", {
+                method: "DELETE",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                }
+            });
+
+            if (!res.ok) {
+                const errData = await res.json();
+                throw new Error(errData.error || "Errore durante l'eliminazione dell'account");
+            }
+
+            alert("✅ Account eliminato con successo.");
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+            window.location.href = "login.html";
+
+        } catch (err) {
+            console.error("Errore eliminazione account:", err);
+            alert("Errore durante l'eliminazione dell'account. Riprova più tardi.");
+        }
+    });
+}
 
 
 

@@ -26,29 +26,45 @@
     <!-- HEADER-->
     <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#c4b5a7] px-10 py-3">
         <div class="flex items-center gap-8">
-            <div class="flex items-center gap-4 text-[#4a3729]">
+            <div class="flex items-center gap-4 text-[#212121]">
                 <div class="size-4">
-                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path>
-                    </svg>
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path></svg>
                 </div>
                 <a href="index.html">
-                    <h2 class="text-[#4a3729] text-lg font-bold leading-tight tracking-[-0.015em]">CoWorkSpace</h2>
+                    <h2 class="text-[#212121] text-lg font-bold leading-tight tracking-[-0.015em]">CoWorkSpace</h2>
                 </a>
             </div>
             <div class="flex items-center gap-9">
-                <a class="text-[#4a3729] text-sm font-bold" href="catalogo.html">Esplora</a>
-                <a class="text-[#4a3729] text-sm font-bold" href="about-us.html">Chi Siamo</a>
-                <a class="text-[#4a3729] text-sm font-bold" href="contatti.html">Contatti</a>
-                <a class="text-[#4a3729] text-sm font-bold" href="offerte.html">Prenota</a>
+                <a class="text-[#212121] text-sm font-bold leading-normal" href="catalogo.html">Esplora</a>
+                <a class="text-[#212121] text-sm font-bold leading-normal" href="about-us.html">Chi Siamo</a>
+                <a class="text-[#212121] text-sm font-bold leading-normal" href="contatti.html">Contatti</a>
+                <!--<a class="text-[#212121] text-sm font-bold leading-normal" href="offerte.html">Prenota</a>-->
             </div>
         </div>
-        <div class="flex flex-1 justify-end gap-8">
-            <button id="logout-btn" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold">
-                <span class="truncate">Logout</span>
+        <div class="flex flex-1 justify-end gap-8 items-center">
+
+            <!-- Icona carrello -->
+            <a href="carrello.html" class="relative">
+                <div class="size-10 flex items-center justify-center bg-[#f3f6f4] rounded-full text-[#4a3729]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m12-9l2 9m-6-9v9"/>
+                    </svg>
+                </div>
+
+                <!-- 🔹 Badge -->
+                <span id="cart-badge"
+                      class="hidden absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold rounded-full px-1.5 py-0.5">
+            1
+          </span>
+            </a>
+
+            <button onclick="logout()" class="rounded-lg bg-[#4a3729] text-[#f3f6f4] px-5 py-2 text-sm font-bold hover:bg-[#6d5542] transition">
+                Logout
             </button>
         </div>
     </header>
+
+
 
     <div class="flex flex-1 main-container">
 
@@ -141,6 +157,7 @@
     </footer>
 </div>
 <script src="js/area_riservata.js"></script>
+<script src="js/app.js">  </script>
 </body>
 </html>
 

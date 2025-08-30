@@ -27,7 +27,7 @@
                     <a class="text-[#212121] text-sm font-bold leading-normal" href="catalogo.html">Esplora</a>
                     <a class="text-[#212121] text-sm font-bold leading-normal" href="about-us.html">Chi Siamo</a>
                     <a class="text-[#212121] text-sm font-bold leading-normal" href="contatti.html">Contatti</a>
-                    <a class="text-[#212121] text-sm font-bold leading-normal" href="offerte.html">Prenota</a>
+                    <!--<a class="text-[#212121] text-sm font-bold leading-normal" href="offerte.html">Prenota</a>-->
                 </div>
             </div>
             <div class="flex flex-1 justify-end gap-8 items-center">
@@ -43,9 +43,16 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m12-9l2 9m-6-9v9"/>
                         </svg>
                     </div>
+
+                    <!-- 🔹 Badge -->
+                    <span id="cart-badge"
+                          class="hidden absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold rounded-full px-1.5 py-0.5">
+            1
+          </span>
                 </a>
-                <a href="login.html">
-                    <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold leading-normal tracking-[0.015em]">
+
+                <a id="login-btn" href="login.html">
+                    <button id="login-button" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold leading-normal tracking-[0.015em]">
                         <span class="truncate">Accedi</span>
                     </button>
                 </a>
@@ -91,8 +98,8 @@
                         </ul>
 
                         <div class="flex gap-4">
-                            <a href="prenotazioni_utente.html" class="inline-block bg-[#4a3729] text-[#f3f6f4] font-bold py-3 px-6 rounded-lg">
-                                Prenota un tour
+                            <a href="catalogo.html" class="inline-block bg-[#4a3729] text-[#f3f6f4] font-bold py-3 px-6 rounded-lg">
+                                Prenota un ufficio
                             </a>
 
                             <a href="contatti.html" class="inline-block bg-[#4a3729] hover:bg-[#4a3729] text-[#f3f6f4] font-bold py-3 px-6 rounded-lg">
@@ -100,7 +107,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="bg-[#f3f6f4] rounded-lg p-6 border border-[#4a3729]">
+                    <!--<div class="bg-[#f3f6f4] rounded-lg p-6 border border-[#4a3729]">
                         <h3 class="text-[#212121] text-xl font-bold mb-4">Tariffe Uffici Privati</h3>
                         <p class="text-[#212121] mb-6">Scegli la formula di affitto più adatta alle tue esigenze, con sconti progressivi per impegni a lungo termine.</p>
 
@@ -142,74 +149,9 @@
                             <p class="text-[#f3f6f4] font-medium mb-2">Offerta inaugurale:</p>
                             <p class="text-[#f3f6f4] text-sm">Il primo mese è gratis per contratti annuali. Affrettati, offerta limitata!</p>
                         </div>
-                    </div>
+                    </div>--->
                 </div>
 
-                <!-- DIMENSIONI UFFICI
-                <div class="mb-12">
-                    <h3 class="text-[#212121] text-xl font-bold mb-6">Dimensioni disponibili</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="bg-white rounded-lg p-6 border border-[#d0c6be]">
-                            <h4 class="text-[#4a3729] font-bold text-lg mb-3">Ufficio Singolo</h4>
-                            <p class="text-[#2b2926] mb-4">Perfetto per freelancer e professionisti singoli</p>
-                            <ul class="space-y-2 text-[#2b2926] text-sm mb-4">
-                                <li class="flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4a3729" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                                    <span>10-12 m²</span>
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4a3729" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                                    <span>Scrivania ergonomica</span>
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4a3729" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                                    <span>Armadio archiviatore</span>
-                                </li>
-                            </ul>
-                            <p class="text-[#4a3729] font-bold">A partire da €520/mese</p>
-                        </div>
-
-                        <div class="bg-white rounded-lg p-6 border border-[#d0c6be]">
-                            <h4 class="text-[#4a3729] font-bold text-lg mb-3">Ufficio Doppio</h4>
-                            <p class="text-[#2b2926] mb-4">Ideale per piccoli team o collaboratori</p>
-                            <ul class="space-y-2 text-[#2b2926] text-sm mb-4">
-                                <li class="flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4a3729" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                                    <span>16-20 m²</span>
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4a3729" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                                    <span>2 postazioni separate</span>
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4a3729" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                                    <span>Area riunioni interna</span>
-                                </li>
-                            </ul>
-                            <p class="text-[#4a3729] font-bold">A partire da €900/mese</p>
-                        </div>
-
-                        <div class="bg-white rounded-lg p-6 border border-[#d0c6be]">
-                            <h4 class="text-[#4a3729] font-bold text-lg mb-3">Ufficio Team</h4>
-                            <p class="text-[#2b2926] mb-4">Per team fino a 4-6 persone</p>
-                            <ul class="space-y-2 text-[#2b2926] text-sm mb-4">
-                                <li class="flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4a3729" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                                    <span>25-35 m²</span>
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4a3729" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                                    <span>Configurazione personalizzabile</span>
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4a3729" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
-                                    <span>Area meeting interna</span>
-                                </li>
-                            </ul>
-                            <p class="text-[#4a3729] font-bold">A partire da €1.600/mese</p>
-                        </div>
-                    </div>
-                </div>-->
 
                 <!-- GALLERIA -->
                 <div class="mb-12">
@@ -238,7 +180,7 @@
                         </div>
                         <div>
                             <p class="text-[#f3f6f4] font-medium mb-2">Quali sono gli orari di accesso?</p>
-                            <p class="text-[#d0c6be]">Gli uffici privati sono accessibili 24/7 con un sistema di sicurezza avanzato e controllo degli accessi.</p>
+                            <p class="text-[#d0c6be]">Gli uffici privati sono accessibili dalle 08:00 alle 20:00 con un sistema di sicurezza avanzato e controllo degli accessi.</p>
                         </div>
                         <div>
                             <p class="text-[#f3f6f4] font-medium mb-2">C'è un impegno minimo di permanenza?</p>

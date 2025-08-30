@@ -233,11 +233,7 @@ function rebook(locationId) {
     window.location.href = `prenota.html?location=${locationId}`;
 }
 
-function logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    window.location.href = 'index.html';
-}
+
 
 function showMessage(message, type = 'info') {
     const existingMessage = document.getElementById('flash-message');

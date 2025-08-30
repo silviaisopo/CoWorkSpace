@@ -27,7 +27,7 @@
                     <a class="text-[#212121] text-sm font-bold leading-normal" href="catalogo.html">Esplora</a>
                     <a class="text-[#212121] text-sm font-bold leading-normal" href="about-us.html">Chi Siamo</a>
                     <a class="text-[#212121] text-sm font-bold leading-normal" href="contatti.html">Contatti</a>
-                    <a class="text-[#212121] text-sm font-bold leading-normal" href="offerte.html">Prenota</a>
+                    <!--<a class="text-[#212121] text-sm font-bold leading-normal" href="offerte.html">Prenota</a>-->
                 </div>
             </div>
             <div class="flex flex-1 justify-end gap-8 items-center">
@@ -43,9 +43,16 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m12-9l2 9m-6-9v9"/>
                         </svg>
                     </div>
+
+                    <!-- 🔹 Badge -->
+                    <span id="cart-badge"
+                          class="hidden absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold rounded-full px-1.5 py-0.5">
+            1
+          </span>
                 </a>
-                <a href="login.html">
-                    <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold leading-normal tracking-[0.015em]">
+
+                <a id="login-btn" href="login.html">
+                    <button id="login-button" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold leading-normal tracking-[0.015em]">
                         <span class="truncate">Accedi</span>
                     </button>
                 </a>
@@ -90,7 +97,7 @@
                             </li>
                         </ul>
 
-                        <a href="prenotazioni_utente.html" class="inline-block bg-[#4a3729] text-[#f3f6f4] font-bold py-3 px-6 rounded-lg">
+                        <a href="catalogo.html" class="inline-block bg-[#4a3729] text-[#f3f6f4] font-bold py-3 px-6 rounded-lg">
                             Prenota ora
                         </a>
 
@@ -98,7 +105,7 @@
                             Richiedi informazioni
                         </a>
                     </div>
-                    <div class="bg-[#f3f6f4] rounded-lg p-6 border border-[#4a3729]">
+                    <!--<div class="bg-[#f3f6f4] rounded-lg p-6 border border-[#4a3729]">
                         <h3 class="text-[#212121] text-xl font-bold mb-4">Tariffe e Abbonamenti</h3>
                         <p class="text-[#212121] mb-6">Scegli la formula che meglio si adatta alle tue esigenze, con flessibilità e vantaggi per chi lavora con regolarità.</p>
                         <div class="space-y-4 mb-6">
@@ -119,7 +126,7 @@
                             <p class="text-[#f3f6f4] font-medium mb-2">Pacchetto Flexi:</p>
                             <p class="text-[#f3f6f4] text-sm">10 giorni utilizzabili in 3 mesi a € 220 + IVA (perfetto per chi non lavora sempre in ufficio)</p>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
 
                 <!-- GALLERIA -->
@@ -141,13 +148,13 @@
                     <h3 class="text-white text-xl font-bold mb-6">Domande Frequenti</h3>
                     <div class="space-y-4">
                         <div> <p class="text-[#f3f6f4] font-medium mb-2">Posso accedere in qualsiasi momento?</p>
-                            <p class="text-[#d0c6be]">Lo spazio è aperto dal lunedì al venerdì dalle 8:00 alle 20:00. Con l'abbonamento premium hai accesso 24/7.</p>
+                            <p class="text-[#d0c6be]">Lo spazio è aperto dal lunedì al venerdì dalle 8:00 alle 20:00. Ingresso su prenotazione.</p>
                         </div>
                         <div> <p class="text-[#f3f6f4] font-medium mb-2">C'è un limite di tempo per la postazione?</p>
-                            <p class="text-[#d0c6be]">Le postazioni sono a disposizione per tutta la giornata. Per periodi più lunghi consigliamo un abbonamento.</p>
+                            <p class="text-[#d0c6be]">Le postazioni sono a disposizione per tutta la giornata. Bisogna controllare la disponibilità.</p>
                         </div>
                         <div> <p class="text-[#f3f6f4] font-medium mb-2">Posso prenotare una postazione specifica?</p>
-                            <p class="text-[#d0c6be]">Le postazioni sono assegnate al momento dell'arrivo, ma con l'abbonamento premium puoi prenotare il tuo posto preferito.</p>
+                            <p class="text-[#d0c6be]">Le postazioni sono assegnate al momento dell'arrivo.</p>
                         </div>
                     </div>
                 </div>

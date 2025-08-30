@@ -27,7 +27,7 @@
                     <a class="text-[#212121] text-sm font-bold leading-normal" href="catalogo.html">Esplora</a>
                     <a class="text-[#212121] text-sm font-bold leading-normal" href="about-us.html">Chi Siamo</a>
                     <a class="text-[#212121] text-sm font-bold leading-normal" href="contatti.html">Contatti</a>
-                    <a class="text-[#212121] text-sm font-bold leading-normal" href="offerte.html">Prenota</a>
+                    <!--<a class="text-[#212121] text-sm font-bold leading-normal" href="offerte.html">Prenota</a>-->
                 </div>
             </div>
             <div class="flex flex-1 justify-end gap-8 items-center">
@@ -43,9 +43,16 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m12-9l2 9m-6-9v9"/>
                         </svg>
                     </div>
+
+                    <!-- 🔹 Badge -->
+                    <span id="cart-badge"
+                          class="hidden absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold rounded-full px-1.5 py-0.5">
+            1
+          </span>
                 </a>
-                <a href="login.html">
-                    <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold leading-normal tracking-[0.015em]">
+
+                <a id="login-btn" href="login.html">
+                    <button id="login-button" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold leading-normal tracking-[0.015em]">
                         <span class="truncate">Accedi</span>
                     </button>
                 </a>
@@ -91,7 +98,7 @@
                         </ul>
 
                         <div class="flex gap-4">
-                            <a href="prenotazioni_utente.html" class="inline-block bg-[#4a3729] text-[#f3f6f4] font-bold py-3 px-6 rounded-lg">
+                            <a href="catalogo.html" class="inline-block bg-[#4a3729] text-[#f3f6f4] font-bold py-3 px-6 rounded-lg">
                                 Prenota ora
                             </a>
 
@@ -100,7 +107,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="bg-[#f3f6f4] rounded-lg p-6 border border-[#4a3729]">
+                    <!--<div class="bg-[#f3f6f4] rounded-lg p-6 border border-[#4a3729]">
                         <h3 class="text-[#212121] text-xl font-bold mb-4">Tariffe e Opzioni</h3>
                         <p class="text-[#212121] mb-6">Scegli la sala e la durata più adatte alle tue esigenze. Disponibili sconti per pacchetti orari e abbonamenti.</p>
                         <div class="space-y-4 mb-6">
@@ -121,7 +128,7 @@
                             <p class="text-[#f3f6f4] font-medium mb-2">Pacchetto Meeting:</p>
                             <p class="text-[#f3f6f4] text-sm">10 ore di utilizzo utilizzabili in 30 giorni con sconto del 20% + caffè e acqua inclusi</p>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
 
                 <!-- GALLERIA -->
@@ -147,7 +154,7 @@
                         </div>
                         <div>
                             <p class="text-[#f3f6f4] font-medium mb-2">Quali attrezzature sono incluse nella prenotazione?</p>
-                            <p class="text-[#d0c6be]">Tutte le sale includono schermo, proiettore o TV, connessione Wi-Fi, lavagna o lavagna magnetica. Su richiesta possiamo fornire attrezzature aggiuntive.</p>
+                            <p class="text-[#d0c6be]">Tutte le sale garantiscono una buona connessione Wi-fi. Su richiesta possiamo fornire attrezzature aggiuntive.</p>
                         </div>
                         <div>
                             <p class="text-[#f3f6f4] font-medium mb-2">C'è un servizio di catering disponibile?</p>
@@ -155,7 +162,7 @@
                         </div>
                         <div>
                             <p class="text-[#f3f6f4] font-medium mb-2">È possibile prenotare per meeting ricorrenti?</p>
-                            <p class="text-[#d0c6be]">Sì, offriamo tariffe agevolate per prenotazioni ricorrenti (es. ogni settimana o ogni mese). Contattaci per maggiori informazioni.</p>
+                            <p class="text-[#d0c6be]">No, puoi riprenotare la sala di tuo interesse dall'area riservata. Contattaci per maggiori informazioni.</p>
                         </div>
                     </div>
                 </div>
