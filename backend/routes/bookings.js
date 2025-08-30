@@ -1,3 +1,4 @@
+//routes/bookings.js
 const express = require('express');
 const router = express.Router();
 const bookingController = require('../controllers/bookingController');
@@ -19,4 +20,5 @@ router.get('/my-bookings', authenticate, isUser, bookingController.getMyBookings
 router.delete('/:id', authenticate, isUser, bookingController.deleteBooking);
 router.patch('/:id', authenticate, isManager, bookingController.updateBooking);
 router.get('/', authenticate, isManager, bookingController.getAllBookings);
+
 module.exports = router;

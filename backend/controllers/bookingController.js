@@ -145,22 +145,6 @@ const getMyBookings = async (req, res) => {
 };
 
 // DELETE PRENOTAZIONE
-/*const deleteBooking = async (req, res) => {
-  try {
-    const booking = await Booking.findByPk(req.params.id);
-    if (!booking) return res.status(404).json({ error: 'Prenotazione non trovata' });
-    if (booking.user_id !== req.user.id) {
-      return res.status(403).json({ error: 'Accesso negato: non puoi cancellare questa prenotazione' });
-    }
-
-    await booking.destroy();
-    res.json({ message: 'Prenotazione cancellata con successo' });
-
-  } catch (err) {
-    console.error('Errore cancellazione prenotazione:', err);
-    res.status(500).json({ error: 'Errore del server durante la cancellazione della prenotazione' });
-  }
-};*/
 const deleteBooking = async (req, res) => {
   try {
     const booking = await Booking.findByPk(req.params.id, {
