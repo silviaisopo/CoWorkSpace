@@ -1,21 +1,82 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" xmlns="http://www.w3.org/1999/html">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CoWorkSpace - Home</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
-  <link
-          rel="stylesheet"
-          as="style"
-          onload="this.rel='stylesheet'"
-          href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
-  />
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" as="style" onload="this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Spline+Sans%3Awght%40400%3B500%3B700" />
-  <link rel="icon" type="image/svg+xml" href="/img/Icona_sito.svg">
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <script src="js/index.js"></script>
+
+  <!-- ✅ CSS responsivo -->
+  <style>
+    /* 🔹 Tablet e smartphone: adattare header */
+    @media (max-width: 1024px) {
+      header {
+        flex-wrap: wrap;
+        padding: 0.75rem 1rem !important;
+      }
+      header h2 {
+        font-size: 1.1rem !important;
+      }
+      header a {
+        font-size: 0.9rem !important;
+      }
+    }
+
+    /* 🔹 Smartphone: padding ridotto, navbar compatta */
+    @media (max-width: 768px) {
+      .px-40, .px-10 {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+      }
+      .gap-9, .gap-8 {
+        gap: 0.5rem !important;
+      }
+      h1 {
+        font-size: 1.6rem !important;
+        line-height: 1.2 !important;
+      }
+      h2 {
+        font-size: 1.2rem !important;
+      }
+      form {
+        width: 100% !important;
+      }
+      form input {
+        font-size: 0.9rem !important;
+      }
+    }
+
+    /* 🔹 Smartphone piccolo: hero section leggibile */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.4rem !important;
+      }
+      h2 {
+        font-size: 1rem !important;
+      }
+      button, a, input {
+        font-size: 0.85rem !important;
+      }
+    }
+
+    /* 🔹 Card responsive: larghezza piena su mobile */
+    @media (max-width: 768px) {
+      .min-w-60 {
+        min-width: 100% !important;
+      }
+    }
+
+    /* 🔹 Footer centrato e a colonna su mobile */
+    @media (max-width: 600px) {
+      footer .flex {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem !important;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
 <div class="relative flex size-full min-h-screen flex-col bg-[#f3f6f4] dark group/design-root overflow-x-hidden" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
