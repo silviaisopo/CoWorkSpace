@@ -13,6 +13,9 @@
       to { opacity: 1; transform: translateY(0); }
     }
     .animate-fade-in-up { animation: fadeInUp 0.3s ease-out forwards; }
+    .image-preview { display: none; max-width: 200px; margin-top: 10px; border-radius: 8px; }
+    .upload-label { display: inline-block; padding: 8px 12px; background: #4a3729; color: white; border-radius: 6px; cursor: pointer; }
+    .upload-label:hover { background: #6d5542; }
   </style>
 </head>
 <body class="bg-[#f3f6f4]" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
@@ -29,7 +32,9 @@
       </button>
       <a href="index.html" class="flex items-center gap-2">
         <div class="size-4">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"/></svg>
+          <svg viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z"/>
+          </svg>
         </div>
         <h2 class="text-lg font-bold">CoWorkSpace</h2>
       </a>
@@ -144,5 +149,6 @@
 <script src="/js/dashboard_manager.js"></script>
 </body>
 </html>
+
 
 
