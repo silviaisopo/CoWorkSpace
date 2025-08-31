@@ -237,7 +237,7 @@ async function fetchLocations() {
         const spinner = document.getElementById('loading-spinner');
         if (spinner) spinner.style.display = 'block';
 
-        const res = await fetch('http://localhost:3000/api/locations/manager', {
+        const res = await fetch("/api/locations/manager", {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
