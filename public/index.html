@@ -9,7 +9,6 @@
 
   <!-- ✅ CSS responsivo -->
   <style>
-    /* 🔹 Tablet e smartphone: adattare header */
     @media (max-width: 1024px) {
       header {
         flex-wrap: wrap;
@@ -23,7 +22,6 @@
       }
     }
 
-    /* 🔹 Smartphone: padding ridotto, navbar compatta */
     @media (max-width: 768px) {
       .px-40, .px-10 {
         padding-left: 1rem !important;
@@ -47,7 +45,6 @@
       }
     }
 
-    /* 🔹 Smartphone piccolo: hero section leggibile */
     @media (max-width: 480px) {
       h1 {
         font-size: 1.4rem !important;
@@ -60,14 +57,12 @@
       }
     }
 
-    /* 🔹 Card responsive: larghezza piena su mobile */
     @media (max-width: 768px) {
       .min-w-60 {
         min-width: 100% !important;
       }
     }
 
-    /* 🔹 Footer centrato e a colonna su mobile */
     @media (max-width: 600px) {
       footer .flex {
         flex-direction: column;
@@ -92,34 +87,36 @@
             <h2 class="text-[#212121] text-lg font-bold leading-tight tracking-[-0.015em]">CoWorkSpace</h2>
           </a>
         </div>
-        <div class="flex items-center gap-9">
+        <!-- Desktop nav -->
+        <div class="hidden lg:flex items-center gap-9">
           <a class="text-[#212121] text-sm font-bold leading-normal" href="catalogo.html">Esplora</a>
           <a class="text-[#212121] text-sm font-bold leading-normal" href="about-us.html">Chi Siamo</a>
           <a class="text-[#212121] text-sm font-bold leading-normal" href="contatti.html">Contatti</a>
-          <!--<a class="text-[#212121] text-sm font-bold leading-normal" href="offerte.html">Prenota</a>-->
+        </div>
+        <!-- Hamburger menu mobile -->
+        <div class="lg:hidden">
+          <button id="hamburger-btn" class="text-[#212121] focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
         </div>
       </div>
       <div class="flex flex-1 justify-end gap-8 items-center">
-        <div class="flex flex-1 justify-end gap-8 items-center">
-          <a id="profile-btn" href="#">
-            <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("/img/avatar.png");'></div>
-          </a>
-        </div>
-        <!-- Icona carrello -->
+        <a id="profile-btn" href="#">
+          <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("/img/avatar.png");'></div>
+        </a>
         <a href="carrello.html" class="relative">
           <div class="size-10 flex items-center justify-center bg-[#f3f6f4] rounded-full text-[#4a3729]">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m12-9l2 9m-6-9v9"/>
             </svg>
           </div>
-
-          <!-- 🔹 Badge -->
-          <span id="cart-badge"
-                class="hidden absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold rounded-full px-1.5 py-0.5">
+          <span id="cart-badge" class="hidden absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold rounded-full px-1.5 py-0.5">
             1
           </span>
         </a>
-
         <a id="login-btn" href="login.html">
           <button id="login-button" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold leading-normal tracking-[0.015em]">
             <span class="truncate">Accedi</span>
@@ -127,6 +124,14 @@
         </a>
       </div>
     </header>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-[#f3f6f4] px-4 py-4 flex flex-col gap-3 border-b border-[#c4b5a7]">
+      <a class="text-[#212121] text-base font-bold" href="catalogo.html">Esplora</a>
+      <a class="text-[#212121] text-base font-bold" href="about-us.html">Chi Siamo</a>
+      <a class="text-[#212121] text-base font-bold" href="contatti.html">Contatti</a>
+    </div>
+
     <div class="px-40 flex flex-1 justify-center py-5">
       <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
         <div class="@container">
@@ -283,6 +288,8 @@
         </div>
       </div>
     </div>
+
+
     <footer class="flex justify-center px-4 mt-20">
       <div class="max-w-[960px] w-full flex flex-col items-center text-[#2b2926] text-sm py-10">
         <div class="flex flex-wrap justify-center gap-6 mb-4">
@@ -295,8 +302,20 @@
       </div>
     </footer>
   </div>
+
+  <!-- Script per hamburger menu -->
+  <script>
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburgerBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+
+  <script src="/js/app.js"></script>
+  <script src="/js/index.js"></script>
 </div>
-<script src="/js/app.js"></script>
-<script src="/js/index.js"></script>
 </body>
 </html>
+
