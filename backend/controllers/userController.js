@@ -1,6 +1,6 @@
-const Payment = require("../models/Payment");
-const Booking = require("../models/Booking");
-const User = require("../models/User");
+const Payment = require("../models/payment");
+const Booking = require("../models/booking");
+const User = require("../models/user");
 
 const getUserProfile = async (req, res) => {
     try {
