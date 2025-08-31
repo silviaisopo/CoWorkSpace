@@ -4,52 +4,39 @@
     <meta charset="UTF-8">
     <title>CoWorkSpace - Sedi Manager</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link rel="stylesheet" href="/css/style.css">
     <link rel="icon" type="image/svg+xml" href="/img/Icona_sito.svg">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style>
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-up {
-            animation: fadeInUp 0.3s ease-out forwards;
-        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in-up { animation: fadeInUp 0.3s ease-out forwards; }
         .sidebar-container { position: relative; width: 16rem; background-color: #f3f6f4; }
         .sidebar-line { position: absolute; top: 0; bottom: 0; right: 0; width: 1px; background-color: #4a3729; }
         footer .footer-line { border-top: 1px solid #4a3729; width: calc(100% - 16rem); margin-left: 16rem; }
-        .location-card {
-            transition: all 0.3s ease;
+        .location-card { transition: all 0.3s ease; }
+        .location-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .selected-location { background-color: #e5e7eb !important; border-left: 4px solid #4a3729; }
+        .loading-spinner { border: 3px solid #f3f3f3; border-top: 3px solid #4a3729; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 20px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* RESPONSIVO */
+        @media (max-width:768px){
+            aside { display: none; }
+            #hamburger-btn { display: flex; }
+            #mobile-menu { display: none; position:absolute; top:60px; left:0; width:100%; background:#f3f6f4; flex-direction:column; gap:0.5rem; padding:1rem; z-index:50; }
+            #mobile-menu a { padding:0.5rem 1rem; border-radius:0.5rem; }
         }
-        .location-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        .selected-location {
-            background-color: #e5e7eb !important;
-            border-left: 4px solid #4a3729;
-        }
-        .loading-spinner {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #4a3729;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        @media (min-width:769px){
+            #hamburger-btn { display: none; }
         }
     </style>
 </head>
-<body class="bg-[#f3f6f4]" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
+<body class="bg-[#f3f6f4]" style='font-family:"Spline Sans","Noto Sans",sans-serif;'>
 <div class="flex flex-col min-h-screen">
 
     <!-- HEADER -->
-    <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#c4b5a7] px-10 py-3">
+    <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#c4b5a7] px-10 py-3 relative">
         <div class="flex items-center gap-8">
             <div class="flex items-center gap-4 text-[#4a3729]">
                 <div class="size-4">
@@ -59,22 +46,35 @@
                     <h2 class="text-[#4a3729] text-lg font-bold leading-tight tracking-[-0.015em]">CoWorkSpace</h2>
                 </a>
             </div>
-            <div class="flex items-center gap-9">
-                <a class="text-[#4a3729] text-sm font-bold" href="catalogo.html">Esplora</a>
-                <a class="text-[#4a3729] text-sm font-bold" href="about-us.html">Chi Siamo</a>
-                <a class="text-[#4a3729] text-sm font-bold" href="contatti.html">Contatti</a>
-            </div>
         </div>
-        <div class="flex flex-1 justify-end gap-8">
+
+        <div class="flex items-center gap-4">
+            <button id="hamburger-btn" class="flex flex-col gap-1 p-2">
+                <span class="block w-6 h-0.5 bg-[#4a3729]"></span>
+                <span class="block w-6 h-0.5 bg-[#4a3729]"></span>
+                <span class="block w-6 h-0.5 bg-[#4a3729]"></span>
+            </button>
+
             <button id="logout-btn" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold">
                 <span class="truncate">Logout</span>
             </button>
         </div>
+
+        <!-- MOBILE MENU -->
+        <div id="mobile-menu" class="flex flex-col md:hidden">
+            <a href="catalogo.html">Esplora</a>
+            <a href="about-us.html">Chi Siamo</a>
+            <a href="contatti.html">Contatti</a>
+            <a href="dashboard_manager.html">🏠 Dashboard</a>
+            <a href="sedi_manager.html">🏢 Sedi</a>
+            <a href="sedi_manager.html#search-location">🏬 Elimina sede</a>
+            <a href="prenotazioni_manager.html">💺 Prenotazioni</a>
+        </div>
     </header>
 
     <div class="flex flex-1 main-container">
-        <!-- SIDEBAR -->
-        <aside class="w-64 bg-[#f3f6f4] p-4 relative">
+        <!-- SIDEBAR DESKTOP -->
+        <aside class="w-64 bg-[#f3f6f4] p-4 relative hidden md:flex">
             <div class="flex items-center gap-3 mb-8">
                 <div class="bg-cover bg-center rounded-full size-12" style='background-image:url("/img/avatar.png");'></div>
                 <div>
@@ -88,22 +88,6 @@
                 <a href="sedi_manager.html#search-location" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">🏬 Elimina sede</a>
                 <a href="prenotazioni_manager.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">💺 Prenotazioni</a>
             </nav>
-            <svg
-                    class="absolute top-0 left-0 w-full pointer-events-none"
-                    height="300"
-                    viewBox="0 0 100 300"
-                    preserveAspectRatio="none"
-                    aria-hidden="true"
-            >
-                <path
-                        d="M100 0 V270 Q100 290 92 290 H0"
-                        stroke="#c4b5a7"
-                        stroke-width="1"
-                        fill="none"
-                        vector-effect="non-scaling-stroke"
-                        stroke-linecap="round"
-                />
-            </svg>
         </aside>
 
         <!-- CONTENUTO DASHBOARD -->
@@ -142,6 +126,19 @@
         </div>
     </footer>
 </div>
-</body>
+
+<script>
+    // Hamburger menu mobile
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if(hamburgerBtn){
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+
+</script>
+
 <script src="js/sedi_manager.js"></script>
+</body>
 </html>
