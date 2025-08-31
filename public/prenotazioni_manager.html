@@ -1,27 +1,42 @@
+<!-- fa recap delle prenotazioni fatte degli utenti-->
 <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>CoWorkSpace - Prenotazioni Manager</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <title>CoWorkSpace - Prenotazioni Manager</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="icon" type="image/svg+xml" href="/img/Icona_sito.svg">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style>
-        .card {
-            background: #fff;
-            border: 1px solid #e5e7eb;
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        .card h2 {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: #4a3729;
-            margin-bottom: 1rem;
+        .animate-fade-in-up { animation: fadeInUp 0.3s ease-out forwards; }
+        .sidebar-container { position: relative; width: 16rem; background-color: #f3f6f4; }
+        .sidebar-line { position: absolute; top: 0; bottom: 0; right: 0; width: 1px; background-color: #4a3729; }
+        footer .footer-line { border-top: 1px solid #4a3729; width: calc(100% - 16rem); margin-left: 16rem; }
+        .booking-card { transition: all 0.3s ease; }
+        .booking-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .selected-booking { background-color: #e5e7eb !important; border-left: 4px solid #4a3729; }
+        .status-pending { background-color: #fef3c7; color: #92400e; }
+        .status-confirmed { background-color: #d1fae5; color: #065f46; }
+        .status-cancelled { background-color: #fee2e2; color: #b91c1c; }
+        .status-completed { background-color: #dbeafe; color: #1e40af; }
+        .loading-spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #4a3729;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -30,36 +45,38 @@
 
     <!-- HEADER -->
     <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#c4b5a7] px-6 py-3">
-        <div class="flex items-center gap-4">
-            <!-- HAMBURGER -->
-            <button id="menu-toggle" class="md:hidden text-[#4a3729]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
+        <div class="flex items-center gap-8">
+            <!-- Bottone hamburger (mobile) -->
+            <button id="hamburger-btn" class="md:hidden text-[#4a3729]">
+                ☰
             </button>
-            <div class="flex items-center gap-2 text-[#4a3729]">
-                <svg class="size-5" viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M44 4H30.7V17.3H17.3V30.7H4V44H44V4Z"/>
-                </svg>
-                <a href="index.html"><h2 class="text-lg font-bold">CoWorkSpace</h2></a>
+            <div class="flex items-center gap-4 text-[#4a3729]">
+                <div class="size-4">
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"/></svg>
+                </div>
+                <a href="index.html">
+                    <h2 class="text-[#4a3729] text-lg font-bold leading-tight tracking-[-0.015em]">CoWorkSpace</h2>
+                </a>
             </div>
-            <nav class="hidden md:flex items-center gap-6">
+            <div class="hidden md:flex items-center gap-9">
                 <a class="text-[#4a3729] text-sm font-bold" href="catalogo.html">Esplora</a>
                 <a class="text-[#4a3729] text-sm font-bold" href="about-us.html">Chi Siamo</a>
                 <a class="text-[#4a3729] text-sm font-bold" href="contatti.html">Contatti</a>
-            </nav>
+            </div>
         </div>
-        <div class="flex flex-1 justify-end">
-            <button id="logout-btn" class="rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold">
-                Logout
+        <div class="flex flex-1 justify-end gap-8">
+            <button id="logout-btn" class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold">
+                <span class="truncate">Logout</span>
             </button>
         </div>
     </header>
 
-    <div class="flex flex-1">
+    <div class="flex flex-1 main-container relative">
+        <!-- OVERLAY MOBILE -->
+        <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
         <!-- SIDEBAR -->
-        <aside id="sidebar" class="w-64 bg-[#f3f6f4] p-4 border-r border-[#c4b5a7] fixed md:static inset-y-0 left-0 transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-40">
+        <aside id="sidebar" class="fixed md:static top-0 left-0 h-full w-64 bg-[#f3f6f4] p-4 z-50 transform -translate-x-full md:translate-x-0 transition-transform duration-300">
             <div class="flex items-center gap-3 mb-8">
                 <div class="bg-cover bg-center rounded-full size-12" style='background-image:url("/img/avatar.png");'></div>
                 <div>
@@ -71,30 +88,69 @@
                 <a href="dashboard_manager.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">🏠 Dashboard</a>
                 <a href="sedi_manager.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">🏢 Sedi</a>
                 <a href="sedi_manager.html#search-location" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">🏬 Elimina sede</a>
-                <a href="prenotazioni_manager.html" class="flex items-center gap-3 px-3 py-2 rounded-lg bg-[#d0c6be]">💺 Prenotazioni</a>
+                <a href="prenotazioni_manager.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be] bg-[#d0c6be]">💺 Prenotazioni</a>
             </nav>
+            <svg class="absolute top-0 left-0 w-full pointer-events-none" height="300" viewBox="0 0 100 300" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M100 0 V270 Q100 290 92 290 H0" stroke="#c4b5a7" stroke-width="1" fill="none" vector-effect="non-scaling-stroke" stroke-linecap="round"/>
+            </svg>
         </aside>
 
         <!-- CONTENUTO -->
-        <main class="flex-1 p-6 md:ml-64">
-            <h1 class="text-[#4a3729] text-2xl font-bold mb-6">Prenotazioni</h1>
+        <div class="flex-1 p-8 bg-[#f3f6f4] overflow-y-auto">
+            <h1 class="text-[#4a3729] text-2xl font-bold mb-6">Gestione Prenotazioni</h1>
 
-            <!-- PRENOTAZIONI ATTIVE -->
-            <div class="card">
-                <h2>Prenotazioni Attive</h2>
-                <div id="active-bookings" class="space-y-3">
-                    <p class="text-sm text-gray-500">Caricamento prenotazioni...</p>
+            <!-- Filtri -->
+            <div class="bg-white rounded-lg p-6 border border-[#e5e7eb] mb-6 shadow-md">
+                <h2 class="text-[#4a3729] text-xl font-bold mb-4">Filtra Prenotazioni</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Stato</label>
+                        <select id="filter-status" class="border p-2 rounded w-full">
+                            <option value="">Tutti gli stati</option>
+                            <option value="pending">In attesa</option>
+                            <option value="confirmed">Confermata</option>
+                            <option value="cancelled">Cancellata</option>
+                            <option value="completed">Completata</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Data inizio</label>
+                        <input type="date" id="filter-start-date" class="border p-2 rounded w-full">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Data fine</label>
+                        <input type="date" id="filter-end-date" class="border p-2 rounded w-full">
+                    </div>
+                </div>
+                <button id="apply-filters" class="mt-4 bg-[#4a3729] text-white px-4 py-2 rounded hover:bg-[#5c4938] transition-colors">Applica Filtri</button>
+            </div>
+
+            <!-- Visualizza prenotazioni -->
+            <div class="bg-white rounded-lg p-6 border border-[#e5e7eb] mb-6 shadow-md">
+                <h2 class="text-[#4a3729] text-xl font-bold mb-4">Tutte le Prenotazioni</h2>
+                <div id="bookings-container" class="grid grid-cols-1 gap-4">
+                    <div class="loading-spinner" id="loading-spinner"></div>
+                    <p class="text-center text-gray-500 py-4" id="no-bookings-message" style="display: none;">Nessuna prenotazione trovata.</p>
                 </div>
             </div>
 
-            <!-- STORICO PRENOTAZIONI -->
-            <div class="card">
-                <h2>Storico Prenotazioni</h2>
-                <div id="past-bookings" class="space-y-3">
-                    <p class="text-sm text-gray-500">Caricamento storico...</p>
+            <!-- Gestione prenotazione -->
+            <div class="bg-white rounded-lg p-6 border border-[#212121] mb-6 shadow-md">
+                <h2 class="text-[#4a3729] text-xl font-bold mb-4">Gestisci Prenotazione</h2>
+                <input type="text" id="search-booking" placeholder="Cerca per ID, utente o sede" class="border p-2 rounded w-full mb-3">
+                <ul id="bookings-list" class="mb-3 max-h-64 overflow-y-auto border rounded p-2"></ul>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    <select id="update-status" class="border p-2 rounded w-full">
+                        <option value="pending">In attesa</option>
+                        <option value="confirmed">Conferma</option>
+                        <option value="cancelled">Cancella</option>
+                        <option value="completed">Completa</option>
+                    </select>
+                    <button id="update-booking" class="bg-[#4a3729] text-white px-4 py-2 rounded w-full hover:bg-[#5c4938] transition-colors">Aggiorna Stato</button>
                 </div>
             </div>
-        </main>
+        </div>
     </div>
 
     <!-- FOOTER -->
@@ -113,19 +169,25 @@
 
 <!-- SCRIPT -->
 <script>
-    const menuToggle = document.getElementById("menu-toggle");
-    const sidebar = document.getElementById("sidebar");
+    document.addEventListener("DOMContentLoaded", () => {
+        const sidebar = document.getElementById("sidebar");
+        const hamburgerBtn = document.getElementById("hamburger-btn");
+        const overlay = document.getElementById("overlay");
 
-    menuToggle.addEventListener("click", () => {
-        if (sidebar.classList.contains("-translate-x-full")) {
-            sidebar.classList.remove("-translate-x-full");
-        } else {
+        hamburgerBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("-translate-x-full");
+            overlay.classList.toggle("hidden");
+        });
+
+        overlay.addEventListener("click", () => {
             sidebar.classList.add("-translate-x-full");
-        }
+            overlay.classList.add("hidden");
+        });
     });
 </script>
 <script src="js/prenotazioni_manager.js"></script>
 </body>
 </html>
+
 
 

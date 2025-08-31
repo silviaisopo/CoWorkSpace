@@ -3,63 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <title>CoWorkSpace - Dashboard Manager</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
   <link rel="stylesheet" href="/css/style.css">
   <link rel="icon" type="image/svg+xml" href="/img/Icona_sito.svg">
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <style>
-    .card {
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 0.5rem;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    .card h2 {
-      font-size: 1.25rem;
-      font-weight: bold;
-      color: #4a3729;
-      margin-bottom: 1rem;
-    }
+    .animate-fade-in-up { animation: fadeInUp 0.3s ease-out forwards; }
   </style>
 </head>
 <body class="bg-[#f3f6f4]" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
 <div class="flex flex-col min-h-screen">
 
   <!-- HEADER -->
-  <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#c4b5a7] px-6 py-3">
-    <div class="flex items-center gap-4">
-      <!-- HAMBURGER -->
-      <button id="menu-toggle" class="md:hidden text-[#4a3729]">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"/>
+  <header class="flex items-center justify-between border-b border-[#c4b5a7] px-4 md:px-10 py-3">
+    <div class="flex items-center gap-4 text-[#4a3729]">
+      <!-- HAMBURGER MOBILE -->
+      <button id="hamburger-btn" class="md:hidden p-2 rounded hover:bg-[#e6e2df]">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
       </button>
-      <div class="flex items-center gap-2 text-[#4a3729]">
-        <svg class="size-5" viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path d="M44 4H30.7V17.3H17.3V30.7H4V44H44V4Z"/>
-        </svg>
-        <a href="index.html"><h2 class="text-lg font-bold">CoWorkSpace</h2></a>
-      </div>
-      <nav class="hidden md:flex items-center gap-6">
-        <a class="text-[#4a3729] text-sm font-bold" href="catalogo.html">Esplora</a>
-        <a class="text-[#4a3729] text-sm font-bold" href="about-us.html">Chi Siamo</a>
-        <a class="text-[#4a3729] text-sm font-bold" href="contatti.html">Contatti</a>
-      </nav>
+      <a href="index.html" class="flex items-center gap-2">
+        <div class="size-4">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"/></svg>
+        </div>
+        <h2 class="text-lg font-bold">CoWorkSpace</h2>
+      </a>
     </div>
-    <div class="flex flex-1 justify-end">
-      <button id="logout-btn" class="rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold">
-        Logout
-      </button>
+    <div class="hidden md:flex items-center gap-9">
+      <a class="text-sm font-bold" href="catalogo.html">Esplora</a>
+      <a class="text-sm font-bold" href="about-us.html">Chi Siamo</a>
+      <a class="text-sm font-bold" href="contatti.html">Contatti</a>
+    </div>
+    <div class="flex justify-end">
+      <button id="logout-btn" class="h-10 px-4 bg-[#4a3729] text-[#f3f6f4] font-bold rounded-lg">Logout</button>
     </div>
   </header>
 
-  <div class="flex flex-1">
+  <div class="flex flex-1 relative">
+    <!-- OVERLAY MOBILE -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black/40 hidden z-30"></div>
+
     <!-- SIDEBAR -->
-    <aside id="sidebar" class="w-64 bg-[#f3f6f4] p-4 border-r border-[#c4b5a7] fixed md:static inset-y-0 left-0 transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-40">
+    <aside id="sidebar" class="fixed md:static top-0 left-0 h-full w-64 bg-[#f3f6f4] p-4 z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-200 ease-in-out">
       <div class="flex items-center gap-3 mb-8">
         <div class="bg-cover bg-center rounded-full size-12" style='background-image:url("/img/avatar.png");'></div>
         <div>
@@ -68,7 +58,7 @@
         </div>
       </div>
       <nav class="space-y-1 text-[#4a3729] font-medium">
-        <a href="dashboard_manager.html" class="flex items-center gap-3 px-3 py-2 rounded-lg bg-[#d0c6be]">🏠 Dashboard</a>
+        <a href="dashboard_manager.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">🏠 Dashboard</a>
         <a href="sedi_manager.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">🏢 Sedi</a>
         <a href="sedi_manager.html#search-location" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">🏬 Elimina sede</a>
         <a href="prenotazioni_manager.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">💺 Prenotazioni</a>
@@ -76,44 +66,50 @@
     </aside>
 
     <!-- CONTENUTO -->
-    <main class="flex-1 p-6 md:ml-64">
+    <main class="flex-1 p-6 md:p-8 bg-[#f3f6f4]">
       <h1 class="text-[#4a3729] text-2xl font-bold mb-6">Dashboard Manager</h1>
 
-      <!-- PROFILO -->
-      <div class="card">
-        <h2>Il tuo profilo</h2>
-        <p><strong>Nome:</strong> <span id="profile-name">-</span></p>
-        <p><strong>Email:</strong> <span id="profile-email">-</span></p>
-        <p><strong>Ruolo:</strong> <span id="profile-role">-</span></p>
-        <button id="delete-account" class="bg-red-600 text-white px-4 py-2 rounded mt-3 hover:bg-red-700">
+      <!-- Profilo -->
+      <div class="bg-white rounded-lg p-6 border border-[#212121] mb-6 shadow" style="max-width: 800px;">
+        <h2 class="text-xl font-bold mb-4">Il tuo profilo</h2>
+        <p><strong>Nome:</strong> <span id="user-name-detail">Caricamento...</span></p>
+        <p><strong>Email:</strong> <span id="user-email">Caricamento...</span></p>
+        <p><strong>Ruolo:</strong> <span id="user-role-detail">Caricamento...</span></p>
+        <button id="delete-account-btn" class="mt-4 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
           Elimina Account
         </button>
       </div>
 
-      <!-- AGGIUNGI SEDE -->
-      <div class="card">
-        <h2>Aggiungi una Sede</h2>
-        <form id="add-location-form" class="space-y-3">
-          <input type="text" name="nome" placeholder="Nome sede" class="border p-2 rounded w-full" required>
-          <input type="text" name="indirizzo" placeholder="Indirizzo" class="border p-2 rounded w-full" required>
-          <input type="text" name="citta" placeholder="Città" class="border p-2 rounded w-full" required>
-          <select name="tipo" class="border p-2 rounded w-full" required>
-            <option value="">Seleziona il tipo di sede</option>
-            <option value="ufficio">Ufficio</option>
-            <option value="coworking">Coworking</option>
-            <option value="sala_riunioni">Sala Riunioni</option>
+      <!-- Aggiungi sede -->
+      <div class="bg-white rounded-lg p-6 border border-[#212121] mb-6 shadow" style="max-width: 800px;">
+        <h2 class="text-xl font-bold mb-4">Aggiungi una Sede</h2>
+        <form id="add-location-form" class="flex flex-col gap-3" enctype="multipart/form-data">
+          <input type="text" name="name" placeholder="Nome sede" required class="border p-2 rounded w-full">
+          <input type="text" name="address" placeholder="Indirizzo" required class="border p-2 rounded w-full">
+          <input type="text" name="city" placeholder="Città" required class="border p-2 rounded w-full">
+          <select name="type" required class="border p-2 rounded w-full">
+            <option value="" disabled selected>Seleziona il tipo di sede</option>
+            <option value="ufficio privato">Ufficio Privato</option>
+            <option value="sala riunioni">Sala Riunioni</option>
+            <option value="postazione condivisa">Postazione Condivisa</option>
           </select>
-          <textarea name="descrizione" placeholder="Descrizione" class="border p-2 rounded w-full"></textarea>
-          <button type="submit" class="bg-[#4a3729] text-white px-4 py-2 rounded hover:bg-[#37291f] w-full">
-            Aggiungi Sede
-          </button>
+          <input type="text" name="description" placeholder="Descrizione" required class="border p-2 rounded w-full">
+          <input type="text" name="services" placeholder="Servizi (es: Wi-Fi, Proiettore)" class="border p-2 rounded w-full">
+          <input type="number" name="capacity" placeholder="Capienza" required class="border p-2 rounded w-full">
+          <input type="number" name="price_per_hour" placeholder="Prezzo/ora" required class="border p-2 rounded w-full" step="0.01">
+          <div>
+            <label for="image-upload" class="upload-label">Seleziona immagine dal computer</label>
+            <input type="file" id="image-upload" name="image" accept="image/*" class="hidden">
+            <img id="image-preview" class="image-preview" alt="Anteprima immagine">
+          </div>
+          <button type="submit" class="bg-[#4a3729] text-white px-4 py-2 rounded w-full">Aggiungi Sede</button>
         </form>
       </div>
     </main>
   </div>
 
   <!-- FOOTER -->
-  <footer class="flex flex-col items-center px-4 mt-20 relative z-10">
+  <footer class="flex flex-col items-center px-4 mt-20">
     <div class="max-w-[960px] w-full flex flex-col items-center text-[#6d5542] text-sm pb-10">
       <div class="flex flex-wrap justify-center gap-6 mb-4">
         <a href="about-us.html" class="hover:text-[#4a3729]">Chi siamo</a>
@@ -126,20 +122,27 @@
   </footer>
 </div>
 
-<!-- SCRIPT -->
 <script>
-  const menuToggle = document.getElementById("menu-toggle");
   const sidebar = document.getElementById("sidebar");
+  const overlay = document.getElementById("sidebar-overlay");
+  const hamburgerBtn = document.getElementById("hamburger-btn");
 
-  menuToggle.addEventListener("click", () => {
-    if (sidebar.classList.contains("-translate-x-full")) {
-      sidebar.classList.remove("-translate-x-full");
-    } else {
+  if (hamburgerBtn) {
+    hamburgerBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("-translate-x-full");
+      overlay.classList.toggle("hidden");
+    });
+  }
+  if (overlay) {
+    overlay.addEventListener("click", () => {
       sidebar.classList.add("-translate-x-full");
-    }
-  });
+      overlay.classList.add("hidden");
+    });
+  }
 </script>
-<script src="js/dashboard_manager.js"></script>
+
+<script src="/js/dashboard_manager.js"></script>
 </body>
 </html>
+
 
