@@ -9,151 +9,143 @@
   <link rel="icon" type="image/svg+xml" href="/img/Icona_sito.svg">
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <style>
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .animate-fade-in-up { animation: fadeInUp 0.3s ease-out forwards; }
-
     /* HEADER RESPONSIVO */
-    @media (max-width: 1024px) {
-      header { flex-wrap: wrap; padding: 0.75rem 1rem; }
-      header h2 { font-size: 1.1rem; }
-      header a { font-size: 0.9rem; }
-    }
+    @media (max-width: 1024px) { header { flex-wrap: wrap; padding: 0.75rem 1rem; } header h2 { font-size: 1.1rem; } header a { font-size: 0.9rem; } }
     @media (max-width: 768px) {
-      .px-10 { padding-left: 1rem; padding-right: 1rem; }
-      .gap-9 { gap: 0.5rem; }
-      aside { display: none; } /* sidebar nascosta di default su mobile */
+      aside { display: none; }
       #mobile-menu { display: none; position: absolute; top: 60px; left: 0; width: 100%; background:#f3f6f4; flex-direction: column; gap:0.5rem; padding:1rem; z-index:50; }
       #mobile-menu a { padding:0.5rem 1rem; border-radius:0.5rem; }
       #hamburger-btn { display: flex; }
     }
-    @media (min-width: 769px) {
-      #hamburger-btn { display: none; }
-    }
+    @media (min-width: 769px) { #hamburger-btn { display: none; } }
   </style>
 </head>
-<body class="bg-[#f3f6f4]" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
-<div class="flex flex-col min-h-screen">
 
-  <!-- HEADER -->
-  <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#c4b5a7] px-10 py-3 relative">
-    <div class="flex items-center gap-8">
-      <div class="flex items-center gap-4 text-[#4a3729]">
-        <div class="size-4">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path></svg>
-        </div>
-        <a href="index.html">
-          <h2 class="text-[#4a3729] text-lg font-bold leading-tight tracking-[-0.015em]">CoWorkSpace</h2>
-        </a>
-      </div>
-      <div class="hidden md:flex items-center gap-9">
-        <a class="text-[#4a3729] text-sm font-bold" href="catalogo.html">Esplora</a>
-        <a class="text-[#4a3729] text-sm font-bold" href="about-us.html">Chi Siamo</a>
-        <a class="text-[#4a3729] text-sm font-bold" href="contatti.html">Contatti</a>
-      </div>
+<body class="bg-[#f3f6f4] flex flex-col min-h-screen" style='font-family: "Spline Sans", "Noto Sans", sans-serif;'>
+
+<!-- HEADER -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#c4b5a7] px-4 py-3 lg:px-10">
+  <div class="flex items-center gap-4">
+    <div class="size-4">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path></svg>
     </div>
-
-    <div class="flex items-center gap-4">
-      <button id="hamburger-btn" class="flex flex-col gap-1 p-2">
-        <span class="block w-6 h-0.5 bg-[#4a3729]"></span>
-        <span class="block w-6 h-0.5 bg-[#4a3729]"></span>
-        <span class="block w-6 h-0.5 bg-[#4a3729]"></span>
-      </button>
-
-      <button id="logout-btn" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#4a3729] text-[#f3f6f4] text-sm font-bold">
-        <span class="truncate">Logout</span>
-      </button>
-    </div>
-
-    <!-- MENU MOBILE -->
-    <div id="mobile-menu" class="flex flex-col md:hidden">
-      <a href="catalogo.html">Esplora</a>
-      <a href="about-us.html">Chi Siamo</a>
-      <a href="contatti.html">Contatti</a>
-      <a href="dashboard_manager.html">🏠 Dashboard</a>
-      <a href="sedi_manager.html">🏢 Sedi</a>
-      <a href="sedi_manager.html#search-location">🏬 Elimina sede</a>
-      <a href="prenotazioni_manager.html">💺 Prenotazioni</a>
-    </div>
-  </header>
-
-  <div class="flex flex-1 main-container">
-    <!-- SIDEBAR DESKTOP -->
-    <aside class="w-64 bg-[#f3f6f4] p-4 relative hidden md:flex">
-      <div class="flex items-center gap-3 mb-8">
-        <div class="bg-cover bg-center rounded-full size-12" style='background-image:url("/img/avatar.png");'></div>
-        <div>
-          <h1 id="user-name" class="text-[#4a3729] font-medium">Caricamento...</h1>
-          <p id="user-role" class="text-[#8b6b4d] text-sm"></p>
-        </div>
-      </div>
-      <nav class="space-y-1 text-[#4a3729] font-medium">
-        <a href="dashboard_manager.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">🏠 Dashboard</a>
-        <a href="sedi_manager.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">🏢 Sedi</a>
-        <a href="sedi_manager.html#search-location" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">🏬 Elimina sede</a>
-        <a href="prenotazioni_manager.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">💺 Prenotazioni</a>
-      </nav>
-    </aside>
-
-    <!-- CONTENUTO DASHBOARD -->
-    <div class="flex-1 p-8 bg-[#f3f6f4]">
-      <h1 class="text-[#4a3729] text-2xl font-bold mb-6">Dashboard Manager</h1>
-
-      <div class="bg-white rounded-lg p-6 border border-[#212121] mb-6 shadow-m" style="max-width: 800px;">
-        <h2 class="text-[#4a3729] text-xl font-bold mb-4">Il tuo profilo</h2>
-        <p><strong>Nome:</strong> <span id="user-name-detail">Caricamento...</span></p>
-        <p><strong>Email:</strong> <span id="user-email">Caricamento...</span></p>
-        <p><strong>Ruolo:</strong> <span id="user-role-detail">Caricamento...</span></p>
-        <button id="delete-account-btn" class="mt-4 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-          Elimina Account
-        </button>
-      </div>
-
-      <!-- FORM AGGIUNTA SEDE -->
-      <div class="bg-white rounded-lg p-6 border border-[#212121] mb-6 shadow-m" style="max-width: 800px;">
-        <h2 class="text-[#4a3729] text-xl font-bold mb-4">Aggiungi una Sede</h2>
-        <form id="add-location-form" class="flex flex-col gap-3" enctype="multipart/form-data">
-          <input type="text" name="name" placeholder="Nome sede" required class="border p-2 rounded w-full">
-          <input type="text" name="address" placeholder="Indirizzo" required class="border p-2 rounded w-full">
-          <input type="text" name="city" placeholder="Città" required class="border p-2 rounded w-full">
-          <select name="type" required class="border p-2 rounded w-full">
-            <option value="" disabled selected>Seleziona il tipo di sede</option>
-            <option value="ufficio privato">Ufficio Privato</option>
-            <option value="sala riunioni">Sala Riunioni</option>
-            <option value="postazione condivisa">Postazione Condivisa</option>
-          </select>
-          <input type="text" name="description" placeholder="Descrizione" required class="border p-2 rounded w-full">
-          <input type="text" name="services" placeholder="Servizi (es: Wi-Fi, Proiettore)" class="border p-2 rounded w-full">
-          <input type="number" name="capacity" placeholder="Capienza" required class="border p-2 rounded w-full">
-          <input type="number" name="price_per_hour" placeholder="Prezzo/ora" required class="border p-2 rounded w-full" step="0.01">
-          <div>
-            <label for="image-upload" class="upload-label">Seleziona immagine dal computer</label>
-            <input type="file" id="image-upload" name="image" accept="image/*" class="hidden">
-            <img id="image-preview" class="image-preview" alt="Anteprima immagine">
-          </div>
-          <button type="submit" class="bg-[#4a3729] text-white px-4 py-2 rounded w-full">Aggiungi Sede</button>
-        </form>
-      </div>
-    </div>
+    <a href="index.html"><h2 class="text-[#212121] text-lg font-bold leading-tight tracking-[-0.015em]">CoWorkSpace</h2></a>
   </div>
 
-  <!-- FOOTER -->
-  <footer class="flex flex-col items-center px-4 mt-20 relative z-10">
-    <div class="max-w-[960px] w-full flex flex-col items-center text-[#6d5542] text-sm pb-10">
-      <div class="flex flex-wrap justify-center gap-6 mb-4">
-        <a href="about-us.html" class="hover:text-[#4a3729]">Chi siamo</a>
-        <a href="contatti.html" class="hover:text-[#4a3729]">Contatti</a>
-        <a href="#" class="hover:text-[#4a3729]">Termini</a>
-        <a href="#" class="hover:text-[#4a3729]">Privacy</a>
-      </div>
-      <p>© 2025 Workspaces. Tutti i diritti riservati.</p>
-    </div>
-  </footer>
+  <!-- Desktop nav -->
+  <nav class="hidden lg:flex items-center gap-6">
+    <a class="text-[#212121] text-sm font-bold" href="catalogo.html">Esplora</a>
+    <a class="text-[#212121] text-sm font-bold" href="about-us.html">Chi Siamo</a>
+    <a class="text-[#212121] text-sm font-bold" href="contatti.html">Contatti</a>
+  </nav>
+
+  <!-- Hamburger mobile -->
+  <div class="flex items-center gap-4 lg:hidden">
+    <button id="hamburger-btn" class="text-[#212121] focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+    <button onclick="logout()" class="rounded-lg bg-[#4a3729] text-[#f3f6f4] px-4 py-2 text-sm font-bold hover:bg-[#6d5542] transition">Logout</button>
+  </div>
+
+  <!-- Profilo e logout desktop -->
+  <div class="hidden lg:flex items-center gap-4 ml-auto">
+    <button onclick="logout()" class="rounded-lg bg-[#4a3729] text-[#f3f6f4] px-4 py-2 text-sm font-bold hover:bg-[#6d5542] transition">Logout</button>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div id="mobile-menu" class="hidden lg:hidden bg-[#f3f6f4] flex flex-col gap-2 px-4 py-2 border-b border-[#c4b5a7]">
+  <a href="catalogo.html" class="text-[#212121] font-bold py-2">Esplora</a>
+  <a href="about-us.html" class="text-[#212121] font-bold py-2">Chi Siamo</a>
+  <a href="contatti.html" class="text-[#212121] font-bold py-2">Contatti</a>
+  <a href="dashboard_manager.html" class="text-[#212121] font-bold py-2">🏠 Dashboard</a>
+  <a href="sedi_manager.html" class="text-[#212121] font-bold py-2">🏢 Sedi</a>
+  <a href="sedi_manager.html#search-location" class="text-[#212121] font-bold py-2">🏬 Elimina sede</a>
+  <a href="prenotazioni_manager.html" class="text-[#212121] font-bold py-2">💺 Prenotazioni</a>
 </div>
 
-<!-- SCRIPT RESPONSIVO E LOGOUT -->
+<div class="flex flex-1 flex-col lg:flex-row">
+
+  <!-- SIDEBAR -->
+  <aside class="w-full lg:w-64 bg-[#f3f6f4] p-4 relative hidden lg:flex">
+    <div class="flex items-center gap-3 mb-8">
+      <div class="bg-cover bg-center rounded-full size-12" style='background-image:url("/img/avatar.png");'></div>
+      <div>
+        <h1 id="user-name" class="text-[#4a3729] font-medium">Caricamento...</h1>
+        <p id="user-role" class="text-[#8b6b4d] text-sm"></p>
+      </div>
+    </div>
+    <nav class="space-y-1 text-[#4a3729] font-medium">
+      <a href="dashboard_manager.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">🏠 Dashboard</a>
+      <a href="sedi_manager.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">🏢 Sedi</a>
+      <a href="sedi_manager.html#search-location" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">🏬 Elimina sede</a>
+      <a href="prenotazioni_manager.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#d0c6be]">💺 Prenotazioni</a>
+    </nav>
+    <svg class="absolute top-0 left-0 w-full pointer-events-none" height="260" viewBox="0 0 100 260" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M100 0 V180 Q100 200 92 200 H0" stroke="#c4b5a7" stroke-width="1" fill="none" vector-effect="non-scaling-stroke" stroke-linecap="round"/>
+    </svg>
+  </aside>
+
+  <!-- CONTENUTO DASHBOARD -->
+  <div class="flex-1 p-4 lg:p-8 bg-[#f3f6f4]">
+    <h1 class="text-[#4a3729] text-2xl font-bold mb-6">Dashboard Manager</h1>
+
+    <!-- CARD PROFILO -->
+    <div class="bg-white rounded-lg p-6 border border-[#212121] mb-6 shadow-md" style="max-width: 800px;">
+      <h2 class="text-[#4a3729] text-xl font-bold mb-4">Il tuo profilo</h2>
+      <p><strong>Nome:</strong> <span id="user-name-detail">Caricamento...</span></p>
+      <p><strong>Email:</strong> <span id="user-email">Caricamento...</span></p>
+      <p><strong>Ruolo:</strong> <span id="user-role-detail">Caricamento...</span></p>
+      <button id="delete-account-btn" class="mt-4 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+        Elimina Account
+      </button>
+    </div>
+
+    <!-- SEZIONE GESTIONE SEDE -->
+    <div class="bg-white rounded-lg p-6 border border-[#212121] mb-6 shadow-md" style="max-width: 800px;">
+      <h2 class="text-[#4a3729] text-xl font-bold mb-4">Aggiungi una Sede</h2>
+      <form id="add-location-form" class="flex flex-col gap-3" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="Nome sede" required class="border p-2 rounded w-full">
+        <input type="text" name="address" placeholder="Indirizzo" required class="border p-2 rounded w-full">
+        <input type="text" name="city" placeholder="Città" required class="border p-2 rounded w-full">
+        <select name="type" required class="border p-2 rounded w-full">
+          <option value="" disabled selected>Seleziona il tipo di sede</option>
+          <option value="ufficio privato">Ufficio Privato</option>
+          <option value="sala riunioni">Sala Riunioni</option>
+          <option value="postazione condivisa">Postazione Condivisa</option>
+        </select>
+        <input type="text" name="description" placeholder="Descrizione" required class="border p-2 rounded w-full">
+        <input type="text" name="services" placeholder="Servizi (es: Wi-Fi, Proiettore)" class="border p-2 rounded w-full">
+        <input type="number" name="capacity" placeholder="Capienza" required class="border p-2 rounded w-full">
+        <input type="number" name="price_per_hour" placeholder="Prezzo/ora" required class="border p-2 rounded w-full" step="0.01">
+        <div>
+          <label for="image-upload" class="upload-label">Seleziona immagine dal computer</label>
+          <input type="file" id="image-upload" name="image" accept="image/*" class="hidden">
+          <img id="image-preview" class="image-preview" alt="Anteprima immagine">
+        </div>
+        <button type="submit" class="bg-[#4a3729] text-white px-4 py-2 rounded w-full">Aggiungi Sede</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="flex flex-col items-center px-4 mt-20 relative z-10">
+  <div class="max-w-[960px] w-full flex flex-col items-center text-[#6d5542] text-sm pb-10">
+    <div class="flex flex-wrap justify-center gap-6 mb-4">
+      <a href="about-us.html" class="hover:text-[#4a3729]">Chi siamo</a>
+      <a href="contatti.html" class="hover:text-[#4a3729]">Contatti</a>
+      <a href="#" class="hover:text-[#4a3729]">Termini</a>
+      <a href="#" class="hover:text-[#4a3729]">Privacy</a>
+    </div>
+    <p>© 2025 Workspaces. Tutti i diritti riservati.</p>
+  </div>
+</footer>
+
 <script>
   // Hamburger mobile menu
   const hamburgerBtn = document.getElementById('hamburger-btn');
@@ -163,10 +155,10 @@
       mobileMenu.classList.toggle('hidden');
     });
   }
-
 </script>
 
 <script src="/js/dashboard_manager.js"></script>
 </body>
 </html>
+
 
