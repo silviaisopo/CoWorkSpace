@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/db');
 const Location = require('./location');
 const User = require('./user');
-const Payment = require('./Payment');
+const Payment = require('./payment');
 
 const Booking = sequelize.define('Booking', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
