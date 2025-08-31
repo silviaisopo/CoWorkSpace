@@ -1,6 +1,6 @@
 const { v4: uuidv4 } = require("uuid");
-const Payment = require("../models/Payment");
-const Booking = require("../models/Booking");
+const Payment = require("../models/payment");
+const Booking = require("../models/booking");
 
 /**
  * Flusso pagamento + creazione prenotazione
