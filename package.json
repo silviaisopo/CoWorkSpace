@@ -18,7 +18,7 @@
   "homepage": "https://github.com/teppyk9/TEST-NEW-progetto-web#readme",
   "description": "",
   "dependencies": {
-    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.2",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "helmet-csp": "^4.0.0",
