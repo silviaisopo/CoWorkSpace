@@ -1,51 +1,80 @@
--- Users Table
-CREATE TABLE IF NOT EXISTS public.users (
-                                            id SERIAL PRIMARY KEY,
-                                            name VARCHAR(255) NOT NULL,
-                                            email VARCHAR(255) UNIQUE NOT NULL,
-                                            password VARCHAR(255) NOT NULL,
-                                            role VARCHAR(50) NOT NULL DEFAULT 'user'
+-- SEQUENZE
+CREATE SEQUENCE public.users_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+CREATE SEQUENCE public.locations_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+CREATE SEQUENCE public.bookings_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+CREATE SEQUENCE public.payments_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+-- TABELLA USERS
+CREATE TABLE public.users (
+                              id integer DEFAULT nextval('public.users_id_seq'::regclass) NOT NULL PRIMARY KEY,
+                              name character varying(255) NOT NULL,
+                              email character varying(255) NOT NULL UNIQUE,
+                              password character varying(255) NOT NULL,
+                              role character varying(50) DEFAULT 'user'::character varying NOT NULL
 );
 
-ALTER TABLE public.users OWNER TO postgres;
-
--- Locations Table
-CREATE TABLE IF NOT EXISTS public.locations (
-                                                id SERIAL PRIMARY KEY,
-                                                name VARCHAR(255) NOT NULL,
-                                                address TEXT NOT NULL,
-                                                city VARCHAR(255) NOT NULL,
-                                                description TEXT,
-                                               type VARCHAR(50) ,
-                                                services TEXT,
-                                                capacity INTEGER NOT NULL DEFAULT 1,
-                                                price_per_hour NUMERIC(10, 2) NOT NULL,
-                                                manager_id INTEGER REFERENCES public.users(id)
+-- TABELLA LOCATIONS
+CREATE TABLE public.locations (
+                                  id integer DEFAULT nextval('public.locations_id_seq'::regclass) NOT NULL PRIMARY KEY,
+                                  name character varying(255) NOT NULL,
+                                  address text NOT NULL,
+                                  city character varying(255) NOT NULL,
+                                  description text,
+                                  capacity integer DEFAULT 1 NOT NULL,
+                                  price_per_hour numeric(10,2) NOT NULL,
+                                  manager_id integer REFERENCES public.users(id) ON UPDATE CASCADE ON DELETE CASCADE,
+                                  type character varying(50) DEFAULT 'ufficio privato'::character varying NOT NULL,
+                                  services text,
+                                  image_url character varying(255)
 );
 
-ALTER TABLE public.locations OWNER TO postgres;
-
--- Bookings Table
-CREATE TABLE IF NOT EXISTS public.bookings (
-                                               id SERIAL PRIMARY KEY,
-                                               user_id INTEGER REFERENCES public.users(id) ON DELETE CASCADE,
-                                               workspace_id INTEGER REFERENCES public.locations(id) ON DELETE CASCADE,
-                                               start_time TIMESTAMP WITH TIME ZONE NOT NULL,
-                                               end_time TIMESTAMP WITH TIME ZONE NOT NULL,
-                                               total_price NUMERIC(10,2) NOT NULL,
-                                               status VARCHAR(50) NOT NULL DEFAULT 'pending'
+-- TABELLA BOOKINGS
+CREATE TABLE public.bookings (
+                                 id integer DEFAULT nextval('public.bookings_id_seq'::regclass) NOT NULL PRIMARY KEY,
+                                 start_time timestamp with time zone NOT NULL,
+                                 end_time timestamp with time zone NOT NULL,
+                                 total_price numeric(10,2) NOT NULL,
+                                 status character varying(50) DEFAULT 'pending'::character varying NOT NULL,
+                                 location_id integer NOT NULL REFERENCES public.locations(id) ON UPDATE CASCADE ON DELETE CASCADE,
+                                 user_id integer NOT NULL REFERENCES public.users(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-ALTER TABLE public.bookings OWNER TO postgres;
-
--- Payments Table
-CREATE TABLE IF NOT EXISTS public.payments (
-                                               id SERIAL PRIMARY KEY,
-                                               booking_id INTEGER REFERENCES public.bookings(id) ON UPDATE CASCADE ON DELETE SET NULL,
-                                               amount NUMERIC(10,2) NOT NULL,
-                                               payment_method VARCHAR(100),
-                                               status VARCHAR(50) NOT NULL DEFAULT 'completed',
-                                               transaction_id VARCHAR(255)
+-- TABELLA PAYMENTS
+CREATE TABLE public.payments (
+                                 id integer DEFAULT nextval('public.payments_id_seq'::regclass) NOT NULL PRIMARY KEY,
+                                 booking_id integer NOT NULL REFERENCES public.bookings(id) ON UPDATE CASCADE ON DELETE CASCADE,
+                                 amount numeric(10,2) NOT NULL,
+                                 payment_method character varying(100),
+                                 status character varying(50) DEFAULT 'completed'::character varying NOT NULL,
+                                 transaction_id character varying(255)
 );
 
-ALTER TABLE public.payments OWNER TO postgres;
+-- INDICE
+CREATE INDEX fki_payments_booking_id_fkey ON public.payments USING btree (booking_id);
